@@ -1,0 +1,42 @@
+LRU Cache
+
+Fast, thread safe C++ template with Least Recently Used (LRU)
+removal semantics. Complete with a comprehensive unit test
+suite. Threading features require the BOOST scientific library to be
+installed.
+
+Usage:
+
+An LRU cache is a fixed size cache that discards the oldest (least
+recently accessed) elements after it fills up.  It's ideally
+suited to be used in situations where you need to speed up access to
+slower data sources (databases, synthetic structures, etc.). Below is
+a simple example of using it to cache strings using integer keys.
+
+Example:
+
+------------------------->8-----------------------------------------------------------
+#include "lru_cache.h"
+#include <string>
+#include <iostream>
+
+int main(void) {
+	// Typedef our template for easy of readability and use.
+	typedef LRUCache<int,std::string> string_cache_t;
+	
+	// Instantiate a string cache with at most three elements.
+	string_cache_t *cache = new string_cache_t(3);
+	
+	// Insert data into the cache.
+	std::string quote_1 = "Number is the within of all things. -Pythagoras";
+	cache->insert( 4, quote_1 );
+
+	// Fetch it out.
+	std::cout << cache->fetch( 4 ) << std::endl;	
+}
+------------------------------------------8<------------------------------------------
+
+See Also:
+
+   http://patrickaudley.com/code/project/lrucache
+

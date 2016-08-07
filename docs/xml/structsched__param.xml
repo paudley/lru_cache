@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="structsched__param" kind="struct" prot="public">
+    <compoundname>sched_param</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structsched__param_1aa0f2640949273f2c30549ed8d1bb197e" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int sched_param::sched_priority</definition>
+        <argsstring></argsstring>
+        <name>sched_priority</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="2097" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="2097" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="2097" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="2097" bodyend="2097"/>
+    <listofallmembers>
+      <member refid="structsched__param_1aa0f2640949273f2c30549ed8d1bb197e" prot="public" virt="non-virtual"><scope>sched_param</scope><name>sched_priority</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

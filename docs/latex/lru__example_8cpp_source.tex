@@ -1,0 +1,22 @@
+\section{lru\_\-example.cpp}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "lru_cache.h"}
+00002 \textcolor{preprocessor}{#include <string>}
+00003 \textcolor{preprocessor}{#include <iostream>}
+00004 
+00005 \textcolor{keywordtype}{int} main(\textcolor{keywordtype}{void}) \{
+00006         \textcolor{comment}{// Typedef our template for easy of readability and use.}
+00007         \textcolor{keyword}{typedef} LRUCache<int,std::string> string\_cache\_t;
+00008         
+00009         \textcolor{comment}{// Instantiate a string cache with at most three elements.}
+00010         string\_cache\_t *cache = \textcolor{keyword}{new} string\_cache\_t(3);
+00011         
+00012         \textcolor{comment}{// Insert data into the cache.}
+00013         std::string quote\_1 = \textcolor{stringliteral}{"Number is the within of all things. -Pythagoras"};
+00014         cache->insert( 4, quote\_1 );
+00015 
+00016         \textcolor{comment}{// Fetch it out.}
+00017         std::cout << cache->fetch( 4 ) << std::endl;    
+00018 \}
+\end{DoxyCode}

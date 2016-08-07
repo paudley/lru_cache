@@ -1,0 +1,20 @@
+<<?xml version="1.0" encoding="UTF-8"?>
+<fileset>
+<file>
+  <path>src/lru_cache.h</path>
+  <type>c++</type>
+  <license>BSD</license>
+</file>
+
+<file>
+  <path>src/lru_cache.cpp</path>
+  <type>c++</type>
+  <license>GPL</license>
+</file>
+
+<file>
+  <path>src/unit_test.h</path>
+  <type>c++</type>
+  <license>GPL</license>
+</file>
+</fileset>

@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="structCountfn" kind="struct" prot="public">
+    <compoundname>Countfn</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structCountfn_1afa8898faea088a5b7fc48295d041ddbd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned long</type>
+        <definition>unsigned long Countfn&lt; T &gt;::operator()</definition>
+        <argsstring>(const T &amp;x)</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="59" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="59" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="structCountfn_1afa8898faea088a5b7fc48295d041ddbd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned long</type>
+        <definition>unsigned long Countfn&lt; T &gt;::operator()</definition>
+        <argsstring>(const T &amp;x)</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12194" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12194" bodyend="12194"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="58" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="58" bodyend="60"/>
+    <listofallmembers>
+      <member refid="structCountfn_1afa8898faea088a5b7fc48295d041ddbd" prot="public" virt="non-virtual"><scope>Countfn</scope><name>operator()</name></member>
+      <member refid="structCountfn_1afa8898faea088a5b7fc48295d041ddbd" prot="public" virt="non-virtual"><scope>Countfn</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

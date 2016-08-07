@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="test" kind="page">
+    <compoundname>test</compoundname>
+    <title>Test List</title>
+    <detaileddescription>
+<para><anchor id="test_1_test000001"/> <variablelist>
+<varlistentry><term>Member <ref refid="lru__cache_8cpp_1a744e96854fa4e01ab945ea9ad43b39ca" kindref="member">DEFINE_TEST</ref> (lru_cache_1cycle) </term></varlistentry>
+<listitem><para>Basic creation and desctruction test </para></listitem>
+</variablelist>
+</para><para><anchor id="test_1_test000004"/> <variablelist>
+<varlistentry><term>Member <ref refid="lru__cache_8cpp_1a7403186cac9b12671fdda33ea88bceb0" kindref="member">DEFINE_TEST</ref> (lru_cache_threads) </term></varlistentry>
+<listitem><para>Check for badness with multithreaded access, this is more of a stress test than an empirical test. </para></listitem>
+</variablelist>
+</para><para><anchor id="test_1_test000003"/> <variablelist>
+<varlistentry><term>Member <ref refid="lru__cache_8cpp_1a6288e1898f19682582c52a5005e10ada" kindref="member">DEFINE_TEST</ref> (lru_cache_scope_check) </term></varlistentry>
+<listitem><para>Check that objects inserted in a different scope are still there. </para></listitem>
+</variablelist>
+</para><para><anchor id="test_1_test000002"/> <variablelist>
+<varlistentry><term>Member <ref refid="lru__cache_8cpp_1a92b18aa64a57a02c1adc3d1b98924bb5" kindref="member">DEFINE_TEST</ref> (lru_cache_stress) </term></varlistentry>
+<listitem><para>Insert lots of objects and benchmark the rate. </para></listitem>
+</variablelist>
+</para>    </detaileddescription>
+  </compounddef>
+</doxygen>

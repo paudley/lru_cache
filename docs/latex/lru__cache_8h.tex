@@ -1,0 +1,35 @@
+\section{lru\_\-cache.h File Reference}
+\label{lru__cache_8h}\index{lru\_\-cache.h@{lru\_\-cache.h}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bf LRUCache$<$ Key, Data, Sizefn $>$}
+\begin{DoxyCompactList}\small\item\em Template cache with an LRU removal policy. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf SCOPED\_\-MUTEX}~boost::mutex::scoped\_\-lock lock(this-\/$>$\_\-mutex);\label{lru__cache_8h_a7a1d17c8eef1fd310a6522744483ae52}
+
+\begin{DoxyCompactList}\small\item\em If we are reentrant then use a BOOST scoped mutex where neccessary. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Template cache with an LRU removal policy \begin{DoxyAuthor}{Author}
+Patrick Audley 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.3 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+May 2011 
+\end{DoxyDate}
+\begin{DoxyParagraph}{}
+This cache is thread safe if compiled with \_\-REENTRANT defined. It uses the BOOST scientific computing library to provide the thread safety mutexes.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Thanks to {\tt graydon@pobox.com} for the size counting functor. 
+\end{DoxyParagraph}
+
+
+Definition in file {\bf lru\_\-cache.h}.
+

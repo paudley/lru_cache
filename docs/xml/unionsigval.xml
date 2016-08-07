@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="unionsigval" kind="union" prot="public">
+    <compoundname>sigval</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="unionsigval_1a560393252ee7edc37df44bf1c11bdbdd" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int sigval::sival_int</definition>
+        <argsstring></argsstring>
+        <name>sival_int</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1044" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1044" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="unionsigval_1a4668f1bd7463de7b70bd0022207e26ac" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* sigval::sival_ptr</definition>
+        <argsstring></argsstring>
+        <name>sival_ptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1045" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1045" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1042" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1042" bodyend="1046"/>
+    <listofallmembers>
+      <member refid="unionsigval_1a560393252ee7edc37df44bf1c11bdbdd" prot="public" virt="non-virtual"><scope>sigval</scope><name>sival_int</name></member>
+      <member refid="unionsigval_1a4668f1bd7463de7b70bd0022207e26ac" prot="public" virt="non-virtual"><scope>sigval</scope><name>sival_ptr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,5 @@
+* v1.3 (2011/05/15)
+ - updated config.guess to latest rev
+ - generally cleaned up the svn repository
+ - updated boost detection macros in autoconf
+ - incorporated two patches for _curr_size initialization and deconstifying _remove

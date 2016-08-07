@@ -1,0 +1,223 @@
+.TH "lru_cache.cpp" 3 "Sun May 15 2011" "Version 1.3" "C++ LRU Cache Template" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+lru_cache.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef \fBLRUCache\fP< std::string, std::string > \fBunit_lru_type\fP"
+.br
+.RI "\fI\fBLRUCache\fP type for use in the unit tests. \fP"
+.ti -1c
+.RI "typedef \fBLRUCache\fP< int, int > \fBunit_lru_type2\fP"
+.br
+.RI "\fI\fBLRUCache\fP POD type for use in the unit tests. \fP"
+.ti -1c
+.RI "typedef \fBLRUCache\fP< int, test_big_data > \fBunit_lru_type3\fP"
+.br
+.RI "\fI\fBLRUCache\fP with large data for use in the unit tests. \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBdump\fP (\fBunit_lru_type\fP *L)"
+.br
+.RI "\fIDumps the cache for debugging. \fP"
+.ti -1c
+.RI "UNIT_TEST_DEFINES \fBDEFINE_TEST\fP (lru_cache_1cycle)"
+.br
+.ti -1c
+.RI "\fBDEFINE_TEST\fP (lru_cache_stress)"
+.br
+.ti -1c
+.RI "\fBDEFINE_TEST\fP (lru_cache_scope_check)"
+.br
+.ti -1c
+.RI "\fBDEFINE_TEST\fP (lru_cache_threads)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBunit_lru_type3\fP * \fBL3\fP"
+.br
+.RI "\fIScoping test object. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Template cache with an LRU removal policy (unit tests) 
+.PP
+\fBAuthor:\fP
+.RS 4
+Patrick Audley 
+.RE
+.PP
+
+.PP
+Definition in file \fBlru_cache.cpp\fP.
+.SH "Function Documentation"
+.PP 
+.SS "UNIT_TEST_DEFINES DEFINE_TEST (lru_cache_1cycle)"\fBTest\fP
+.RS 4
+Basic creation and desctruction test 
+.RE
+.PP
+
+.PP
+Definition at line 50 of file lru_cache.cpp.
+.PP
+References dump(), LRUCache< Key, Data, Sizefn >::exists(), LRUCache< Key, Data, Sizefn >::fetch(), LRUCache< Key, Data, Sizefn >::insert(), LRUCache< Key, Data, Sizefn >::max_size(), LRUCache< Key, Data, Sizefn >::remove(), LRUCache< Key, Data, Sizefn >::size(), LRUCache< Key, Data, Sizefn >::touch(), unit_assert, and unit_pass.
+.PP
+.nf
+                                {
+        const std::string unit_data_1cycle_a('foo:4\n');
+        const std::string unit_data_1cycle_b('bar:flower\nfoo:4\n');
+        const std::string unit_data_1cycle_c('foo:4\nbar:flower\n');
+        const std::string unit_data_1cycle_d('foo:moose\nbaz:Stalin\nbar:flower\n');
+        const std::string unit_data_1cycle_e('foo:moose\nbar:flower\n');
+        const std::string unit_data_1cycle_f('quz:xyzzy\nbaz:monkey\nfoo:moose\n');
+        const std::string unit_data_1cycle_g('coat:mouse\npants:cat\nsocks:bear\n');
+
+        unit_lru_type *L = new unit_lru_type(3);
+        unit_assert( 'size==0', (L->size() == 0) );
+        unit_assert( 'maxsize==3', (L->max_size() == 3) );
+
+        // Checking a bogus key shouldn't alter the cache.
+        L->exists( 'foo' );
+        unit_assert( 'exists() doesn't increase size', (L->size() == 0) );
+
+        // Check insert() and exists()
+        L->insert( 'foo', '4' );
+        unit_assert( 'size==1 after insert(foo,4)', (L->size() == 1) );
+        unit_assert( 'check exists(foo)', L->exists( 'foo' ) );
+        unit_assert( 'contents check a)', unit_data_1cycle_a.compare( dump( L ) ) == 0 );
+
+        // Check second insert and ordering
+        L->insert( 'bar', 'flower' );
+        unit_assert( 'size==2 after insert(bar,flower)', (L->size() == 2) );
+        unit_assert( 'contents check b)', unit_data_1cycle_b.compare( dump( L ) ) == 0 );
+
+        // Check touching
+        L->touch( 'foo' );
+        unit_assert( 'contents check c)', unit_data_1cycle_c.compare( dump( L ) ) == 0 );
+
+        // Insert of an existing element should result in only a touch
+        L->insert( 'bar', 'flower' );
+        unit_assert( 'verify insert touches', unit_data_1cycle_b.compare( dump( L ) ) == 0 );
+
+        // Verify that fetch works
+        unit_assert( 'verify fetch(bar)', ( std::string('flower').compare( L->fetch('bar') ) == 0 ) );
+
+        // Insert of an existing element with new data should replace and touch
+        L->insert( 'baz', 'Stalin' );
+        L->insert( 'foo', 'moose' );
+        unit_assert( 'verify insert replaces', unit_data_1cycle_d.compare( dump( L ) ) == 0 );
+
+        // Test removal of an existing member.
+        L->remove( 'baz' );
+        unit_assert( 'verify remove works', unit_data_1cycle_e.compare( dump( L ) ) == 0 );
+
+        // Test LRU removal as we add more members than max_size()
+        L->insert( 'baz', 'monkey' );
+        L->insert( 'quz', 'xyzzy' );
+        unit_assert( 'verify LRU semantics', unit_data_1cycle_f.compare( dump( L ) ) == 0 );
+
+        // Stress test the implementation a little..
+        const char *names[10] = { 'moose', 'dog', 'bear', 'cat', 'mouse', 'hat', 'mittens', 'socks', 'pants', 'coat' };
+        for( int i = 0; i < 50; i++ ) {
+                L->insert( names[ i % 10 ], names[ i % 9 ] );
+        }
+        unit_assert( 'stress test a little', unit_data_1cycle_g.compare( dump( L ) ) == 0 );
+
+        // Setup a little for the third test which verifies that scoped references inserted into the cache don't disappear.
+        L3 = new unit_lru_type3(2);
+        for( int i = 0; i < 10; i++ ) {
+                test_big_data B;
+                snprintf( B.buffer, 1000, '%d\n', i );
+                L3->insert( i, B );
+        }
+
+        unit_pass();
+}
+.fi
+.SS "DEFINE_TEST (lru_cache_stress)"\fBTest\fP
+.RS 4
+Insert lots of objects and benchmark the rate. 
+.RE
+.PP
+
+.PP
+Definition at line 123 of file lru_cache.cpp.
+.PP
+References cputime(), LRUCache< Key, Data, Sizefn >::insert(), print_cputime(), and unit_pass.
+.PP
+.nf
+                                {
+        // Stress test the implementation a little more using no objects
+        unit_lru_type2 *L2 = new unit_lru_type2(5);
+        double t0 = cputime();
+        for( int i = 0; i < TRANSACTIONS; i++ ) {
+                L2->insert( i, i-1 );
+        }
+        double t1 = cputime();
+        delete L2;
+        print_cputime( '(int,int) inserts', t1-t0, TRANSACTIONS );
+        unit_pass();
+}
+.fi
+.SS "DEFINE_TEST (lru_cache_scope_check)"\fBTest\fP
+.RS 4
+Check that objects inserted in a different scope are still there. 
+.RE
+.PP
+
+.PP
+Definition at line 137 of file lru_cache.cpp.
+.PP
+References LRUCache< Key, Data, Sizefn >::fetch_ptr(), unit_assert, and unit_pass.
+.PP
+.nf
+                                     {
+        test_big_data* B = L3->fetch_ptr( 9 );
+        unit_assert( 'scope check element L3[1]', ( strncmp( B->buffer, '9\n', 1000 ) == 0 ) );
+        B = L3->fetch_ptr( 8 );
+        unit_assert( 'scope check element L3[2]', ( strncmp( B->buffer, '8\n', 1000 ) == 0 ) );
+        delete L3;
+        unit_pass();
+}
+.fi
+.SS "DEFINE_TEST (lru_cache_threads)"\fBTest\fP
+.RS 4
+Check for badness with multithreaded access, this is more of a stress test than an empirical test. 
+.RE
+.PP
+
+.PP
+Definition at line 164 of file lru_cache.cpp.
+.PP
+References cputime(), print_cputime(), and unit_pass.
+.PP
+.nf
+                                 {
+        L4 = new unit_lru_type2( 20 );
+        boost::thread_group thrds;
+        double t0 = cputime();
+        for (int i=0; i < THREAD_COUNT; ++i)
+                thrds.create_thread(&insert_junk);
+        thrds.join_all();
+        double t1 = cputime();
+        print_cputime( '(int,int) multithreaded inserts', t1-t0, THREAD_TRANS*THREAD_COUNT*4 );
+        delete L4;
+        unit_pass();
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for C++ LRU Cache Template from the source code.

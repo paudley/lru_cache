@@ -1,0 +1,351 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="structlconv" kind="struct" prot="public">
+    <compoundname>lconv</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structlconv_1a445e27fc7f797c8cca97b381f062fb60" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* lconv::decimal_point</definition>
+        <argsstring></argsstring>
+        <name>decimal_point</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1673" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1673" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1aede8dfaac91d7b4e6b7fb0d96184d74d" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* lconv::thousands_sep</definition>
+        <argsstring></argsstring>
+        <name>thousands_sep</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1674" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1674" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1a46e468755a823be50de20f36be5ff2be" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* lconv::grouping</definition>
+        <argsstring></argsstring>
+        <name>grouping</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1675" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1675" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1abaeeafb02b68ba58c549458b196b9325" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* lconv::int_curr_symbol</definition>
+        <argsstring></argsstring>
+        <name>int_curr_symbol</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1676" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1676" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1af3657bb8bf2a83a868cdeb0b108ab921" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* lconv::currency_symbol</definition>
+        <argsstring></argsstring>
+        <name>currency_symbol</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1677" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1677" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1a1aa08afe707c1d5d40b4d01369176480" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* lconv::mon_decimal_point</definition>
+        <argsstring></argsstring>
+        <name>mon_decimal_point</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1678" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1678" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1a4f04f4fd9ea670d21fc76fb5c77c032d" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* lconv::mon_thousands_sep</definition>
+        <argsstring></argsstring>
+        <name>mon_thousands_sep</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1679" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1679" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1a12ecf5d2f7ceb0cfe0f66fd3200eef54" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* lconv::mon_grouping</definition>
+        <argsstring></argsstring>
+        <name>mon_grouping</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1680" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1680" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1a74bf5f6f32624be629f7de0dabd58a96" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* lconv::positive_sign</definition>
+        <argsstring></argsstring>
+        <name>positive_sign</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1681" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1681" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1a40dbb1b1d7fdf4926145138f5d8f6f5f" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* lconv::negative_sign</definition>
+        <argsstring></argsstring>
+        <name>negative_sign</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1682" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1682" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1a6b652f28cafc3092258b47c8099fe905" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char lconv::int_frac_digits</definition>
+        <argsstring></argsstring>
+        <name>int_frac_digits</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1683" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1683" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1aa16e32ff4dcc95445742b5b165ffb071" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char lconv::frac_digits</definition>
+        <argsstring></argsstring>
+        <name>frac_digits</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1684" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1684" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1af0651922c77fc926609bdd8746784e63" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char lconv::p_cs_precedes</definition>
+        <argsstring></argsstring>
+        <name>p_cs_precedes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1685" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1685" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1a3ae3cb36f4426158e4ab2ea6dc4278ad" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char lconv::p_sep_by_space</definition>
+        <argsstring></argsstring>
+        <name>p_sep_by_space</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1686" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1686" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1ad118b68a229527f7e96538ac875169ad" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char lconv::n_cs_precedes</definition>
+        <argsstring></argsstring>
+        <name>n_cs_precedes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1687" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1687" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1ab7ac20ce034900155183b32fc3c6d9a3" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char lconv::n_sep_by_space</definition>
+        <argsstring></argsstring>
+        <name>n_sep_by_space</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1688" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1688" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1a1fdead36abe5c2ca673142ea401478e8" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char lconv::p_sign_posn</definition>
+        <argsstring></argsstring>
+        <name>p_sign_posn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1689" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1689" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1ae0bbe6f545952daef5a8cbdd054a184e" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char lconv::n_sign_posn</definition>
+        <argsstring></argsstring>
+        <name>n_sign_posn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1690" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1690" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1a1a78cbc82f07601c2acb643f8dffdf64" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char lconv::int_p_cs_precedes</definition>
+        <argsstring></argsstring>
+        <name>int_p_cs_precedes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1691" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1691" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1a36121c68c5571e40145365dd1edecbb7" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char lconv::int_n_cs_precedes</definition>
+        <argsstring></argsstring>
+        <name>int_n_cs_precedes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1692" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1692" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1ae77e798ef92e86d58100b16fb8163443" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char lconv::int_p_sep_by_space</definition>
+        <argsstring></argsstring>
+        <name>int_p_sep_by_space</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1693" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1693" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1ad9cfa63e25f4a2aa02f6c7ca540177a2" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char lconv::int_n_sep_by_space</definition>
+        <argsstring></argsstring>
+        <name>int_n_sep_by_space</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1694" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1694" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1a266ed42f4bb087d1efac551940c42f6f" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char lconv::int_p_sign_posn</definition>
+        <argsstring></argsstring>
+        <name>int_p_sign_posn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1695" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1695" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlconv_1a642a9096f724fad40fe9f1711e92b323" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char lconv::int_n_sign_posn</definition>
+        <argsstring></argsstring>
+        <name>int_n_sign_posn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1696" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1696" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1672" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1672" bodyend="1697"/>
+    <listofallmembers>
+      <member refid="structlconv_1af3657bb8bf2a83a868cdeb0b108ab921" prot="public" virt="non-virtual"><scope>lconv</scope><name>currency_symbol</name></member>
+      <member refid="structlconv_1a445e27fc7f797c8cca97b381f062fb60" prot="public" virt="non-virtual"><scope>lconv</scope><name>decimal_point</name></member>
+      <member refid="structlconv_1aa16e32ff4dcc95445742b5b165ffb071" prot="public" virt="non-virtual"><scope>lconv</scope><name>frac_digits</name></member>
+      <member refid="structlconv_1a46e468755a823be50de20f36be5ff2be" prot="public" virt="non-virtual"><scope>lconv</scope><name>grouping</name></member>
+      <member refid="structlconv_1abaeeafb02b68ba58c549458b196b9325" prot="public" virt="non-virtual"><scope>lconv</scope><name>int_curr_symbol</name></member>
+      <member refid="structlconv_1a6b652f28cafc3092258b47c8099fe905" prot="public" virt="non-virtual"><scope>lconv</scope><name>int_frac_digits</name></member>
+      <member refid="structlconv_1a36121c68c5571e40145365dd1edecbb7" prot="public" virt="non-virtual"><scope>lconv</scope><name>int_n_cs_precedes</name></member>
+      <member refid="structlconv_1ad9cfa63e25f4a2aa02f6c7ca540177a2" prot="public" virt="non-virtual"><scope>lconv</scope><name>int_n_sep_by_space</name></member>
+      <member refid="structlconv_1a642a9096f724fad40fe9f1711e92b323" prot="public" virt="non-virtual"><scope>lconv</scope><name>int_n_sign_posn</name></member>
+      <member refid="structlconv_1a1a78cbc82f07601c2acb643f8dffdf64" prot="public" virt="non-virtual"><scope>lconv</scope><name>int_p_cs_precedes</name></member>
+      <member refid="structlconv_1ae77e798ef92e86d58100b16fb8163443" prot="public" virt="non-virtual"><scope>lconv</scope><name>int_p_sep_by_space</name></member>
+      <member refid="structlconv_1a266ed42f4bb087d1efac551940c42f6f" prot="public" virt="non-virtual"><scope>lconv</scope><name>int_p_sign_posn</name></member>
+      <member refid="structlconv_1a1aa08afe707c1d5d40b4d01369176480" prot="public" virt="non-virtual"><scope>lconv</scope><name>mon_decimal_point</name></member>
+      <member refid="structlconv_1a12ecf5d2f7ceb0cfe0f66fd3200eef54" prot="public" virt="non-virtual"><scope>lconv</scope><name>mon_grouping</name></member>
+      <member refid="structlconv_1a4f04f4fd9ea670d21fc76fb5c77c032d" prot="public" virt="non-virtual"><scope>lconv</scope><name>mon_thousands_sep</name></member>
+      <member refid="structlconv_1ad118b68a229527f7e96538ac875169ad" prot="public" virt="non-virtual"><scope>lconv</scope><name>n_cs_precedes</name></member>
+      <member refid="structlconv_1ab7ac20ce034900155183b32fc3c6d9a3" prot="public" virt="non-virtual"><scope>lconv</scope><name>n_sep_by_space</name></member>
+      <member refid="structlconv_1ae0bbe6f545952daef5a8cbdd054a184e" prot="public" virt="non-virtual"><scope>lconv</scope><name>n_sign_posn</name></member>
+      <member refid="structlconv_1a40dbb1b1d7fdf4926145138f5d8f6f5f" prot="public" virt="non-virtual"><scope>lconv</scope><name>negative_sign</name></member>
+      <member refid="structlconv_1af0651922c77fc926609bdd8746784e63" prot="public" virt="non-virtual"><scope>lconv</scope><name>p_cs_precedes</name></member>
+      <member refid="structlconv_1a3ae3cb36f4426158e4ab2ea6dc4278ad" prot="public" virt="non-virtual"><scope>lconv</scope><name>p_sep_by_space</name></member>
+      <member refid="structlconv_1a1fdead36abe5c2ca673142ea401478e8" prot="public" virt="non-virtual"><scope>lconv</scope><name>p_sign_posn</name></member>
+      <member refid="structlconv_1a74bf5f6f32624be629f7de0dabd58a96" prot="public" virt="non-virtual"><scope>lconv</scope><name>positive_sign</name></member>
+      <member refid="structlconv_1aede8dfaac91d7b4e6b7fb0d96184d74d" prot="public" virt="non-virtual"><scope>lconv</scope><name>thousands_sep</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

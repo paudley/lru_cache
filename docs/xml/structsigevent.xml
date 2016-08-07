@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="structsigevent" kind="struct" prot="public">
+    <compoundname>sigevent</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structsigevent_1aae9a19d879c38e0c4e8a9bf738c5081e" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int sigevent::sigev_notify</definition>
+        <argsstring></argsstring>
+        <name>sigev_notify</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1053" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1053" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structsigevent_1a5c645ec1d12bb46efc3f4097c52b665d" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int sigevent::sigev_signo</definition>
+        <argsstring></argsstring>
+        <name>sigev_signo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1054" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1054" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structsigevent_1a757af1e34b87e3f66bbc08c514017a2c" prot="public" static="no" mutable="no">
+        <type>union sigval</type>
+        <definition>union sigval sigevent::sigev_value</definition>
+        <argsstring></argsstring>
+        <name>sigev_value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1055" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1055" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structsigevent_1a80e3779d87877b92381c826702782122" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* sigevent::sigev_notify_function)(union sigval)</definition>
+        <argsstring>)(union sigval)</argsstring>
+        <name>sigev_notify_function</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1056" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1056" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structsigevent_1a5a687d2092b237d76eb08e2d46a5115f" prot="public" static="no" mutable="no">
+        <type>pthread_attr_t *</type>
+        <definition>pthread_attr_t* sigevent::sigev_notify_attributes</definition>
+        <argsstring></argsstring>
+        <name>sigev_notify_attributes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1057" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1057" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1052" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1052" bodyend="1058"/>
+    <listofallmembers>
+      <member refid="structsigevent_1aae9a19d879c38e0c4e8a9bf738c5081e" prot="public" virt="non-virtual"><scope>sigevent</scope><name>sigev_notify</name></member>
+      <member refid="structsigevent_1a5a687d2092b237d76eb08e2d46a5115f" prot="public" virt="non-virtual"><scope>sigevent</scope><name>sigev_notify_attributes</name></member>
+      <member refid="structsigevent_1a80e3779d87877b92381c826702782122" prot="public" virt="non-virtual"><scope>sigevent</scope><name>sigev_notify_function</name></member>
+      <member refid="structsigevent_1a5c645ec1d12bb46efc3f4097c52b665d" prot="public" virt="non-virtual"><scope>sigevent</scope><name>sigev_signo</name></member>
+      <member refid="structsigevent_1a757af1e34b87e3f66bbc08c514017a2c" prot="public" virt="non-virtual"><scope>sigevent</scope><name>sigev_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

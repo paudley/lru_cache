@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="main" kind="page">
+    <compoundname>main</compoundname>
+    <title>LRU Cache</title>
+    <detaileddescription>
+<sect1 id="main_1intro_section">
+<title>Introduction</title>
+<para>Fast, thread safe C++ template with Least Recently Used (LRU) removal semantics. Complete with a comprehensive unit test suite. Threading features require the BOOST scientific library to be installed.</para></sect1>
+<sect1 id="main_1usage_section">
+<title>Usage</title>
+<para>An LRU cache is a fixed size cache that discards the oldest (least recently accessed) elements after it fills up. It&apos;s ideally suited to be used in situations where you need to speed up access to slower data sources (databases, synthetic structures, etc.). Below is a simple example of using it to cache strings using integer keys.</para></sect1>
+<sect1 id="main_1also_section">
+<title>See Also</title>
+<para>See: <ulink url="http://patrickaudley.com/code/project/lrucache">LRU Cache</ulink> </para></sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

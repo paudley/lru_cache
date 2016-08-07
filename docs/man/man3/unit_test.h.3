@@ -1,0 +1,263 @@
+.TH "unit_test.h" 3 "Sun May 15 2011" "Version 1.3" "C++ LRU Cache Template" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+unit_test.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBUNIT_TEST_DEFINES\fP"
+.br
+.RI "\fIStart of inline Unit Test definitions Use this to start the list of unit tests. This should be followed by one or more DEFINE_TEST entries. \fP"
+.ti -1c
+.RI "#define \fBDEFINE_TEST\fP(test_name)   bool unit_test_##test_name (void)"
+.br
+.RI "\fIStart a new test definition. \fP"
+.ti -1c
+.RI "#define \fBADD_TEST\fP(test_name)   add_test( &unit_test_##test_name );"
+.br
+.RI "\fIAdds a defined test to test run. \fP"
+.ti -1c
+.RI "#define \fBUNIT_TEST_RUN\fP(suite)"
+.br
+.RI "\fIStart a Unit test run section. \fP"
+.ti -1c
+.RI "#define \fBunit_assert\fP(msg, cond)"
+.br
+.RI "\fIUse within a Unit Test to verify a condition. \fP"
+.ti -1c
+.RI "#define \fBunit_pass\fP()   return true;"
+.br
+.RI "\fIUse to end a unit test in success. \fP"
+.ti -1c
+.RI "#define \fBunit_fail\fP()   return false;"
+.br
+.RI "\fIUse to end a unit test in failure. \fP"
+.ti -1c
+.RI "#define \fBUNIT_TEST_END\fP"
+.br
+.RI "\fIFinish a Unit Test run section. \fP"
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef bool(* \fBtest_func\fP )(void)"
+.br
+.RI "\fItypedef for unittest functions \fP"
+.ti -1c
+.RI "typedef std::vector< \fBtest_func\fP > \fBtest_vector\fP"
+.br
+.RI "\fItypedef for vectors of unittest functions \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "double \fBcputime\fP (void)"
+.br
+.RI "\fIGets the current CPU time with microsecond accuracy. \fP"
+.ti -1c
+.RI "double \fBtransactions_per_second\fP (double run_time, unsigned long transactions)"
+.br
+.RI "\fICalculates the transactions rate. \fP"
+.ti -1c
+.RI "void \fBprint_cputime\fP (const char *msg, double run_time, unsigned long transactions=0)"
+.br
+.RI "\fIPrints to stdout the results of timing an event. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Unit Testing framework for C++ 
+.PP
+\fBAuthor:\fP
+.RS 4
+Patrick Audley 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+December 2004
+.RE
+.PP
+\fB\fP
+.RS 4
+See full documentation for this framework in \fBUnit Testing Framework\fP 
+.RE
+.PP
+
+.PP
+Definition in file \fBunit_test.h\fP.
+.SH "Define Documentation"
+.PP 
+.SS "#define DEFINE_TEST(test_name)   bool unit_test_##test_name (void)"
+.PP
+Start a new test definition. \fBParameters:\fP
+.RS 4
+\fItest_name\fP Name of the test - must be unique in this unit test suite. 
+.RE
+.PP
+
+.PP
+Definition at line 184 of file unit_test.h.
+.SS "#define ADD_TEST(test_name)   add_test( &unit_test_##test_name );"
+.PP
+Adds a defined test to test run. \fBParameters:\fP
+.RS 4
+\fItest_name\fP Test name of a previously defined test to add the the current suite. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBDEFINE_TEST\fP \fBUNIT_TEST_RUN\fP This should be called after \fBUNIT_TEST_RUN\fP for each defined test. 
+.RE
+.PP
+
+.PP
+Definition at line 191 of file unit_test.h.
+.SS "#define UNIT_TEST_RUN(suite)"\fBValue:\fP
+.PP
+.nf
+int main(void) { \
+  bool result = true; \
+  std::cout << '---[ ' << suite << ' ]--- ' << std::endl;
+.fi
+.PP
+Start a Unit test run section. \fBParameters:\fP
+.RS 4
+\fIsuite\fP Name for this test suite. 
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+Must be terminated with an UNIT_TEST_END statement. 
+.RE
+.PP
+
+.PP
+Definition at line 197 of file unit_test.h.
+.SS "#define unit_assert(msg, cond)"\fBValue:\fP
+.PP
+.nf
+std::cout << '  ' << msg << ': ' << std::flush; \
+  if( !cond ) { std::cout << 'FAILED' << std::endl; return false; } \
+  std::cout << 'PASSED' << std::endl;
+.fi
+.PP
+Use within a Unit Test to verify a condition. \fBWarning:\fP
+.RS 4
+Terminates test on failure. 
+.RE
+.PP
+
+.PP
+Definition at line 205 of file unit_test.h.
+.PP
+Referenced by DEFINE_TEST().
+.SS "#define unit_pass()   return true;"
+.PP
+Use to end a unit test in success. \fBNote:\fP
+.RS 4
+Either unit_pass or unit_fail should end every test. 
+.RE
+.PP
+
+.PP
+Definition at line 213 of file unit_test.h.
+.PP
+Referenced by DEFINE_TEST().
+.SS "#define unit_fail()   return false;"
+.PP
+Use to end a unit test in failure. \fBNote:\fP
+.RS 4
+Either unit_pass or unit_fail should end every test. 
+.RE
+.PP
+
+.PP
+Definition at line 218 of file unit_test.h.
+.SH "Function Documentation"
+.PP 
+.SS "double cputime (void)\fC [inline]\fP"
+.PP
+Gets the current CPU time with microsecond accuracy. \fBReturns:\fP
+.RS 4
+microseconds since UNIX epoch 
+.RE
+.PP
+
+.PP
+Definition at line 139 of file unit_test.h.
+.PP
+Referenced by DEFINE_TEST().
+.PP
+.nf
+                              {
+  getrusage( RUSAGE_SELF, &ruse );
+        return ( ruse.ru_utime.tv_sec + ruse.ru_stime.tv_sec + 1e-6 * (ruse.ru_utime.tv_usec + ruse.ru_stime.tv_usec ) );
+}
+.fi
+.SS "double transactions_per_second (double run_time, unsigned long transactions)\fC [inline]\fP"
+.PP
+Calculates the transactions rate. \fBParameters:\fP
+.RS 4
+\fIrun_time\fP microsecond resolution run time 
+.br
+\fItransactions\fP number of transactions handled in run_time seconds This is useful if you want to guarantee minimun transactional throughputs in unit tests. 
+.RE
+.PP
+\fBWarning:\fP
+.RS 4
+This code is obviously very test platform dependent. 
+.RE
+.PP
+
+.PP
+Definition at line 149 of file unit_test.h.
+.PP
+Referenced by print_cputime().
+.PP
+.nf
+                                                                                     {
+        return (double)transactions / run_time;
+}
+.fi
+.SS "void print_cputime (const char * msg, double run_time, unsigned long transactions = \fC0\fP)\fC [inline]\fP"
+.PP
+Prints to stdout the results of timing an event. \fBParameters:\fP
+.RS 4
+\fImsg\fP to print with the numbers 
+.br
+\fIrun_time\fP microsecond resolution run time 
+.br
+\fItransactions\fP number of transactions handled in run_time seconds, if 0 then transactional output is suppressed 
+.RE
+.PP
+\fBWarning:\fP
+.RS 4
+This code is obviously very test platform dependent. 
+.RE
+.PP
+
+.PP
+Definition at line 158 of file unit_test.h.
+.PP
+References transactions_per_second().
+.PP
+Referenced by DEFINE_TEST().
+.PP
+.nf
+                                                                                              {
+        printf('  -> %s:  %7.3f seconds CPU time', msg, run_time );
+        if( transactions != 0 )
+                printf( '  (%7.3f transactions/second)', transactions_per_second( run_time, transactions ) );
+        printf( '\n' );
+}
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for C++ LRU Cache Template from the source code.

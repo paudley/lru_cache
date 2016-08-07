@@ -1,0 +1,326 @@
+\section{unit\_\-test.h File Reference}
+\label{unit__test_8h}\index{unit\_\-test.h@{unit\_\-test.h}}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf UNIT\_\-TEST\_\-DEFINES}\label{unit__test_8h_a5f3fe0e0e85d0dc03672f96e5e95856f}
+
+\begin{DoxyCompactList}\small\item\em Start of inline Unit Test definitions Use this to start the list of unit tests. This should be followed by one or more DEFINE\_\-TEST entries. \item\end{DoxyCompactList}\item 
+\#define {\bf DEFINE\_\-TEST}(test\_\-name)~bool unit\_\-test\_\-\#\#test\_\-name (void)
+\begin{DoxyCompactList}\small\item\em Start a new test definition. \item\end{DoxyCompactList}\item 
+\#define {\bf ADD\_\-TEST}(test\_\-name)~add\_\-test( \&unit\_\-test\_\-\#\#test\_\-name );
+\begin{DoxyCompactList}\small\item\em Adds a defined test to test run. \item\end{DoxyCompactList}\item 
+\#define {\bf UNIT\_\-TEST\_\-RUN}(suite)
+\begin{DoxyCompactList}\small\item\em Start a Unit test run section. \item\end{DoxyCompactList}\item 
+\#define {\bf unit\_\-assert}(msg, cond)
+\begin{DoxyCompactList}\small\item\em Use within a Unit Test to verify a condition. \item\end{DoxyCompactList}\item 
+\#define {\bf unit\_\-pass}()~return true;
+\begin{DoxyCompactList}\small\item\em Use to end a unit test in success. \item\end{DoxyCompactList}\item 
+\#define {\bf unit\_\-fail}()~return false;
+\begin{DoxyCompactList}\small\item\em Use to end a unit test in failure. \item\end{DoxyCompactList}\item 
+\#define {\bf UNIT\_\-TEST\_\-END}\label{unit__test_8h_a732dd1ba2cfc9163d60e05628b4544dc}
+
+\begin{DoxyCompactList}\small\item\em Finish a Unit Test run section. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef bool($\ast$ {\bf test\_\-func} )(void)\label{unit__test_8h_a62a6058fdd96dcd306fba96626b2cc71}
+
+\begin{DoxyCompactList}\small\item\em typedef for unittest functions \item\end{DoxyCompactList}\item 
+typedef std::vector$<$ {\bf test\_\-func} $>$ {\bf test\_\-vector}\label{unit__test_8h_a76894e75beeadd2872f2f5909b43e36f}
+
+\begin{DoxyCompactList}\small\item\em typedef for vectors of unittest functions \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double {\bf cputime} (void)
+\begin{DoxyCompactList}\small\item\em Gets the current CPU time with microsecond accuracy. \item\end{DoxyCompactList}\item 
+double {\bf transactions\_\-per\_\-second} (double run\_\-time, unsigned long transactions)
+\begin{DoxyCompactList}\small\item\em Calculates the transactions rate. \item\end{DoxyCompactList}\item 
+void {\bf print\_\-cputime} (const char $\ast$msg, double run\_\-time, unsigned long transactions=0)
+\begin{DoxyCompactList}\small\item\em Prints to stdout the results of timing an event. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Unit Testing framework for C++ \begin{DoxyAuthor}{Author}
+Patrick Audley 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+December 2004
+\end{DoxyDate}
+\begin{DoxyParagraph}{}
+See full documentation for this framework in \doxyref{Unit Testing Framework}{p.}{unittests01} 
+\end{DoxyParagraph}
+
+
+Definition in file {\bf unit\_\-test.h}.
+
+
+
+\subsection{Define Documentation}
+\index{unit\_\-test.h@{unit\_\-test.h}!DEFINE\_\-TEST@{DEFINE\_\-TEST}}
+\index{DEFINE\_\-TEST@{DEFINE\_\-TEST}!unit_test.h@{unit\_\-test.h}}
+\subsubsection[{DEFINE\_\-TEST}]{\setlength{\rightskip}{0pt plus 5cm}\#define DEFINE\_\-TEST(
+\begin{DoxyParamCaption}
+\item[{}]{test\_\-name}
+\end{DoxyParamCaption}
+)~bool unit\_\-test\_\-\#\#test\_\-name (void)}\label{unit__test_8h_ad3bccea4c3142d58fd5510f65503b300}
+
+
+Start a new test definition. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em test\_\-name}]Name of the test -\/ must be unique in this unit test suite. \end{DoxyParams}
+
+
+Definition at line {\bf 184} of file {\bf unit\_\-test.h}.
+
+\index{unit\_\-test.h@{unit\_\-test.h}!ADD\_\-TEST@{ADD\_\-TEST}}
+\index{ADD\_\-TEST@{ADD\_\-TEST}!unit_test.h@{unit\_\-test.h}}
+\subsubsection[{ADD\_\-TEST}]{\setlength{\rightskip}{0pt plus 5cm}\#define ADD\_\-TEST(
+\begin{DoxyParamCaption}
+\item[{}]{test\_\-name}
+\end{DoxyParamCaption}
+)~add\_\-test( \&unit\_\-test\_\-\#\#test\_\-name );}\label{unit__test_8h_a758baec4c57fa6aeaf800e2c631a7d9f}
+
+
+Adds a defined test to test run. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em test\_\-name}]Test name of a previously defined test to add the the current suite. \end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxyref{DEFINE\_\-TEST}{p.}{lru__cache_8cpp_a7403186cac9b12671fdda33ea88bceb0} \doxyref{UNIT\_\-TEST\_\-RUN}{p.}{unit__test_8h_a86b577b8af9cc6df174dc0e2e292c365} This should be called after \doxyref{UNIT\_\-TEST\_\-RUN}{p.}{unit__test_8h_a86b577b8af9cc6df174dc0e2e292c365} for each defined test. 
+\end{DoxySeeAlso}
+
+
+Definition at line {\bf 191} of file {\bf unit\_\-test.h}.
+
+\index{unit\_\-test.h@{unit\_\-test.h}!UNIT\_\-TEST\_\-RUN@{UNIT\_\-TEST\_\-RUN}}
+\index{UNIT\_\-TEST\_\-RUN@{UNIT\_\-TEST\_\-RUN}!unit_test.h@{unit\_\-test.h}}
+\subsubsection[{UNIT\_\-TEST\_\-RUN}]{\setlength{\rightskip}{0pt plus 5cm}\#define UNIT\_\-TEST\_\-RUN(
+\begin{DoxyParamCaption}
+\item[{}]{suite}
+\end{DoxyParamCaption}
+)}\label{unit__test_8h_a86b577b8af9cc6df174dc0e2e292c365}
+{\bfseries Value:}
+\begin{DoxyCode}
+\textcolor{keywordtype}{int} main(\textcolor{keywordtype}{void}) \{ \(\backslash\)
+  \textcolor{keywordtype}{bool} result = \textcolor{keyword}{true}; \(\backslash\)
+  std::cout << \textcolor{stringliteral}{"---[ "} << suite << \textcolor{stringliteral}{" ]--- "} << std::endl;
+\end{DoxyCode}
+
+
+Start a Unit test run section. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em suite}]Name for this test suite. \end{DoxyParams}
+\begin{DoxyNote}{Note}
+Must be terminated with an UNIT\_\-TEST\_\-END statement. 
+\end{DoxyNote}
+
+
+Definition at line {\bf 197} of file {\bf unit\_\-test.h}.
+
+\index{unit\_\-test.h@{unit\_\-test.h}!unit\_\-assert@{unit\_\-assert}}
+\index{unit\_\-assert@{unit\_\-assert}!unit_test.h@{unit\_\-test.h}}
+\subsubsection[{unit\_\-assert}]{\setlength{\rightskip}{0pt plus 5cm}\#define unit\_\-assert(
+\begin{DoxyParamCaption}
+\item[{}]{msg, }
+\item[{}]{cond}
+\end{DoxyParamCaption}
+)}\label{unit__test_8h_aa37d553e7d644c165c888bed8908de20}
+{\bfseries Value:}
+\begin{DoxyCode}
+std::cout << \textcolor{stringliteral}{"  "} << msg << \textcolor{stringliteral}{": "} << std::flush; \(\backslash\)
+  \textcolor{keywordflow}{if}( !cond ) \{ std::cout << \textcolor{stringliteral}{"FAILED"} << std::endl; \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \} \(\backslash\)
+  std::cout << \textcolor{stringliteral}{"PASSED"} << std::endl;
+\end{DoxyCode}
+
+
+Use within a Unit Test to verify a condition. 
+
+\begin{DoxyWarning}{Warning}
+Terminates test on failure. 
+\end{DoxyWarning}
+
+
+Definition at line {\bf 205} of file {\bf unit\_\-test.h}.
+
+
+
+Referenced by {\bf DEFINE\_\-TEST()}.
+
+\index{unit\_\-test.h@{unit\_\-test.h}!unit\_\-pass@{unit\_\-pass}}
+\index{unit\_\-pass@{unit\_\-pass}!unit_test.h@{unit\_\-test.h}}
+\subsubsection[{unit\_\-pass}]{\setlength{\rightskip}{0pt plus 5cm}\#define unit\_\-pass(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~return true;}\label{unit__test_8h_aa2a4504968cf4e8abfc7b706106d4084}
+
+
+Use to end a unit test in success. 
+
+\begin{DoxyNote}{Note}
+Either unit\_\-pass or unit\_\-fail should end every test. 
+\end{DoxyNote}
+
+
+Definition at line {\bf 213} of file {\bf unit\_\-test.h}.
+
+
+
+Referenced by {\bf DEFINE\_\-TEST()}.
+
+\index{unit\_\-test.h@{unit\_\-test.h}!unit\_\-fail@{unit\_\-fail}}
+\index{unit\_\-fail@{unit\_\-fail}!unit_test.h@{unit\_\-test.h}}
+\subsubsection[{unit\_\-fail}]{\setlength{\rightskip}{0pt plus 5cm}\#define unit\_\-fail(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~return false;}\label{unit__test_8h_a3476c32ea638214246ee65f561b6358b}
+
+
+Use to end a unit test in failure. 
+
+\begin{DoxyNote}{Note}
+Either unit\_\-pass or unit\_\-fail should end every test. 
+\end{DoxyNote}
+
+
+Definition at line {\bf 218} of file {\bf unit\_\-test.h}.
+
+
+
+\subsection{Function Documentation}
+\index{unit\_\-test.h@{unit\_\-test.h}!cputime@{cputime}}
+\index{cputime@{cputime}!unit_test.h@{unit\_\-test.h}}
+\subsubsection[{cputime}]{\setlength{\rightskip}{0pt plus 5cm}double cputime (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{unit__test_8h_a7f0155f7ecefd56c2380285420e85e05}
+
+
+Gets the current CPU time with microsecond accuracy. 
+
+\begin{DoxyReturn}{Returns}
+microseconds since UNIX epoch 
+\end{DoxyReturn}
+
+
+Definition at line {\bf 139} of file {\bf unit\_\-test.h}.
+
+
+
+Referenced by {\bf DEFINE\_\-TEST()}.
+
+
+
+
+\begin{DoxyCode}
+                              \{
+  getrusage( RUSAGE\_SELF, &ruse );
+        \textcolor{keywordflow}{return} ( ruse.ru\_utime.tv\_sec + ruse.ru\_stime.tv\_sec + 1e-6 * (ruse.ru\_ut
+      ime.tv\_usec + ruse.ru\_stime.tv\_usec ) );
+\}
+\end{DoxyCode}
+
+
+\index{unit\_\-test.h@{unit\_\-test.h}!transactions\_\-per\_\-second@{transactions\_\-per\_\-second}}
+\index{transactions\_\-per\_\-second@{transactions\_\-per\_\-second}!unit_test.h@{unit\_\-test.h}}
+\subsubsection[{transactions\_\-per\_\-second}]{\setlength{\rightskip}{0pt plus 5cm}double transactions\_\-per\_\-second (
+\begin{DoxyParamCaption}
+\item[{double}]{ run\_\-time, }
+\item[{unsigned long}]{ transactions}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{unit__test_8h_abf6a6c3c73f9e087ad15d8ed0ec0ba85}
+
+
+Calculates the transactions rate. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em run\_\-time}]microsecond resolution run time \item[{\em transactions}]number of transactions handled in run\_\-time seconds This is useful if you want to guarantee minimun transactional throughputs in unit tests. \end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+This code is obviously very test platform dependent. 
+\end{DoxyWarning}
+
+
+Definition at line {\bf 149} of file {\bf unit\_\-test.h}.
+
+
+
+Referenced by {\bf print\_\-cputime()}.
+
+
+
+
+\begin{DoxyCode}
+                                                                                 
+          \{
+        \textcolor{keywordflow}{return} (\textcolor{keywordtype}{double})transactions / run\_time;
+\}
+\end{DoxyCode}
+
+
+\index{unit\_\-test.h@{unit\_\-test.h}!print\_\-cputime@{print\_\-cputime}}
+\index{print\_\-cputime@{print\_\-cputime}!unit_test.h@{unit\_\-test.h}}
+\subsubsection[{print\_\-cputime}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-cputime (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ msg, }
+\item[{double}]{ run\_\-time, }
+\item[{unsigned long}]{ transactions = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{unit__test_8h_a2fdd86314c7b39ab4274a36655e833f1}
+
+
+Prints to stdout the results of timing an event. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em msg}]to print with the numbers \item[{\em run\_\-time}]microsecond resolution run time \item[{\em transactions}]number of transactions handled in run\_\-time seconds, if 0 then transactional output is suppressed \end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+This code is obviously very test platform dependent. 
+\end{DoxyWarning}
+
+
+Definition at line {\bf 158} of file {\bf unit\_\-test.h}.
+
+
+
+References {\bf transactions\_\-per\_\-second()}.
+
+
+
+Referenced by {\bf DEFINE\_\-TEST()}.
+
+
+
+
+\begin{DoxyCode}
+                                                                                 
+                   \{
+        printf(\textcolor{stringliteral}{"  -> %s:  %7.3f seconds CPU time"}, msg, run\_time );
+        \textcolor{keywordflow}{if}( transactions != 0 )
+                printf( \textcolor{stringliteral}{"  (%7.3f transactions/second)"}, transactions_per_second(
+       run\_time, transactions ) );
+        printf( \textcolor{stringliteral}{"\(\backslash\)n"} );
+\}
+\end{DoxyCode}
+
+
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{unit__test_8h_a2fdd86314c7b39ab4274a36655e833f1_cgraph}
+\end{center}
+\end{figure}
+
+

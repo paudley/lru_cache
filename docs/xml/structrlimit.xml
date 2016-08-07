@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="structrlimit" kind="struct" prot="public">
+    <compoundname>rlimit</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structrlimit_1afb303c82ed3027a353e423a555b944b4" prot="public" static="no" mutable="no">
+        <type>rlim_t</type>
+        <definition>rlim_t rlimit::rlim_cur</definition>
+        <argsstring></argsstring>
+        <name>rlim_cur</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1145" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structrlimit_1ab24ab4934cab539abf45b259f5db7639" prot="public" static="no" mutable="no">
+        <type>rlim_t</type>
+        <definition>rlim_t rlimit::rlim_max</definition>
+        <argsstring></argsstring>
+        <name>rlim_max</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1146" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1146" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1144" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1144" bodyend="1147"/>
+    <listofallmembers>
+      <member refid="structrlimit_1afb303c82ed3027a353e423a555b944b4" prot="public" virt="non-virtual"><scope>rlimit</scope><name>rlim_cur</name></member>
+      <member refid="structrlimit_1ab24ab4934cab539abf45b259f5db7639" prot="public" virt="non-virtual"><scope>rlimit</scope><name>rlim_max</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

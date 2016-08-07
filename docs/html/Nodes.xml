@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DocSetNodes version="1.0">
+  <TOC>
+    <Node>
+      <Name>Root</Name>
+      <Path>main.html</Path>
+      <Subnodes>
+       <Node>
+        <Name>LRU Cache</Name>
+        <Path>main.html</Path>
+       </Node>
+       <Node>
+        <Name>Unit Testing Framework</Name>
+        <Path>unittests01.html</Path>
+        <Subnodes>
+        </Subnodes>
+       </Node>
+       <Node>
+        <Name>Test List</Name>
+        <Path>test.html</Path>
+        <Subnodes>
+        </Subnodes>
+       </Node>
+       <Node>
+        <Name>Class List</Name>
+        <Path>annotated.html</Path>
+        <Subnodes>
+         <Node>
+          <Name>LRUCache&lt; Key, Data, Sizefn &gt;</Name>
+          <Path>classLRUCache.html</Path>
+         </Node>
+        </Subnodes>
+       </Node>
+       <Node>
+        <Name>Class Members</Name>
+        <Path>functions.html</Path>
+       </Node>
+       <Node>
+        <Name>File List</Name>
+        <Path>files.html</Path>
+        <Subnodes>
+         <Node>
+          <Name>lru_cache.cpp</Name>
+          <Path>lru__cache_8cpp.html</Path>
+         </Node>
+         <Node>
+          <Name>lru_cache.h</Name>
+          <Path>lru__cache_8h.html</Path>
+         </Node>
+         <Node>
+          <Name>unit_test.h</Name>
+          <Path>unit__test_8h.html</Path>
+         </Node>
+        </Subnodes>
+       </Node>
+       <Node>
+        <Name>Examples</Name>
+        <Path>examples.html</Path>
+        <Subnodes>
+         <Node>
+          <Name>lru_example.cpp</Name>
+          <Path>lru_example_8cpp-example.html</Path>
+         </Node>
+        </Subnodes>
+       </Node>
+       <Node>
+        <Name>File Members</Name>
+        <Path>globals.html</Path>
+       </Node>
+      </Subnodes>
+    </Node>
+  </TOC>
+</DocSetNodes>

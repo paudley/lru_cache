@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="structsigstack" kind="struct" prot="public">
+    <compoundname>sigstack</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structsigstack_1a0d91bf7ec0e45f7e96ce1fedcddc6535" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* sigstack::ss_sp</definition>
+        <argsstring></argsstring>
+        <name>ss_sp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1106" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structsigstack_1a44caef3891b7efa2d5b23f00b66c0525" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int sigstack::ss_onstack</definition>
+        <argsstring></argsstring>
+        <name>ss_onstack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1107" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1107" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1105" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1105" bodyend="1108"/>
+    <listofallmembers>
+      <member refid="structsigstack_1a44caef3891b7efa2d5b23f00b66c0525" prot="public" virt="non-virtual"><scope>sigstack</scope><name>ss_onstack</name></member>
+      <member refid="structsigstack_1a0d91bf7ec0e45f7e96ce1fedcddc6535" prot="public" virt="non-virtual"><scope>sigstack</scope><name>ss_sp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

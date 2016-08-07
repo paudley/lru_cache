@@ -1,0 +1,104 @@
+See implementation in \doxyref{unit\_\-test.h}{p.}{unit__test_8h}
+
+\begin{DoxyParagraph}{}
+
+\end{DoxyParagraph}
+\section{Writing Unit Tests}\label{unittests01_writing}
+\begin{DoxyParagraph}{}
+Ideally, unit tests are written with the code they test. The easiest way to do this is to include all the unit tests at the bottom of each source that they relate too. It's also possible to create source files of nothing but tests to expand coverage across multiple translation modules. 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Let's take a simple example: we have a new function that adds two numbers. 
+\begin{DoxyCode}
+ \textcolor{keywordtype}{int} addTwoNumbers( \textcolor{keywordtype}{int} a, \textcolor{keywordtype}{int} b ) \{
+   \textcolor{keywordflow}{return} a + b;
+ \}
+\end{DoxyCode}
+ To write a unit test that checks that $addTwoNumbers(x_1,x_2)=x_1+x_2$ we would write the unit test like so: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{ #ifdef UNITTEST}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{ #include "unit_test.h"}
+
+ UNIT_TEST_DEFINES
+
+ DEFINE_TEST( check\_two\_plus\_two ) \{
+   unit_assert( \textcolor{stringliteral}{"2+2=4"}, addTwoNumbers(2,2)==4 );
+ \}
+
+ UNIT_TEST_RUN( \textcolor{stringliteral}{"addTwoNumbers Tests"} )
+   ADD_TEST( check\_two\_plus\_two )
+ UNIT_TEST_END
+
+ \textcolor{preprocessor}{#endif // UNITTEST}
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Now we have a test suite defined that will only be compiled when we define UNITTEST. UNIT\_\-TEST\_\-RUN actually creates a main() function that runs the tests so if we put this code into a file (say add.cpp) then we can compile and run it like so: \begin{DoxyVerb}
+# gcc -DUNITTEST -o unit_test_add add.cpp
+# ./unit_test_add
+---[ addTwoNumbers Tests ]---
+  2+2=4: PASSED
+\end{DoxyVerb}
+ 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+So far so good, let's add a new test that we think will fail. 
+\begin{DoxyCode}
+\textcolor{preprocessor}{ #ifdef UNITTEST}
+\textcolor{preprocessor}{}\textcolor{preprocessor}{ #include "unit_test.h"}
+
+ UNIT_TEST_DEFINES
+
+ DEFINE_TEST( check\_two\_plus\_two ) \{
+   unit_assert( \textcolor{stringliteral}{"2+2=4"}, addTwoNumbers(2,2)==4 );
+   unit_pass();
+ \}
+
+ DEFINE_TEST( check\_bogus ) \{
+   unit_assert( \textcolor{stringliteral}{"1+5=9"}, addTwoNumbers(1,5)==9 );
+   unit_pass();
+ \}
+
+ UNIT_TEST_RUN( \textcolor{stringliteral}{"addTwoNumbers Tests"} )
+   ADD_TEST( check\_negatives )
+ UNIT_TEST_END
+
+ \textcolor{preprocessor}{#endif // UNITTEST}
+\end{DoxyCode}
+ Running the unit\_\-test now we get: \begin{DoxyVerb}
+# gcc -DUNITTEST -o unit_test_add add.cpp
+# ./unit_test_add
+---[ addTwoNumbers Tests ]---
+  2+2=4: PASSED
+  1+5=9: FAILED
+\end{DoxyVerb}
+ 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+
+\end{DoxyParagraph}
+\section{Integrating with Automake}\label{unittests01_adding}
+\begin{DoxyParagraph}{}
+Automake has the ability to define testing targets that get run when issue \char`\"{}make check\char`\"{} command. Adding these tests are pretty straight forward. For the above we would add this to our Makefile.am: \begin{DoxyVerb}
+TESTS = unit_test_add
+noinst_PROGRAMS = unit_test_add
+CLEANFILES = add_unit.cpp
+unit_test_add_SOURCES = add_unit.cpp
+
+%_unit.cpp: %.cpp
+	$(CXX) -E -o $*_unit.cpp $*.C @CFLAGS@ -DUNITTEST=1
+\end{DoxyVerb}
+ To add addtional unit tests you just modify the first four lines. For example: to add a new unit test suite in the file sub.C we might do this. \begin{DoxyVerb}
+TESTS = unit_test_add unit_test_sub
+noinst_PROGRAMS = unit_test_add unit_test_sub
+CLEANFILES = add_unit.cpp sub_unit.cpp
+unit_test_add_SOURCES = add_unit.cpp
+unit_test_sub_SOURCES = sub_unit.cpp
+\end{DoxyVerb}
+ 
+\end{DoxyParagraph}
+\section{Implementation Notes}\label{unittests01_Notes}
+\begin{DoxyParagraph}{}
+
+\end{DoxyParagraph}

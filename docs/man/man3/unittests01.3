@@ -1,0 +1,158 @@
+.TH "unittests01" 3 "Sun May 15 2011" "Version 1.3" "C++ LRU Cache Template" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+unittests01 \- .TH "unittests01" 3 "Sun May 15 2011" "Version 1.3" "C++ LRU Cache Template" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+unittests01 \- See implementation in \fBunit_test.h\fP
+.PP
+\fB\fP
+.RS 4
+.RE
+.PP
+.SH "Writing Unit Tests"
+.PP
+\fB\fP
+.RS 4
+Ideally, unit tests are written with the code they test. The easiest way to do this is to include all the unit tests at the bottom of each source that they relate too. It's also possible to create source files of nothing but tests to expand coverage across multiple translation modules. 
+.RE
+.PP
+\fB\fP
+.RS 4
+Let's take a simple example: we have a new function that adds two numbers. 
+.PP
+.nf
+ int addTwoNumbers( int a, int b ) {
+   return a + b;
+ }
+
+.fi
+.PP
+ To write a unit test that checks that $addTwoNumbers(x_1,x_2)=x_1+x_2$ we would write the unit test like so: 
+.PP
+.nf
+ #ifdef UNITTEST
+ #include 'unit_test.h'
+
+ UNIT_TEST_DEFINES
+
+ DEFINE_TEST( check_two_plus_two ) {
+   unit_assert( '2+2=4', addTwoNumbers(2,2)==4 );
+ }
+
+ UNIT_TEST_RUN( 'addTwoNumbers Tests' )
+   ADD_TEST( check_two_plus_two )
+ UNIT_TEST_END
+
+ #endif // UNITTEST
+
+.fi
+.PP
+ 
+.RE
+.PP
+\fB\fP
+.RS 4
+Now we have a test suite defined that will only be compiled when we define UNITTEST. UNIT_TEST_RUN actually creates a main() function that runs the tests so if we put this code into a file (say add.cpp) then we can compile and run it like so: 
+.PP
+.nf
+
+# gcc -DUNITTEST -o unit_test_add add.cpp
+# ./unit_test_add
+---[ addTwoNumbers Tests ]---
+  2+2=4: PASSED
+
+.fi
+.PP
+ 
+.RE
+.PP
+\fB\fP
+.RS 4
+So far so good, let's add a new test that we think will fail. 
+.PP
+.nf
+ #ifdef UNITTEST
+ #include 'unit_test.h'
+
+ UNIT_TEST_DEFINES
+
+ DEFINE_TEST( check_two_plus_two ) {
+   unit_assert( '2+2=4', addTwoNumbers(2,2)==4 );
+   unit_pass();
+ }
+
+ DEFINE_TEST( check_bogus ) {
+   unit_assert( '1+5=9', addTwoNumbers(1,5)==9 );
+   unit_pass();
+ }
+
+ UNIT_TEST_RUN( 'addTwoNumbers Tests' )
+   ADD_TEST( check_negatives )
+ UNIT_TEST_END
+
+ #endif // UNITTEST
+
+.fi
+.PP
+ Running the unit_test now we get: 
+.PP
+.nf
+
+# gcc -DUNITTEST -o unit_test_add add.cpp
+# ./unit_test_add
+---[ addTwoNumbers Tests ]---
+  2+2=4: PASSED
+  1+5=9: FAILED
+
+.fi
+.PP
+ 
+.RE
+.PP
+\fB\fP
+.RS 4
+.RE
+.PP
+.SH "Integrating with Automake"
+.PP
+\fB\fP
+.RS 4
+Automake has the ability to define testing targets that get run when issue 'make check' command. Adding these tests are pretty straight forward. For the above we would add this to our Makefile.am: 
+.PP
+.nf
+
+TESTS = unit_test_add
+noinst_PROGRAMS = unit_test_add
+CLEANFILES = add_unit.cpp
+unit_test_add_SOURCES = add_unit.cpp
+
+%_unit.cpp: %.cpp
+	$(CXX) -E -o $*_unit.cpp $*.C @CFLAGS@ -DUNITTEST=1
+
+.fi
+.PP
+ To add addtional unit tests you just modify the first four lines. For example: to add a new unit test suite in the file sub.C we might do this. 
+.PP
+.nf
+
+TESTS = unit_test_add unit_test_sub
+noinst_PROGRAMS = unit_test_add unit_test_sub
+CLEANFILES = add_unit.cpp sub_unit.cpp
+unit_test_add_SOURCES = add_unit.cpp
+unit_test_sub_SOURCES = sub_unit.cpp
+
+.fi
+.PP
+ 
+.RE
+.PP
+.SH "Implementation Notes"
+.PP
+\fB\fP
+.RS 4
+.RE
+.PP
+

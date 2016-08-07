@@ -1,0 +1,181 @@
+\section{lru\_\-cache.h}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/***************************************************************************}
+00002 \textcolor{comment}{ *   Copyright (C) 2004-2011 by Patrick Audley                             *}
+00003 \textcolor{comment}{ *   paudley@blackcat.ca                                                   *}
+00004 \textcolor{comment}{ *   http://patrickaudley.com                                              *}
+00005 \textcolor{comment}{ *                                                                         *}
+00006 \textcolor{comment}{ ***************************************************************************/}
+00045 \textcolor{preprocessor}{#include <map>}
+00046 \textcolor{preprocessor}{#include <list>}
+00047 \textcolor{preprocessor}{#include <vector>}
+00048 \textcolor{preprocessor}{#ifdef \_REENTRANT}
+00049 \textcolor{preprocessor}{}\textcolor{preprocessor}{#include <boost/thread/mutex.hpp>}
+00051 \textcolor{preprocessor}{#define SCOPED\_MUTEX  boost::mutex::scoped\_lock lock(this->\_mutex);}
+00052 \textcolor{preprocessor}{}\textcolor{preprocessor}{#else}
+00053 \textcolor{preprocessor}{}
+00054 \textcolor{preprocessor}{#define SCOPED\_MUTEX}
+00055 \textcolor{preprocessor}{}\textcolor{preprocessor}{#endif}
+00056 \textcolor{preprocessor}{}
+00057 \textcolor{keyword}{template} < \textcolor{keyword}{class} T >
+00058 \textcolor{keyword}{struct }Countfn \{
+00059                 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} operator()( \textcolor{keyword}{const} T &x ) \{ \textcolor{keywordflow}{return} 1; \}
+00060 \};
+00061 
+00062 
+00073 \textcolor{keyword}{template}< \textcolor{keyword}{class} Key, \textcolor{keyword}{class} Data, \textcolor{keyword}{class} Sizefn = Countfn< Data > > \textcolor{keyword}{class }LRUCache 
+      \{
+00074         \textcolor{keyword}{public}:
+00075                 \textcolor{keyword}{typedef} std::list< std::pair< Key, Data > > List;         
+00076                 \textcolor{keyword}{typedef} \textcolor{keyword}{typename} List::iterator List\_Iter;                
+00077                 \textcolor{keyword}{typedef} \textcolor{keyword}{typename} List::const\_iterator List\_cIter;         
+00078                 \textcolor{keyword}{typedef} std::vector< Key > Key\_List;                      
+00079                 \textcolor{keyword}{typedef} \textcolor{keyword}{typename} Key\_List::iterator Key\_List\_Iter;        
+00080                 \textcolor{keyword}{typedef} \textcolor{keyword}{typename} Key\_List::const\_iterator Key\_List\_cIter; 
+00081                 \textcolor{keyword}{typedef} std::map< Key, List\_Iter > Map;                   
+00082                 \textcolor{keyword}{typedef} std::pair< Key, List\_Iter > Pair;                 
+00083                 \textcolor{keyword}{typedef} \textcolor{keyword}{typename} Map::iterator Map\_Iter;                         
+                 
+00084                 \textcolor{keyword}{typedef} \textcolor{keyword}{typename} Map::const\_iterator Map\_cIter;           
+00085 
+00086         \textcolor{keyword}{private}:
+00087                 List \_list;               
+00088                 Map \_index;               
+00089                 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \_max\_size;  
+00090                 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \_curr\_size; 
+00091 
+00092 \textcolor{preprocessor}{#ifdef \_REENTRANT}
+00093 \textcolor{preprocessor}{}                boost::mutex \_mutex;
+00094 \textcolor{preprocessor}{#endif}
+00095 \textcolor{preprocessor}{}
+00096         \textcolor{keyword}{public}:
+00097 
+00101                 LRUCache( \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} Size ) :
+00102                                 \_max\_size( Size ),
+00103                                 \_curr\_size( 0 )
+00104                                 \{\}
+00105 
+00107                 ~LRUCache() \{ clear(); \}
+00108 
+00112                 \textcolor{keyword}{inline} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} size( \textcolor{keywordtype}{void} )\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \_curr\_size
+      ; \}
+00113 
+00117                 \textcolor{keyword}{inline} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} max_size( \textcolor{keywordtype}{void} )\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \_max\_s
+      ize; \}
+00118 
+00120                 \textcolor{keywordtype}{void} clear( \textcolor{keywordtype}{void} ) \{
+00121                         SCOPED\_MUTEX;
+00122                         \_list.clear();
+00123                         \_index.clear();
+00124                 \};
+00125 
+00130 \textcolor{preprocessor}{#ifdef \_REENTRANT}
+00131 \textcolor{preprocessor}{}                \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} exists( \textcolor{keyword}{const} Key &key ) \{
+00132                         SCOPED\_MUTEX;
+00133 \textcolor{preprocessor}{#else}
+00134 \textcolor{preprocessor}{}                \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} exists( \textcolor{keyword}{const} Key &key )\textcolor{keyword}{ const }\{
+00135 \textcolor{preprocessor}{#endif}
+00136 \textcolor{preprocessor}{}                        \textcolor{keywordflow}{return} \_index.find( key ) != \_index.end();
+00137                 \}
+00138 
+00142                 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \textcolor{keyword}{remove}( \textcolor{keyword}{const} Key &key ) \{
+00143 \textcolor{preprocessor}{#ifdef \_REENTRANT}
+00144 \textcolor{preprocessor}{}                        SCOPED\_MUTEX;
+00145 \textcolor{preprocessor}{#endif}
+00146 \textcolor{preprocessor}{}                        Map_Iter miter = \_index.find( key );
+00147                         \textcolor{keywordflow}{if}( miter == \_index.end() ) \textcolor{keywordflow}{return};
+00148                         \_remove( miter );
+00149                 \}
+00150 
+00154                 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} touch( \textcolor{keyword}{const} Key &key ) \{
+00155                         SCOPED\_MUTEX;
+00156                         \_touch( key );
+00157                 \}
+00158 
+00164                 \textcolor{keyword}{inline} Data *fetch_ptr( \textcolor{keyword}{const} Key &key, \textcolor{keywordtype}{bool} touch = \textcolor{keyword}{true} ) \{
+00165                         SCOPED\_MUTEX;
+00166                         Map_Iter miter = \_index.find( key );
+00167                         \textcolor{keywordflow}{if}( miter == \_index.end() ) \textcolor{keywordflow}{return} NULL;
+00168                         \_touch( key );
+00169                         \textcolor{keywordflow}{return} &(miter->second->second);
+00170                 \}
+00171 
+00177                 \textcolor{keyword}{inline} Data fetch( \textcolor{keyword}{const} Key &key, \textcolor{keywordtype}{bool} touch\_data = \textcolor{keyword}{true} ) \{
+00178                         SCOPED\_MUTEX;
+00179                         Map_Iter miter = \_index.find( key );
+00180                         \textcolor{keywordflow}{if}( miter == \_index.end() )
+00181                                 \textcolor{keywordflow}{return} Data();
+00182                         Data tmp = miter->second->second;
+00183                         \textcolor{keywordflow}{if}( touch\_data )
+00184                                 \_touch( key );
+00185                         \textcolor{keywordflow}{return} tmp;
+00186                 \}
+00187 
+00194                 \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} fetch( \textcolor{keyword}{const} Key &key, Data &data, \textcolor{keywordtype}{bool} touch\_data = 
+      \textcolor{keyword}{true} ) \{
+00195                         SCOPED\_MUTEX;
+00196                         Map_Iter miter = \_index.find( key );
+00197                         \textcolor{keywordflow}{if}( miter == \_index.end() ) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00198                         \textcolor{keywordflow}{if}( touch\_data )
+00199                           \_touch( key );
+00200                         data = miter->second->second;
+00201                         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00202                 \}
+00203 
+00209                 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} insert( \textcolor{keyword}{const} Key &key, \textcolor{keyword}{const} Data &data ) \{
+00210                         SCOPED\_MUTEX;
+00211                         \textcolor{comment}{// Touch the key, if it exists, then replace the content.
+      }
+00212                         Map_Iter miter = \_touch( key );
+00213                         \textcolor{keywordflow}{if}( miter != \_index.end() )
+00214                                 \_remove( miter );
+00215 
+00216                         \textcolor{comment}{// Ok, do the actual insert at the head of the list}
+00217                         \_list.push\_front( std::make\_pair( key, data ) );
+00218                         List_Iter liter = \_list.begin();
+00219 
+00220                         \textcolor{comment}{// Store the index}
+00221                         \_index.insert( std::make\_pair( key, liter ) );
+00222                         \_curr\_size += Sizefn()( data );
+00223 
+00224                         \textcolor{comment}{// Check to see if we need to remove an element due to ex
+      ceeding max\_size}
+00225                         \textcolor{keywordflow}{while}( \_curr\_size > \_max\_size ) \{
+00226                                 \textcolor{comment}{// Remove the last element.}
+00227                                 liter = \_list.end();
+00228                                 --liter;
+00229                                 \_remove( liter->first );
+00230                         \}
+00231                 \}
+00232 
+00236                 \textcolor{keyword}{inline} \textcolor{keyword}{const} Key_List get_all_keys( \textcolor{keywordtype}{void} ) \{
+00237                         SCOPED\_MUTEX;
+00238                         Key_List ret;
+00239                         \textcolor{keywordflow}{for}( List_cIter liter = \_list.begin(); liter != \_list.end
+      (); liter++ )
+00240                                 ret.push\_back( liter->first );
+00241                         \textcolor{keywordflow}{return} ret;
+00242                 \}
+00243 
+00244         \textcolor{keyword}{private}:
+00249                 \textcolor{keyword}{inline} Map_Iter \_touch( \textcolor{keyword}{const} Key &key ) \{
+00250                         Map_Iter miter = \_index.find( key );
+00251                         \textcolor{keywordflow}{if}( miter == \_index.end() ) \textcolor{keywordflow}{return} miter;
+00252                         \textcolor{comment}{// Move the found node to the head of the list.}
+00253                         \_list.splice( \_list.begin(), \_list, miter->second );
+00254                         \textcolor{keywordflow}{return} miter;
+00255                 \}
+00256 
+00261                 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \_remove( \textcolor{keyword}{const} Map_Iter &miter ) \{
+00262                         \_curr\_size -= Sizefn()( miter->second->second );
+00263                         \_list.erase( miter->second );
+00264                         \_index.erase( miter );
+00265                 \}
+00266 
+00270                 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \_remove( \textcolor{keyword}{const} Key &key ) \{
+00271                         Map_Iter miter = \_index.find( key );
+00272                         \_remove( miter );
+00273                 \}
+00274 \};
+\end{DoxyCode}

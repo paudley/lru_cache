@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="structitimerval" kind="struct" prot="public">
+    <compoundname>itimerval</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structitimerval_1ae37e5edff9a3efa2841f5e614e2c2efb" prot="public" static="no" mutable="no">
+        <type>struct timeval</type>
+        <definition>struct timeval itimerval::it_interval</definition>
+        <argsstring></argsstring>
+        <name>it_interval</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="31240" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="31240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structitimerval_1a2dc8aae1b0b2e57a7ec8f7d33834495d" prot="public" static="no" mutable="no">
+        <type>struct timeval</type>
+        <definition>struct timeval itimerval::it_value</definition>
+        <argsstring></argsstring>
+        <name>it_value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="31241" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="31241" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="31239" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="31239" bodyend="31242"/>
+    <listofallmembers>
+      <member refid="structitimerval_1ae37e5edff9a3efa2841f5e614e2c2efb" prot="public" virt="non-virtual"><scope>itimerval</scope><name>it_interval</name></member>
+      <member refid="structitimerval_1a2dc8aae1b0b2e57a7ec8f7d33834495d" prot="public" virt="non-virtual"><scope>itimerval</scope><name>it_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

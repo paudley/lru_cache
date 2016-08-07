@@ -1,0 +1,396 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="unit__test_8h" kind="file">
+    <compoundname>unit_test.h</compoundname>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="unit__test_8h_1a5f3fe0e0e85d0dc03672f96e5e95856f" prot="public" static="no">
+        <name>UNIT_TEST_DEFINES</name>
+        <initializer><ref refid="unit__test_8h_1a76894e75beeadd2872f2f5909b43e36f" kindref="member">test_vector</ref> * add_test( <ref refid="unit__test_8h_1a62a6058fdd96dcd306fba96626b2cc71" kindref="member">test_func</ref> x ) { \
+    static <ref refid="unit__test_8h_1a76894e75beeadd2872f2f5909b43e36f" kindref="member">test_vector</ref> unit_tests; \
+    if( x != NULL ) unit_tests.push_back( x ); \
+    return &amp;unit_tests; \
+  }</initializer>
+        <briefdescription>
+<para>Start of inline Unit Test definitions Use this to start the list of unit tests. This should be followed by one or more DEFINE_TEST entries. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" line="179" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="unit__test_8h_1ad3bccea4c3142d58fd5510f65503b300" prot="public" static="no">
+        <name>DEFINE_TEST</name>
+        <param><defname>test_name</defname></param>
+        <initializer>bool unit_test_##test_name (void)</initializer>
+        <briefdescription>
+<para>Start a new test definition. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>test_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the test - must be unique in this unit test suite. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" line="184" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="unit__test_8h_1a758baec4c57fa6aeaf800e2c631a7d9f" prot="public" static="no">
+        <name>ADD_TEST</name>
+        <param><defname>test_name</defname></param>
+        <initializer>add_test( &amp;unit_test_##test_name );</initializer>
+        <briefdescription>
+<para>Adds a defined test to test run. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>test_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Test name of a previously defined test to add the the current suite. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="lru__cache_8cpp_1a7403186cac9b12671fdda33ea88bceb0" kindref="member">DEFINE_TEST</ref> <ref refid="unit__test_8h_1a86b577b8af9cc6df174dc0e2e292c365" kindref="member">UNIT_TEST_RUN</ref> This should be called after <ref refid="unit__test_8h_1a86b577b8af9cc6df174dc0e2e292c365" kindref="member">UNIT_TEST_RUN</ref> for each defined test. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" line="191" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="unit__test_8h_1a86b577b8af9cc6df174dc0e2e292c365" prot="public" static="no">
+        <name>UNIT_TEST_RUN</name>
+        <param><defname>suite</defname></param>
+        <initializer>int main(void) { \
+  bool result = true; \
+  std::cout &lt;&lt; &quot;---[ &quot; &lt;&lt; suite &lt;&lt; &quot; ]--- &quot; &lt;&lt; std::endl;</initializer>
+        <briefdescription>
+<para>Start a Unit test run section. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>suite</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name for this test suite. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Must be terminated with an UNIT_TEST_END statement. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" line="200" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="unit__test_8h_1aa37d553e7d644c165c888bed8908de20" prot="public" static="no">
+        <name>unit_assert</name>
+        <param><defname>msg</defname></param>
+        <param><defname>cond</defname></param>
+        <initializer>std::cout &lt;&lt; &quot;  &quot; &lt;&lt; msg &lt;&lt; &quot;: &quot; &lt;&lt; std::flush; \
+  if( !cond ) { std::cout &lt;&lt; &quot;FAILED&quot; &lt;&lt; std::endl; return false; } \
+  std::cout &lt;&lt; &quot;PASSED&quot; &lt;&lt; std::endl;</initializer>
+        <briefdescription>
+<para>Use within a Unit Test to verify a condition. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para>Terminates test on failure. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" line="208" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" bodystart="205" bodyend="-1"/>
+        <referencedby refid="lru__cache_8cpp_1a744e96854fa4e01ab945ea9ad43b39ca" compoundref="lru__cache_8cpp" startline="50" endline="119">DEFINE_TEST</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="unit__test_8h_1aa2a4504968cf4e8abfc7b706106d4084" prot="public" static="no">
+        <name>unit_pass</name>
+        <param></param>
+        <initializer>return true;</initializer>
+        <briefdescription>
+<para>Use to end a unit test in success. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Either unit_pass or unit_fail should end every test. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" line="213" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" bodystart="213" bodyend="-1"/>
+        <referencedby refid="lru__cache_8cpp_1a744e96854fa4e01ab945ea9ad43b39ca" compoundref="lru__cache_8cpp" startline="50" endline="119">DEFINE_TEST</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="unit__test_8h_1a3476c32ea638214246ee65f561b6358b" prot="public" static="no">
+        <name>unit_fail</name>
+        <param></param>
+        <initializer>return false;</initializer>
+        <briefdescription>
+<para>Use to end a unit test in failure. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Either unit_pass or unit_fail should end every test. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" line="218" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" bodystart="218" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="unit__test_8h_1a732dd1ba2cfc9163d60e05628b4544dc" prot="public" static="no">
+        <name>UNIT_TEST_END</name>
+        <initializer><ref refid="unit__test_8h_1a76894e75beeadd2872f2f5909b43e36f" kindref="member">test_vector</ref> *T = add_test( NULL ); \
+  for( unsigned short i = 0; i &lt; T-&gt;size(); i++ ) { \
+     bool testresult = (*(*T)[i])(); \
+     if( result == true &amp;&amp; testresult == false ) { result = false; } \
+  } \
+  return !result; \
+}</initializer>
+        <briefdescription>
+<para>Finish a Unit Test run section. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" line="229" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" bodystart="222" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="unit__test_8h_1a62a6058fdd96dcd306fba96626b2cc71" prot="public" static="no">
+        <type>bool(*</type>
+        <definition>typedef bool(* test_func)(void)</definition>
+        <argsstring>)(void)</argsstring>
+        <name>test_func</name>
+        <briefdescription>
+<para>typedef for unittest functions </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" line="166" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="unit__test_8h_1a76894e75beeadd2872f2f5909b43e36f" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="unit__test_8h_1a62a6058fdd96dcd306fba96626b2cc71" kindref="member">test_func</ref> &gt;</type>
+        <definition>typedef std::vector&lt; test_func &gt; test_vector</definition>
+        <argsstring></argsstring>
+        <name>test_vector</name>
+        <briefdescription>
+<para>typedef for vectors of unittest functions </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" line="168" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="unit__test_8h_1af4531b0bd1423015c0a780627c2676c2" prot="public" static="no" mutable="no">
+        <type>struct rusage</type>
+        <definition>struct rusage ruse</definition>
+        <argsstring></argsstring>
+        <name>ruse</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" line="134" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="unit__test_8h_1acfbb3e9be64ee44c2633924a5b52144c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int getrusage</definition>
+        <argsstring>()</argsstring>
+        <name>getrusage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" line="135"/>
+      </memberdef>
+      <memberdef kind="function" id="unit__test_8h_1a7f0155f7ecefd56c2380285420e85e05" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double cputime</definition>
+        <argsstring>(void)</argsstring>
+        <name>cputime</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the current CPU time with microsecond accuracy. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>microseconds since UNIX epoch </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" line="139" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" bodystart="139" bodyend="142"/>
+        <referencedby refid="lru__cache_8cpp_1a92b18aa64a57a02c1adc3d1b98924bb5" compoundref="lru__cache_8cpp" startline="123" endline="134">DEFINE_TEST</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="unit__test_8h_1abf6a6c3c73f9e087ad15d8ed0ec0ba85" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double transactions_per_second</definition>
+        <argsstring>(double run_time, unsigned long transactions)</argsstring>
+        <name>transactions_per_second</name>
+        <param>
+          <type>double</type>
+          <declname>run_time</declname>
+        </param>
+        <param>
+          <type>unsigned long</type>
+          <declname>transactions</declname>
+        </param>
+        <briefdescription>
+<para>Calculates the transactions rate. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>run_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>microsecond resolution run time </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>transactions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of transactions handled in run_time seconds This is useful if you want to guarantee minimun transactional throughputs in unit tests. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="warning"><para>This code is obviously very test platform dependent. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" line="149" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" bodystart="149" bodyend="151"/>
+        <referencedby refid="unit__test_8h_1a2fdd86314c7b39ab4274a36655e833f1" compoundref="unit__test_8h" startline="158" endline="163">print_cputime</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="unit__test_8h_1a2fdd86314c7b39ab4274a36655e833f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void print_cputime</definition>
+        <argsstring>(const char *msg, double run_time, unsigned long transactions=0)</argsstring>
+        <name>print_cputime</name>
+        <param>
+          <type>const char *</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>run_time</declname>
+        </param>
+        <param>
+          <type>unsigned long</type>
+          <declname>transactions</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Prints to stdout the results of timing an event. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to print with the numbers </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>run_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>microsecond resolution run time </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>transactions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of transactions handled in run_time seconds, if 0 then transactional output is suppressed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="warning"><para>This code is obviously very test platform dependent. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" line="158" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h" bodystart="158" bodyend="163"/>
+        <references refid="unit__test_8h_1abf6a6c3c73f9e087ad15d8ed0ec0ba85" compoundref="unit__test_8h" startline="149" endline="151">transactions_per_second</references>
+        <referencedby refid="lru__cache_8cpp_1a92b18aa64a57a02c1adc3d1b98924bb5" compoundref="lru__cache_8cpp" startline="123" endline="134">DEFINE_TEST</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Unit Testing framework for C++ <simplesect kind="author"><para>Patrick Audley </para></simplesect>
+<simplesect kind="date"><para>December 2004</para></simplesect>
+<simplesect kind="par"><title></title><para>See full documentation for this framework in <ref refid="unittests01" kindref="compound">Unit Testing Framework</ref> </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/***************************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/><sp/><sp/>Copyright<sp/>(C)<sp/>2004-2011<sp/>by<sp/>Patrick<sp/>Audley<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/><sp/><sp/>paudley@blackcat.ca<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/><sp/><sp/>http://patrickaudley.com<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>***************************************************************************/</highlight></codeline>
+<codeline lineno="122"><highlight class="preprocessor">#ifndef<sp/>_UNIT_TEST_H</highlight></codeline>
+<codeline lineno="123"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_UNIT_TEST_H</highlight></codeline>
+<codeline lineno="124"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>UNITTEST</highlight></codeline>
+<codeline lineno="126"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/time.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/resource.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/types.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;time.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">rusage<sp/>ruse;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>getrusage();</highlight></codeline>
+<codeline lineno="139" refid="unit__test_8h_1a7f0155f7ecefd56c2380285420e85e05" refkind="member"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="unit__test_8h_1a7f0155f7ecefd56c2380285420e85e05" kindref="member" tooltip="Gets the current CPU time with microsecond accuracy.">cputime</ref>(<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/>getrusage(<sp/>RUSAGE_SELF,<sp/>&amp;ruse<sp/>);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<sp/>ruse.ru_utime.tv_sec<sp/>+<sp/>ruse.ru_stime.tv_sec<sp/>+<sp/>1e-6<sp/>*<sp/>(ruse.ru_utime.tv_usec<sp/>+<sp/>ruse.ru_stime.tv_usec<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="149" refid="unit__test_8h_1abf6a6c3c73f9e087ad15d8ed0ec0ba85" refkind="member"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="unit__test_8h_1abf6a6c3c73f9e087ad15d8ed0ec0ba85" kindref="member" tooltip="Calculates the transactions rate.">transactions_per_second</ref>(<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>run_time,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>transactions<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">)transactions<sp/>/<sp/>run_time;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="158" refid="unit__test_8h_1a2fdd86314c7b39ab4274a36655e833f1" refkind="member"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="unit__test_8h_1a2fdd86314c7b39ab4274a36655e833f1" kindref="member" tooltip="Prints to stdout the results of timing an event.">print_cputime</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>msg,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>run_time,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>transactions<sp/>=<sp/>0<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;<sp/><sp/>-&gt;<sp/>%s:<sp/><sp/>%7.3f<sp/>seconds<sp/>CPU<sp/>time&quot;</highlight><highlight class="normal">,<sp/>msg,<sp/>run_time<sp/>);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>transactions<sp/>!=<sp/>0<sp/>)</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>(%7.3f<sp/>transactions/second)&quot;</highlight><highlight class="normal">,<sp/><ref refid="unit__test_8h_1abf6a6c3c73f9e087ad15d8ed0ec0ba85" kindref="member" tooltip="Calculates the transactions rate.">transactions_per_second</ref>(<sp/>run_time,<sp/>transactions<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="unit__test_8h_1a62a6058fdd96dcd306fba96626b2cc71" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>bool(*<ref refid="unit__test_8h_1a62a6058fdd96dcd306fba96626b2cc71" kindref="member" tooltip="typedef for unittest functions">test_func</ref>)(void);</highlight></codeline>
+<codeline lineno="168" refid="unit__test_8h_1a76894e75beeadd2872f2f5909b43e36f" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::vector&lt;<sp/>test_func<sp/>&gt;<sp/>test_vector;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174" refid="unit__test_8h_1a5f3fe0e0e85d0dc03672f96e5e95856f" refkind="member"><highlight class="preprocessor">#define<sp/>UNIT_TEST_DEFINES<sp/>\</highlight></codeline>
+<codeline lineno="175"><highlight class="preprocessor"><sp/><sp/>test_vector<sp/>*<sp/>add_test(<sp/>test_func<sp/>x<sp/>)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="176"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>static<sp/>test_vector<sp/>unit_tests;<sp/>\</highlight></codeline>
+<codeline lineno="177"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>if(<sp/>x<sp/>!=<sp/>NULL<sp/>)<sp/>unit_tests.push_back(<sp/>x<sp/>);<sp/>\</highlight></codeline>
+<codeline lineno="178"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>return<sp/>&amp;unit_tests;<sp/>\</highlight></codeline>
+<codeline lineno="179"><highlight class="preprocessor"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="180"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="184" refid="unit__test_8h_1ad3bccea4c3142d58fd5510f65503b300" refkind="member"><highlight class="preprocessor">#define<sp/>DEFINE_TEST(test_name)<sp/>bool<sp/>unit_test_##test_name<sp/>(void)</highlight></codeline>
+<codeline lineno="185"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="191" refid="unit__test_8h_1a758baec4c57fa6aeaf800e2c631a7d9f" refkind="member"><highlight class="preprocessor">#define<sp/>ADD_TEST(test_name)<sp/>add_test(<sp/>&amp;unit_test_##test_name<sp/>);</highlight></codeline>
+<codeline lineno="192"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="197" refid="unit__test_8h_1a86b577b8af9cc6df174dc0e2e292c365" refkind="member"><highlight class="preprocessor">#define<sp/>UNIT_TEST_RUN(<sp/>suite<sp/>)<sp/>\</highlight></codeline>
+<codeline lineno="198"><highlight class="preprocessor">int<sp/>main(void)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="199"><highlight class="preprocessor"><sp/><sp/>bool<sp/>result<sp/>=<sp/>true;<sp/>\</highlight></codeline>
+<codeline lineno="200"><highlight class="preprocessor"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;---[<sp/>&quot;<sp/>&lt;&lt;<sp/>suite<sp/>&lt;&lt;<sp/>&quot;<sp/>]---<sp/>&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="201"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="205" refid="unit__test_8h_1aa37d553e7d644c165c888bed8908de20" refkind="member"><highlight class="preprocessor">#define<sp/>unit_assert(<sp/>msg,<sp/>cond<sp/>)<sp/>\</highlight></codeline>
+<codeline lineno="206"><highlight class="preprocessor"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;<sp/><sp/>&quot;<sp/>&lt;&lt;<sp/>msg<sp/>&lt;&lt;<sp/>&quot;:<sp/>&quot;<sp/>&lt;&lt;<sp/>std::flush;<sp/>\</highlight></codeline>
+<codeline lineno="207"><highlight class="preprocessor"><sp/><sp/>if(<sp/>!cond<sp/>)<sp/>{<sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;FAILED&quot;<sp/>&lt;&lt;<sp/>std::endl;<sp/>return<sp/>false;<sp/>}<sp/>\</highlight></codeline>
+<codeline lineno="208"><highlight class="preprocessor"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;PASSED&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="209"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="213" refid="unit__test_8h_1aa2a4504968cf4e8abfc7b706106d4084" refkind="member"><highlight class="preprocessor">#define<sp/>unit_pass()<sp/>return<sp/>true;</highlight></codeline>
+<codeline lineno="214"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="218" refid="unit__test_8h_1a3476c32ea638214246ee65f561b6358b" refkind="member"><highlight class="preprocessor">#define<sp/>unit_fail()<sp/>return<sp/>false;</highlight></codeline>
+<codeline lineno="219"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="222" refid="unit__test_8h_1a732dd1ba2cfc9163d60e05628b4544dc" refkind="member"><highlight class="preprocessor">#define<sp/>UNIT_TEST_END<sp/>\</highlight></codeline>
+<codeline lineno="223"><highlight class="preprocessor"><sp/><sp/>test_vector<sp/>*T<sp/>=<sp/>add_test(<sp/>NULL<sp/>);<sp/>\</highlight></codeline>
+<codeline lineno="224"><highlight class="preprocessor"><sp/><sp/>for(<sp/>unsigned<sp/>short<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>T-&gt;size();<sp/>i++<sp/>)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="225"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/>bool<sp/>testresult<sp/>=<sp/>(*(*T)[i])();<sp/>\</highlight></codeline>
+<codeline lineno="226"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/>if(<sp/>result<sp/>==<sp/>true<sp/>&amp;&amp;<sp/>testresult<sp/>==<sp/>false<sp/>)<sp/>{<sp/>result<sp/>=<sp/>false;<sp/>}<sp/>\</highlight></codeline>
+<codeline lineno="227"><highlight class="preprocessor"><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline lineno="228"><highlight class="preprocessor"><sp/><sp/>return<sp/>!result;<sp/>\</highlight></codeline>
+<codeline lineno="229"><highlight class="preprocessor">}</highlight></codeline>
+<codeline lineno="230"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>UNITTEST</highlight></codeline>
+<codeline lineno="232"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>_UNIT_TEST_H</highlight></codeline>
+    </programlisting>
+    <location file="/mnt/hgfs/Sites/dist/lru_cache/src/unit_test.h"/>
+  </compounddef>
+</doxygen>

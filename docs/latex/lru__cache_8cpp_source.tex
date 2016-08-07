@@ -1,0 +1,197 @@
+\section{lru\_\-cache.cpp}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/***************************************************************************}
+00002 \textcolor{comment}{ *   Copyright (C) 2004-2011 by Patrick Audley                             *}
+00003 \textcolor{comment}{ *   paudley@blackcat.ca                                                   *}
+00004 \textcolor{comment}{ *   http://patrickaudley.com                                              *}
+00005 \textcolor{comment}{ *                                                                         *}
+00006 \textcolor{comment}{ ***************************************************************************/}
+00011 \textcolor{preprocessor}{#include "lru_cache.h"}
+00012 
+00013 \textcolor{preprocessor}{#ifdef UNITTEST}
+00014 \textcolor{preprocessor}{}\textcolor{preprocessor}{#include "unit_test.h"}
+00015 \textcolor{preprocessor}{#include <string>}
+00016 \textcolor{preprocessor}{#include <stdlib.h>}
+00017 
+00019 \textcolor{keyword}{typedef} LRUCache<std::string,std::string> unit_lru_type;
+00021 \textcolor{keyword}{typedef} LRUCache<int,int> unit_lru_type2;
+00023 \textcolor{keyword}{class }test\_big\_data \{
+00024         \textcolor{keyword}{public}:
+00025                 \textcolor{keywordtype}{char} buffer[1000];
+00026 \};
+00028 \textcolor{keyword}{typedef} LRUCache<int,test_big_data> unit_lru_type3;
+00029 
+00031 std::string dump( unit_lru_type *L ) \{
+00032         unit_lru_type::Key_List \_list( L->get_all_keys() );
+00033         std::string ret(\textcolor{stringliteral}{""});
+00034         \textcolor{keywordflow}{for}( unit_lru_type::Key_List_Iter liter = \_list.begin(); liter != \_list.e
+      nd(); liter++ ) \{
+00035                 ret.append( *liter );
+00036                 ret.append( \textcolor{stringliteral}{":"} );
+00037                 ret.append( L->fetch( *liter, \textcolor{keyword}{false} ) );
+00038                 ret.append( \textcolor{stringliteral}{"\(\backslash\)n"} );
+00039         \}
+00040         \textcolor{comment}{//std::cout << "Dump--" << std::endl << ret << "----" << std::endl;}
+00041         \textcolor{keywordflow}{return} ret;
+00042 \}
+00043 
+00045 unit_lru_type3* L3;
+00046 
+00047 UNIT_TEST_DEFINES
+00048 
+00050 DEFINE_TEST( lru\_cache\_1cycle ) \{
+00051         \textcolor{keyword}{const} std::string unit\_data\_1cycle\_a(\textcolor{stringliteral}{"foo:4\(\backslash\)n"});
+00052         \textcolor{keyword}{const} std::string unit\_data\_1cycle\_b(\textcolor{stringliteral}{"bar:flower\(\backslash\)nfoo:4\(\backslash\)n"});
+00053         \textcolor{keyword}{const} std::string unit\_data\_1cycle\_c(\textcolor{stringliteral}{"foo:4\(\backslash\)nbar:flower\(\backslash\)n"});
+00054         \textcolor{keyword}{const} std::string unit\_data\_1cycle\_d(\textcolor{stringliteral}{"foo:moose\(\backslash\)nbaz:Stalin\(\backslash\)nbar:flower\(\backslash\)n
+      "});
+00055         \textcolor{keyword}{const} std::string unit\_data\_1cycle\_e(\textcolor{stringliteral}{"foo:moose\(\backslash\)nbar:flower\(\backslash\)n"});
+00056         \textcolor{keyword}{const} std::string unit\_data\_1cycle\_f(\textcolor{stringliteral}{"quz:xyzzy\(\backslash\)nbaz:monkey\(\backslash\)nfoo:moose\(\backslash\)n"
+      });
+00057         \textcolor{keyword}{const} std::string unit\_data\_1cycle\_g(\textcolor{stringliteral}{"coat:mouse\(\backslash\)npants:cat\(\backslash\)nsocks:bear\(\backslash\)n
+      "});
+00058 
+00059         unit_lru_type *L = \textcolor{keyword}{new} unit_lru_type(3);
+00060         unit_assert( \textcolor{stringliteral}{"size==0"}, (L->size() == 0) );
+00061         unit_assert( \textcolor{stringliteral}{"maxsize==3"}, (L->max_size() == 3) );
+00062 
+00063         \textcolor{comment}{// Checking a bogus key shouldn't alter the cache.}
+00064         L->exists( \textcolor{stringliteral}{"foo"} );
+00065         unit_assert( \textcolor{stringliteral}{"exists() doesn't increase size"}, (L->size() == 0) );
+00066 
+00067         \textcolor{comment}{// Check insert() and exists()}
+00068         L->insert( \textcolor{stringliteral}{"foo"}, \textcolor{stringliteral}{"4"} );
+00069         unit_assert( \textcolor{stringliteral}{"size==1 after insert(foo,4)"}, (L->size() == 1) );
+00070         unit_assert( \textcolor{stringliteral}{"check exists(foo)"}, L->exists( \textcolor{stringliteral}{"foo"} ) );
+00071         unit_assert( \textcolor{stringliteral}{"contents check a)"}, unit\_data\_1cycle\_a.compare( dump( L ) )
+       == 0 );
+00072 
+00073         \textcolor{comment}{// Check second insert and ordering}
+00074         L->insert( \textcolor{stringliteral}{"bar"}, \textcolor{stringliteral}{"flower"} );
+00075         unit_assert( \textcolor{stringliteral}{"size==2 after insert(bar,flower)"}, (L->size() == 2) );
+00076         unit_assert( \textcolor{stringliteral}{"contents check b)"}, unit\_data\_1cycle\_b.compare( dump( L ) )
+       == 0 );
+00077 
+00078         \textcolor{comment}{// Check touching}
+00079         L->touch( \textcolor{stringliteral}{"foo"} );
+00080         unit_assert( \textcolor{stringliteral}{"contents check c)"}, unit\_data\_1cycle\_c.compare( dump( L ) )
+       == 0 );
+00081 
+00082         \textcolor{comment}{// Insert of an existing element should result in only a touch}
+00083         L->insert( \textcolor{stringliteral}{"bar"}, \textcolor{stringliteral}{"flower"} );
+00084         unit_assert( \textcolor{stringliteral}{"verify insert touches"}, unit\_data\_1cycle\_b.compare( dump( L
+       ) ) == 0 );
+00085 
+00086         \textcolor{comment}{// Verify that fetch works}
+00087         unit_assert( \textcolor{stringliteral}{"verify fetch(bar)"}, ( std::string(\textcolor{stringliteral}{"flower"}).compare( L->
+      fetch(\textcolor{stringliteral}{"bar"}) ) == 0 ) );
+00088 
+00089         \textcolor{comment}{// Insert of an existing element with new data should replace and touch}
+00090         L->insert( \textcolor{stringliteral}{"baz"}, \textcolor{stringliteral}{"Stalin"} );
+00091         L->insert( \textcolor{stringliteral}{"foo"}, \textcolor{stringliteral}{"moose"} );
+00092         unit_assert( \textcolor{stringliteral}{"verify insert replaces"}, unit\_data\_1cycle\_d.compare( dump( 
+      L ) ) == 0 );
+00093 
+00094         \textcolor{comment}{// Test removal of an existing member.}
+00095         L->remove( \textcolor{stringliteral}{"baz"} );
+00096         unit_assert( \textcolor{stringliteral}{"verify remove works"}, unit\_data\_1cycle\_e.compare( dump( L )
+       ) == 0 );
+00097 
+00098         \textcolor{comment}{// Test LRU removal as we add more members than max\_size()}
+00099         L->insert( \textcolor{stringliteral}{"baz"}, \textcolor{stringliteral}{"monkey"} );
+00100         L->insert( \textcolor{stringliteral}{"quz"}, \textcolor{stringliteral}{"xyzzy"} );
+00101         unit_assert( \textcolor{stringliteral}{"verify LRU semantics"}, unit\_data\_1cycle\_f.compare( dump( L 
+      ) ) == 0 );
+00102 
+00103         \textcolor{comment}{// Stress test the implementation a little..}
+00104         \textcolor{keyword}{const} \textcolor{keywordtype}{char} *names[10] = \{ \textcolor{stringliteral}{"moose"}, \textcolor{stringliteral}{"dog"}, \textcolor{stringliteral}{"bear"}, \textcolor{stringliteral}{"cat"}, \textcolor{stringliteral}{"mouse"}, \textcolor{stringliteral}{"hat"}, 
+      \textcolor{stringliteral}{"mittens"}, \textcolor{stringliteral}{"socks"}, \textcolor{stringliteral}{"pants"}, \textcolor{stringliteral}{"coat"} \};
+00105         \textcolor{keywordflow}{for}( \textcolor{keywordtype}{int} i = 0; i < 50; i++ ) \{
+00106                 L->insert( names[ i % 10 ], names[ i % 9 ] );
+00107         \}
+00108         unit_assert( \textcolor{stringliteral}{"stress test a little"}, unit\_data\_1cycle\_g.compare( dump( L 
+      ) ) == 0 );
+00109 
+00110         \textcolor{comment}{// Setup a little for the third test which verifies that scoped reference
+      s inserted into the cache don't disappear.}
+00111         L3 = \textcolor{keyword}{new} unit_lru_type3(2);
+00112         \textcolor{keywordflow}{for}( \textcolor{keywordtype}{int} i = 0; i < 10; i++ ) \{
+00113                 test\_big\_data B;
+00114                 snprintf( B.buffer, 1000, \textcolor{stringliteral}{"%d\(\backslash\)n"}, i );
+00115                 L3->insert( i, B );
+00116         \}
+00117 
+00118         unit_pass();
+00119 \}
+00120 
+00121 \textcolor{preprocessor}{#define TRANSACTIONS 50000}
+00122 \textcolor{preprocessor}{}
+00123 DEFINE_TEST( lru\_cache\_stress ) \{
+00124         \textcolor{comment}{// Stress test the implementation a little more using no objects}
+00125         unit_lru_type2 *L2 = \textcolor{keyword}{new} unit_lru_type2(5);
+00126         \textcolor{keywordtype}{double} t0 = cputime();
+00127         \textcolor{keywordflow}{for}( \textcolor{keywordtype}{int} i = 0; i < TRANSACTIONS; i++ ) \{
+00128                 L2->insert( i, i-1 );
+00129         \}
+00130         \textcolor{keywordtype}{double} t1 = cputime();
+00131         \textcolor{keyword}{delete} L2;
+00132         print_cputime( \textcolor{stringliteral}{"(int,int) inserts"}, t1-t0, TRANSACTIONS );
+00133         unit_pass();
+00134 \}
+00135 
+00137 DEFINE_TEST( lru\_cache\_scope\_check ) \{
+00138         test\_big\_data* B = L3->fetch_ptr( 9 );
+00139         unit_assert( \textcolor{stringliteral}{"scope check element L3[1]"}, ( strncmp( B->buffer, \textcolor{stringliteral}{"9\(\backslash\)n"}, 10
+      00 ) == 0 ) );
+00140         B = L3->fetch_ptr( 8 );
+00141         unit_assert( \textcolor{stringliteral}{"scope check element L3[2]"}, ( strncmp( B->buffer, \textcolor{stringliteral}{"8\(\backslash\)n"}, 10
+      00 ) == 0 ) );
+00142         \textcolor{keyword}{delete} L3;
+00143         unit_pass();
+00144 \}
+00145 
+00146 \textcolor{preprocessor}{#ifdef \_REENTRANT}
+00147 \textcolor{preprocessor}{}\textcolor{preprocessor}{#include <boost/thread/thread.hpp>}
+00148 
+00149 \textcolor{preprocessor}{#define THREAD\_TRANS 20000}
+00150 \textcolor{preprocessor}{}\textcolor{preprocessor}{#define THREAD\_COUNT 10}
+00151 \textcolor{preprocessor}{}
+00152 unit_lru_type2 *L4;
+00153 
+00154 \textcolor{keywordtype}{void} insert\_junk()\{
+00155         \textcolor{keywordflow}{for}( \textcolor{keywordtype}{int} i = 0; i < THREAD\_TRANS; i++ ) \{
+00156                 L4->insert( i, i+1 );
+00157                 L4->remove( i-5 );
+00158                 L4->fetch( i-3 );
+00159                 L4->touch( i-10 );
+00160         \}
+00161 \}
+00162 
+00164 DEFINE_TEST( lru\_cache\_threads ) \{
+00165         L4 = \textcolor{keyword}{new} unit_lru_type2( 20 );
+00166         boost::thread\_group thrds;
+00167         \textcolor{keywordtype}{double} t0 = cputime();
+00168         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=0; i < THREAD\_COUNT; ++i)
+00169                 thrds.create\_thread(&insert\_junk);
+00170         thrds.join\_all();
+00171         \textcolor{keywordtype}{double} t1 = cputime();
+00172         print_cputime( \textcolor{stringliteral}{"(int,int) multithreaded inserts"}, t1-t0, THREAD\_TRANS*THR
+      EAD\_COUNT*4 );
+00173         \textcolor{keyword}{delete} L4;
+00174         unit_pass();
+00175 \}
+00176 
+00177 \textcolor{preprocessor}{#endif}
+00178 \textcolor{preprocessor}{}
+00179 UNIT_TEST_RUN( \textcolor{stringliteral}{"LRU Cache"} );
+00180         ADD_TEST( lru\_cache\_1cycle );
+00181         ADD_TEST( lru\_cache\_stress );
+00182         ADD_TEST( lru\_cache\_scope\_check );
+00183 \textcolor{preprocessor}{#ifdef \_REENTRANT}
+00184 \textcolor{preprocessor}{}        ADD_TEST( lru\_cache\_threads );
+00185 \textcolor{preprocessor}{#endif}
+00186 \textcolor{preprocessor}{}UNIT\_TEST\_END;
+00187 
+00188 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

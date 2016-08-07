@@ -1,0 +1,522 @@
+\section{LRUCache$<$ Key, Data, Sizefn $>$ Class Template Reference}
+\label{classLRUCache}\index{LRUCache@{LRUCache}}
+
+
+Template cache with an LRU removal policy.  
+
+
+
+
+{\ttfamily \#include $<$lru\_\-cache.h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef std::list$<$ std::pair$<$ Key, Data $>$ $>$ {\bf List}\label{classLRUCache_ad0c8ac49227b80937fa8f6a2edd8d67f}
+
+\begin{DoxyCompactList}\small\item\em Main cache storage typedef. \item\end{DoxyCompactList}\item 
+typedef List::iterator {\bf List\_\-Iter}\label{classLRUCache_a3c656ba5944009b260049c8a67e42037}
+
+\begin{DoxyCompactList}\small\item\em Main cache iterator. \item\end{DoxyCompactList}\item 
+typedef List::const\_\-iterator {\bf List\_\-cIter}\label{classLRUCache_a7a9d5fc54bec471ff96c5aefab17acf9}
+
+\begin{DoxyCompactList}\small\item\em Main cache iterator (const). \item\end{DoxyCompactList}\item 
+typedef std::vector$<$ Key $>$ {\bf Key\_\-List}\label{classLRUCache_aaa32d864b92c5bb8df559b363a69cf21}
+
+\begin{DoxyCompactList}\small\item\em List of keys. \item\end{DoxyCompactList}\item 
+typedef Key\_\-List::iterator {\bf Key\_\-List\_\-Iter}\label{classLRUCache_a2504cf65d69d046d4010a4102e2c17c8}
+
+\begin{DoxyCompactList}\small\item\em Main cache iterator. \item\end{DoxyCompactList}\item 
+typedef Key\_\-List::const\_\-iterator {\bf Key\_\-List\_\-cIter}\label{classLRUCache_a5bfc5b2fb49045d46214f92e8019307f}
+
+\begin{DoxyCompactList}\small\item\em Main cache iterator (const). \item\end{DoxyCompactList}\item 
+typedef std::map$<$ Key, {\bf List\_\-Iter} $>$ {\bf Map}\label{classLRUCache_acf7b527935fba37e33b8f2e6de92bfb0}
+
+\begin{DoxyCompactList}\small\item\em Index typedef. \item\end{DoxyCompactList}\item 
+typedef std::pair$<$ Key, {\bf List\_\-Iter} $>$ {\bf Pair}\label{classLRUCache_aa10db4fd28c9946c2ef845e2f56c48bf}
+
+\begin{DoxyCompactList}\small\item\em Pair of Map elements. \item\end{DoxyCompactList}\item 
+typedef Map::iterator {\bf Map\_\-Iter}\label{classLRUCache_aa95c01d582d31a9295b84caf12d42ef4}
+
+\begin{DoxyCompactList}\small\item\em Index iterator. \item\end{DoxyCompactList}\item 
+typedef Map::const\_\-iterator {\bf Map\_\-cIter}\label{classLRUCache_a77cae4f619439bdf7cb7098ed87c3583}
+
+\begin{DoxyCompactList}\small\item\em Index iterator (const). \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf LRUCache} (const unsigned long Size)
+\begin{DoxyCompactList}\small\item\em Creates a cache that holds at most Size worth of elements. \item\end{DoxyCompactList}\item 
+{\bf $\sim$LRUCache} ()\label{classLRUCache_a64ae7e7d3ea41f536abcd7c40033d2a5}
+
+\begin{DoxyCompactList}\small\item\em Destructor -\/ cleans up both index and storage. \item\end{DoxyCompactList}\item 
+const unsigned long {\bf size} (void) const 
+\begin{DoxyCompactList}\small\item\em Gets the current abstract size of the cache. \item\end{DoxyCompactList}\item 
+const unsigned long {\bf max\_\-size} (void) const 
+\begin{DoxyCompactList}\small\item\em Gets the maximum sbstract size of the cache. \item\end{DoxyCompactList}\item 
+void {\bf clear} (void)\label{classLRUCache_ad59b44b509fcef46b3666695c5e4a1aa}
+
+\begin{DoxyCompactList}\small\item\em Clears all storage and indices. \item\end{DoxyCompactList}\item 
+bool {\bf exists} (const Key \&key)
+\begin{DoxyCompactList}\small\item\em Checks for the existance of a key in the cache. \item\end{DoxyCompactList}\item 
+void {\bf remove} (const Key \&key)
+\begin{DoxyCompactList}\small\item\em Removes a key-\/data pair from the cache. \item\end{DoxyCompactList}\item 
+void {\bf touch} (const Key \&key)
+\begin{DoxyCompactList}\small\item\em Touches a key in the Cache and makes it the most recently used. \item\end{DoxyCompactList}\item 
+Data $\ast$ {\bf fetch\_\-ptr} (const Key \&key, bool touch=true)
+\begin{DoxyCompactList}\small\item\em Fetches a pointer to cache data. \item\end{DoxyCompactList}\item 
+Data {\bf fetch} (const Key \&key, bool touch\_\-data=true)
+\begin{DoxyCompactList}\small\item\em Fetches a copy of cached data. \item\end{DoxyCompactList}\item 
+bool {\bf fetch} (const Key \&key, Data \&data, bool touch\_\-data=true)
+\begin{DoxyCompactList}\small\item\em Fetches a pointer to cache data. \item\end{DoxyCompactList}\item 
+void {\bf insert} (const Key \&key, const Data \&data)
+\begin{DoxyCompactList}\small\item\em Inserts a key-\/data pair into the cache and removes entries if neccessary. \item\end{DoxyCompactList}\item 
+const {\bf Key\_\-List} {\bf get\_\-all\_\-keys} (void)
+\begin{DoxyCompactList}\small\item\em Get a list of keys. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Key, class Data, class Sizefn = Countfn$<$ Data $>$$>$ class LRUCache$<$ Key, Data, Sizefn $>$}
+
+Template cache with an LRU removal policy. \begin{DoxyParagraph}{}
+This template creats a simple collection of key-\/value pairs that grows until the size specified at construction is reached and then begins discard the Least Recently Used element on each insertion. 
+\end{DoxyParagraph}
+\begin{Desc}
+\item[Examples: ]\par
+
+
+{\bf lru\_\-example.cpp}.
+
+\end{Desc}
+
+
+Definition at line {\bf 73} of file {\bf lru\_\-cache.h}.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{LRUCache@{LRUCache}!LRUCache@{LRUCache}}
+\index{LRUCache@{LRUCache}!LRUCache@{LRUCache}}
+\subsubsection[{LRUCache}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Key , class Data , class Sizefn  = Countfn$<$ Data $>$$>$ {\bf LRUCache}$<$ Key, Data, Sizefn $>$::{\bf LRUCache} (
+\begin{DoxyParamCaption}
+\item[{const unsigned long}]{ Size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classLRUCache_a814a6e3b186cc44a7787bade5f3a752b}
+
+
+Creates a cache that holds at most Size worth of elements. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em Size}]maximum size of cache \end{DoxyParams}
+
+
+Definition at line {\bf 101} of file {\bf lru\_\-cache.h}.
+
+
+
+
+\begin{DoxyCode}
+                                                     :
+                                \_max\_size( Size ),
+                                \_curr\_size( 0 )
+                                \{\}
+\end{DoxyCode}
+
+
+
+
+\subsection{Member Function Documentation}
+\index{LRUCache@{LRUCache}!size@{size}}
+\index{size@{size}!LRUCache@{LRUCache}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Key , class Data , class Sizefn  = Countfn$<$ Data $>$$>$ const unsigned long {\bf LRUCache}$<$ Key, Data, Sizefn $>$::size (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [inline]}}\label{classLRUCache_a3a521aa7646757957a53850db90ad289}
+
+
+Gets the current abstract size of the cache. 
+
+\begin{DoxyReturn}{Returns}
+current size 
+\end{DoxyReturn}
+
+
+Definition at line {\bf 112} of file {\bf lru\_\-cache.h}.
+
+
+
+Referenced by {\bf DEFINE\_\-TEST()}.
+
+
+
+
+\begin{DoxyCode}
+\{ \textcolor{keywordflow}{return} \_curr\_size; \}
+\end{DoxyCode}
+
+
+\index{LRUCache@{LRUCache}!max\_\-size@{max\_\-size}}
+\index{max\_\-size@{max\_\-size}!LRUCache@{LRUCache}}
+\subsubsection[{max\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Key , class Data , class Sizefn  = Countfn$<$ Data $>$$>$ const unsigned long {\bf LRUCache}$<$ Key, Data, Sizefn $>$::max\_\-size (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  [inline]}}\label{classLRUCache_a3b625a8778e0dc1e5e69da3c331b9751}
+
+
+Gets the maximum sbstract size of the cache. 
+
+\begin{DoxyReturn}{Returns}
+maximum size 
+\end{DoxyReturn}
+
+
+Definition at line {\bf 117} of file {\bf lru\_\-cache.h}.
+
+
+
+Referenced by {\bf DEFINE\_\-TEST()}.
+
+
+
+
+\begin{DoxyCode}
+\{ \textcolor{keywordflow}{return} \_max\_size; \}
+\end{DoxyCode}
+
+
+\index{LRUCache@{LRUCache}!exists@{exists}}
+\index{exists@{exists}!LRUCache@{LRUCache}}
+\subsubsection[{exists}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Key , class Data , class Sizefn  = Countfn$<$ Data $>$$>$ bool {\bf LRUCache}$<$ Key, Data, Sizefn $>$::exists (
+\begin{DoxyParamCaption}
+\item[{const Key \&}]{ key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classLRUCache_aa095f7527b11c4fb1bfad28bc06c91a6}
+
+
+Checks for the existance of a key in the cache. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em key}]to check for \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicating whether or not the key was found. 
+\end{DoxyReturn}
+
+
+Definition at line {\bf 131} of file {\bf lru\_\-cache.h}.
+
+
+
+Referenced by {\bf DEFINE\_\-TEST()}.
+
+
+
+
+\begin{DoxyCode}
+                                                     \{
+                        SCOPED\_MUTEX;
+\textcolor{preprocessor}{#else}
+\textcolor{preprocessor}{}                \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} exists( \textcolor{keyword}{const} Key &key )\textcolor{keyword}{ const }\{
+\textcolor{preprocessor}{#endif}
+\textcolor{preprocessor}{}                        \textcolor{keywordflow}{return} \_index.find( key ) != \_index.end();
+                \}
+\end{DoxyCode}
+
+
+\index{LRUCache@{LRUCache}!remove@{remove}}
+\index{remove@{remove}!LRUCache@{LRUCache}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Key , class Data , class Sizefn  = Countfn$<$ Data $>$$>$ void {\bf LRUCache}$<$ Key, Data, Sizefn $>$::remove (
+\begin{DoxyParamCaption}
+\item[{const Key \&}]{ key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classLRUCache_a34e974cf87c08620131a9b006443e93b}
+
+
+Removes a key-\/data pair from the cache. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em key}]to be removed \end{DoxyParams}
+
+
+Definition at line {\bf 142} of file {\bf lru\_\-cache.h}.
+
+
+
+Referenced by {\bf DEFINE\_\-TEST()}.
+
+
+
+
+\begin{DoxyCode}
+                                                     \{
+\textcolor{preprocessor}{#ifdef \_REENTRANT}
+\textcolor{preprocessor}{}                        SCOPED\_MUTEX;
+\textcolor{preprocessor}{#endif}
+\textcolor{preprocessor}{}                        Map_Iter miter = \_index.find( key );
+                        \textcolor{keywordflow}{if}( miter == \_index.end() ) \textcolor{keywordflow}{return};
+                        \_remove( miter );
+                \}
+\end{DoxyCode}
+
+
+\index{LRUCache@{LRUCache}!touch@{touch}}
+\index{touch@{touch}!LRUCache@{LRUCache}}
+\subsubsection[{touch}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Key , class Data , class Sizefn  = Countfn$<$ Data $>$$>$ void {\bf LRUCache}$<$ Key, Data, Sizefn $>$::touch (
+\begin{DoxyParamCaption}
+\item[{const Key \&}]{ key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classLRUCache_a844206e9e2fde04aaf11c638725f2c29}
+
+
+Touches a key in the Cache and makes it the most recently used. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em key}]to be touched \end{DoxyParams}
+
+
+Definition at line {\bf 154} of file {\bf lru\_\-cache.h}.
+
+
+
+Referenced by {\bf DEFINE\_\-TEST()}.
+
+
+
+
+\begin{DoxyCode}
+                                                    \{
+                        SCOPED\_MUTEX;
+                        \_touch( key );
+                \}
+\end{DoxyCode}
+
+
+\index{LRUCache@{LRUCache}!fetch\_\-ptr@{fetch\_\-ptr}}
+\index{fetch\_\-ptr@{fetch\_\-ptr}!LRUCache@{LRUCache}}
+\subsubsection[{fetch\_\-ptr}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Key , class Data , class Sizefn  = Countfn$<$ Data $>$$>$ Data$\ast$ {\bf LRUCache}$<$ Key, Data, Sizefn $>$::fetch\_\-ptr (
+\begin{DoxyParamCaption}
+\item[{const Key \&}]{ key, }
+\item[{bool}]{ touch = {\ttfamily true}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classLRUCache_a8531c23ed890dac39debfb9f878cab9d}
+
+
+Fetches a pointer to cache data. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em key}]to fetch data for \item[{\em touch}]whether or not to touch the data \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to data or NULL on error 
+\end{DoxyReturn}
+
+
+Definition at line {\bf 164} of file {\bf lru\_\-cache.h}.
+
+
+
+Referenced by {\bf DEFINE\_\-TEST()}.
+
+
+
+
+\begin{DoxyCode}
+                                                                            \{
+                        SCOPED\_MUTEX;
+                        Map_Iter miter = \_index.find( key );
+                        \textcolor{keywordflow}{if}( miter == \_index.end() ) \textcolor{keywordflow}{return} NULL;
+                        \_touch( key );
+                        \textcolor{keywordflow}{return} &(miter->second->second);
+                \}
+\end{DoxyCode}
+
+
+\index{LRUCache@{LRUCache}!fetch@{fetch}}
+\index{fetch@{fetch}!LRUCache@{LRUCache}}
+\subsubsection[{fetch}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Key , class Data , class Sizefn  = Countfn$<$ Data $>$$>$ Data {\bf LRUCache}$<$ Key, Data, Sizefn $>$::fetch (
+\begin{DoxyParamCaption}
+\item[{const Key \&}]{ key, }
+\item[{bool}]{ touch\_\-data = {\ttfamily true}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classLRUCache_a5896c9481fb649f5570fb8677c33b49c}
+
+
+Fetches a copy of cached data. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em key}]to fetch data for \item[{\em touch\_\-data}]whether or not to touch the data \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+copy of the data or an empty Data object if not found 
+\end{DoxyReturn}
+
+
+Definition at line {\bf 177} of file {\bf lru\_\-cache.h}.
+
+
+
+Referenced by {\bf DEFINE\_\-TEST()}, and {\bf dump()}.
+
+
+
+
+\begin{DoxyCode}
+                                                                            \{
+                        SCOPED\_MUTEX;
+                        Map_Iter miter = \_index.find( key );
+                        \textcolor{keywordflow}{if}( miter == \_index.end() )
+                                \textcolor{keywordflow}{return} Data();
+                        Data tmp = miter->second->second;
+                        \textcolor{keywordflow}{if}( touch\_data )
+                                \_touch( key );
+                        \textcolor{keywordflow}{return} tmp;
+                \}
+\end{DoxyCode}
+
+
+\index{LRUCache@{LRUCache}!fetch@{fetch}}
+\index{fetch@{fetch}!LRUCache@{LRUCache}}
+\subsubsection[{fetch}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Key , class Data , class Sizefn  = Countfn$<$ Data $>$$>$ bool {\bf LRUCache}$<$ Key, Data, Sizefn $>$::fetch (
+\begin{DoxyParamCaption}
+\item[{const Key \&}]{ key, }
+\item[{Data \&}]{ data, }
+\item[{bool}]{ touch\_\-data = {\ttfamily true}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classLRUCache_a85c5cb904b7c8ed7f85a6a7162740aa5}
+
+
+Fetches a pointer to cache data. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em key}]to fetch data for \item[{\em data}]to fetch data into \item[{\em touch\_\-data}]whether or not to touch the data \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether or not data was filled in 
+\end{DoxyReturn}
+
+
+Definition at line {\bf 194} of file {\bf lru\_\-cache.h}.
+
+
+
+
+\begin{DoxyCode}
+                                                                                 
+             \{
+                        SCOPED\_MUTEX;
+                        Map_Iter miter = \_index.find( key );
+                        \textcolor{keywordflow}{if}( miter == \_index.end() ) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+                        \textcolor{keywordflow}{if}( touch\_data )
+                          \_touch( key );
+                        data = miter->second->second;
+                        \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+                \}
+\end{DoxyCode}
+
+
+\index{LRUCache@{LRUCache}!insert@{insert}}
+\index{insert@{insert}!LRUCache@{LRUCache}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Key , class Data , class Sizefn  = Countfn$<$ Data $>$$>$ void {\bf LRUCache}$<$ Key, Data, Sizefn $>$::insert (
+\begin{DoxyParamCaption}
+\item[{const Key \&}]{ key, }
+\item[{const Data \&}]{ data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classLRUCache_a47523c87a56e9bd718566b2659366fd1}
+
+
+Inserts a key-\/data pair into the cache and removes entries if neccessary. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em key}]object key for insertion \item[{\em data}]object data for insertion \end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function checks key existance and touches the key if it already exists. 
+\end{DoxyNote}
+
+
+Definition at line {\bf 209} of file {\bf lru\_\-cache.h}.
+
+
+
+Referenced by {\bf DEFINE\_\-TEST()}.
+
+
+
+
+\begin{DoxyCode}
+                                                                       \{
+                        SCOPED\_MUTEX;
+                        \textcolor{comment}{// Touch the key, if it exists, then replace the content.
+      }
+                        Map_Iter miter = \_touch( key );
+                        \textcolor{keywordflow}{if}( miter != \_index.end() )
+                                \_remove( miter );
+
+                        \textcolor{comment}{// Ok, do the actual insert at the head of the list}
+                        \_list.push\_front( std::make\_pair( key, data ) );
+                        List_Iter liter = \_list.begin();
+
+                        \textcolor{comment}{// Store the index}
+                        \_index.insert( std::make\_pair( key, liter ) );
+                        \_curr\_size += Sizefn()( data );
+
+                        \textcolor{comment}{// Check to see if we need to remove an element due to ex
+      ceeding max\_size}
+                        \textcolor{keywordflow}{while}( \_curr\_size > \_max\_size ) \{
+                                \textcolor{comment}{// Remove the last element.}
+                                liter = \_list.end();
+                                --liter;
+                                \_remove( liter->first );
+                        \}
+                \}
+\end{DoxyCode}
+
+
+\index{LRUCache@{LRUCache}!get\_\-all\_\-keys@{get\_\-all\_\-keys}}
+\index{get\_\-all\_\-keys@{get\_\-all\_\-keys}!LRUCache@{LRUCache}}
+\subsubsection[{get\_\-all\_\-keys}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Key , class Data , class Sizefn  = Countfn$<$ Data $>$$>$ const {\bf Key\_\-List} {\bf LRUCache}$<$ Key, Data, Sizefn $>$::get\_\-all\_\-keys (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classLRUCache_a3ca261ee9025168c081883b6dacc4131}
+
+
+Get a list of keys. 
+
+\begin{DoxyReturn}{Returns}
+list of the current keys. 
+\end{DoxyReturn}
+
+
+Definition at line {\bf 236} of file {\bf lru\_\-cache.h}.
+
+
+
+Referenced by {\bf dump()}.
+
+
+
+
+\begin{DoxyCode}
+                                                           \{
+                        SCOPED\_MUTEX;
+                        Key_List ret;
+                        \textcolor{keywordflow}{for}( List_cIter liter = \_list.begin(); liter != \_list.end
+      (); liter++ )
+                                ret.push\_back( liter->first );
+                        \textcolor{keywordflow}{return} ret;
+                \}
+\end{DoxyCode}
+
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+{\bf lru\_\-cache.h}\item 
+lru\_\-cache\_\-unit.cpp\end{DoxyCompactItemize}

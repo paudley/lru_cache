@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="unittests01" kind="page">
+    <compoundname>unittests01</compoundname>
+    <title>Unit Testing Framework</title>
+    <detaileddescription>
+<para>See implementation in <ref refid="unit__test_8h" kindref="compound">unit_test.h</ref></para><para><simplesect kind="par"><title></title><para></para></simplesect>
+</para><sect1 id="unittests01_1writing">
+<title>Writing Unit Tests</title>
+<para><simplesect kind="par"><title></title><para>Ideally, unit tests are written with the code they test. The easiest way to do this is to include all the unit tests at the bottom of each source that they relate too. It&apos;s also possible to create source files of nothing but tests to expand coverage across multiple translation modules. </para></simplesect>
+<simplesect kind="par"><title></title><para>Let&apos;s take a simple example: we have a new function that adds two numbers. <programlisting><codeline><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>addTwoNumbers(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>a,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b<sp/>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>a<sp/>+<sp/>b;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>}</highlight></codeline>
+</programlisting> To write a unit test that checks that <formula id="0">$addTwoNumbers(x_1,x_2)=x_1+x_2$</formula> we would write the unit test like so: <programlisting><codeline><highlight class="preprocessor"><sp/>#ifdef<sp/>UNITTEST</highlight></codeline>
+<codeline><highlight class="preprocessor"></highlight><highlight class="preprocessor"><sp/>#include<sp/>&quot;<ref refid="unit__test_8h" kindref="compound">unit_test.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><ref refid="unit__test_8h_1a5f3fe0e0e85d0dc03672f96e5e95856f" kindref="member" tooltip="Start of inline Unit Test definitions Use this to start the list of unit tests. This should be follow...">UNIT_TEST_DEFINES</ref></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><ref refid="unit__test_8h_1ad3bccea4c3142d58fd5510f65503b300" kindref="member" tooltip="Start a new test definition.">DEFINE_TEST</ref>(<sp/>check_two_plus_two<sp/>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><ref refid="unit__test_8h_1aa37d553e7d644c165c888bed8908de20" kindref="member" tooltip="Use within a Unit Test to verify a condition.">unit_assert</ref>(<sp/></highlight><highlight class="stringliteral">&quot;2+2=4&quot;</highlight><highlight class="normal">,<sp/>addTwoNumbers(2,2)==4<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><ref refid="unit__test_8h_1a86b577b8af9cc6df174dc0e2e292c365" kindref="member" tooltip="Start a Unit test run section.">UNIT_TEST_RUN</ref>(<sp/></highlight><highlight class="stringliteral">&quot;addTwoNumbers<sp/>Tests&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><ref refid="unit__test_8h_1a758baec4c57fa6aeaf800e2c631a7d9f" kindref="member" tooltip="Adds a defined test to test run.">ADD_TEST</ref>(<sp/>check_two_plus_two<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><ref refid="unit__test_8h_1a732dd1ba2cfc9163d60e05628b4544dc" kindref="member" tooltip="Finish a Unit Test run section.">UNIT_TEST_END</ref></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>UNITTEST</highlight></codeline>
+</programlisting> </para></simplesect>
+<simplesect kind="par"><title></title><para>Now we have a test suite defined that will only be compiled when we define UNITTEST. UNIT_TEST_RUN actually creates a main() function that runs the tests so if we put this code into a file (say add.cpp) then we can compile and run it like so: <verbatim>
+# gcc -DUNITTEST -o unit_test_add add.cpp
+# ./unit_test_add
+---[ addTwoNumbers Tests ]---
+  2+2=4: PASSED
+</verbatim> </para></simplesect>
+<simplesect kind="par"><title></title><para>So far so good, let&apos;s add a new test that we think will fail. <programlisting><codeline><highlight class="preprocessor"><sp/>#ifdef<sp/>UNITTEST</highlight></codeline>
+<codeline><highlight class="preprocessor"></highlight><highlight class="preprocessor"><sp/>#include<sp/>&quot;<ref refid="unit__test_8h" kindref="compound">unit_test.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><ref refid="unit__test_8h_1a5f3fe0e0e85d0dc03672f96e5e95856f" kindref="member" tooltip="Start of inline Unit Test definitions Use this to start the list of unit tests. This should be follow...">UNIT_TEST_DEFINES</ref></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><ref refid="unit__test_8h_1ad3bccea4c3142d58fd5510f65503b300" kindref="member" tooltip="Start a new test definition.">DEFINE_TEST</ref>(<sp/>check_two_plus_two<sp/>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><ref refid="unit__test_8h_1aa37d553e7d644c165c888bed8908de20" kindref="member" tooltip="Use within a Unit Test to verify a condition.">unit_assert</ref>(<sp/></highlight><highlight class="stringliteral">&quot;2+2=4&quot;</highlight><highlight class="normal">,<sp/>addTwoNumbers(2,2)==4<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><ref refid="unit__test_8h_1aa2a4504968cf4e8abfc7b706106d4084" kindref="member" tooltip="Use to end a unit test in success.">unit_pass</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><ref refid="unit__test_8h_1ad3bccea4c3142d58fd5510f65503b300" kindref="member" tooltip="Start a new test definition.">DEFINE_TEST</ref>(<sp/>check_bogus<sp/>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><ref refid="unit__test_8h_1aa37d553e7d644c165c888bed8908de20" kindref="member" tooltip="Use within a Unit Test to verify a condition.">unit_assert</ref>(<sp/></highlight><highlight class="stringliteral">&quot;1+5=9&quot;</highlight><highlight class="normal">,<sp/>addTwoNumbers(1,5)==9<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><ref refid="unit__test_8h_1aa2a4504968cf4e8abfc7b706106d4084" kindref="member" tooltip="Use to end a unit test in success.">unit_pass</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><ref refid="unit__test_8h_1a86b577b8af9cc6df174dc0e2e292c365" kindref="member" tooltip="Start a Unit test run section.">UNIT_TEST_RUN</ref>(<sp/></highlight><highlight class="stringliteral">&quot;addTwoNumbers<sp/>Tests&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><ref refid="unit__test_8h_1a758baec4c57fa6aeaf800e2c631a7d9f" kindref="member" tooltip="Adds a defined test to test run.">ADD_TEST</ref>(<sp/>check_negatives<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><ref refid="unit__test_8h_1a732dd1ba2cfc9163d60e05628b4544dc" kindref="member" tooltip="Finish a Unit Test run section.">UNIT_TEST_END</ref></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>UNITTEST</highlight></codeline>
+</programlisting> Running the unit_test now we get: <verbatim>
+# gcc -DUNITTEST -o unit_test_add add.cpp
+# ./unit_test_add
+---[ addTwoNumbers Tests ]---
+  2+2=4: PASSED
+  1+5=9: FAILED
+</verbatim> </para></simplesect>
+<simplesect kind="par"><title></title><para></para></simplesect>
+</para></sect1>
+<sect1 id="unittests01_1adding">
+<title>Integrating with Automake</title>
+<para><simplesect kind="par"><title></title><para>Automake has the ability to define testing targets that get run when issue &quot;make check&quot; command. Adding these tests are pretty straight forward. For the above we would add this to our Makefile.am: <verbatim>
+TESTS = unit_test_add
+noinst_PROGRAMS = unit_test_add
+CLEANFILES = add_unit.cpp
+unit_test_add_SOURCES = add_unit.cpp
+
+%_unit.cpp: %.cpp
+	$(CXX) -E -o $*_unit.cpp $*.C @CFLAGS@ -DUNITTEST=1
+</verbatim> To add addtional unit tests you just modify the first four lines. For example: to add a new unit test suite in the file sub.C we might do this. <verbatim>
+TESTS = unit_test_add unit_test_sub
+noinst_PROGRAMS = unit_test_add unit_test_sub
+CLEANFILES = add_unit.cpp sub_unit.cpp
+unit_test_add_SOURCES = add_unit.cpp
+unit_test_sub_SOURCES = sub_unit.cpp
+</verbatim> </para></simplesect>
+</para></sect1>
+<sect1 id="unittests01_1Notes">
+<title>Implementation Notes</title>
+<para><simplesect kind="par"><title></title><para></para></simplesect>
+</para></sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

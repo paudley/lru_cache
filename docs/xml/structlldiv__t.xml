@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="structlldiv__t" kind="struct" prot="public">
+    <compoundname>lldiv_t</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structlldiv__t_1ae4d4bccdf22f41e052073f5790c5ec37" prot="public" static="no" mutable="no">
+        <type>long long</type>
+        <definition>long long lldiv_t::quot</definition>
+        <argsstring></argsstring>
+        <name>quot</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1295" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1295" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structlldiv__t_1a32d4596a917aa9b496c8a49178a0e3c6" prot="public" static="no" mutable="no">
+        <type>long long</type>
+        <definition>long long lldiv_t::rem</definition>
+        <argsstring></argsstring>
+        <name>rem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1296" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1296" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1294" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1294" bodyend="1297"/>
+    <listofallmembers>
+      <member refid="structlldiv__t_1ae4d4bccdf22f41e052073f5790c5ec37" prot="public" virt="non-virtual"><scope>lldiv_t</scope><name>quot</name></member>
+      <member refid="structlldiv__t_1a32d4596a917aa9b496c8a49178a0e3c6" prot="public" virt="non-virtual"><scope>lldiv_t</scope><name>rem</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="structfd__set" kind="struct" prot="public">
+    <compoundname>fd_set</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structfd__set_1ac0a24392083582475552b91bed710ff7" prot="public" static="no" mutable="no">
+        <type>__int32_t</type>
+        <definition>__int32_t fd_set::fds_bits[((((1024)%((sizeof(__int32_t)*8)))==0)?((1024)/((sizeof(__int32_t)*8))):(((1024)/((sizeof(__int32_t)*8)))+1))]</definition>
+        <argsstring>[((((1024)%((sizeof(__int32_t)*8)))==0)?((1024)/((sizeof(__int32_t)*8))):(((1024)/((sizeof(__int32_t)*8)))+1))]</argsstring>
+        <name>fds_bits</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="372" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="372" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="371" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="371" bodyend="373"/>
+    <listofallmembers>
+      <member refid="structfd__set_1ac0a24392083582475552b91bed710ff7" prot="public" virt="non-virtual"><scope>fd_set</scope><name>fds_bits</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

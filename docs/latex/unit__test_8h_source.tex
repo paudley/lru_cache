@@ -1,0 +1,81 @@
+\section{unit\_\-test.h}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/***************************************************************************}
+00002 \textcolor{comment}{ *   Copyright (C) 2004-2011 by Patrick Audley                             *}
+00003 \textcolor{comment}{ *   paudley@blackcat.ca                                                   *}
+00004 \textcolor{comment}{ *   http://patrickaudley.com                                              *}
+00005 \textcolor{comment}{ ***************************************************************************/}
+00122 \textcolor{preprocessor}{#ifndef \_UNIT\_TEST\_H}
+00123 \textcolor{preprocessor}{}\textcolor{preprocessor}{#define \_UNIT\_TEST\_H}
+00124 \textcolor{preprocessor}{}
+00125 \textcolor{preprocessor}{#ifdef UNITTEST}
+00126 \textcolor{preprocessor}{}\textcolor{preprocessor}{#include <iostream>}
+00127 \textcolor{preprocessor}{#include <vector>}
+00128 \textcolor{preprocessor}{#include <sys/time.h>}
+00129 \textcolor{preprocessor}{#include <sys/resource.h>}
+00130 \textcolor{preprocessor}{#include <sys/types.h>}
+00131 \textcolor{preprocessor}{#include <time.h>}
+00132 
+00133 
+00134 \textcolor{keyword}{struct }rusage ruse;
+00135 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} getrusage();
+00139 \textcolor{keyword}{inline} \textcolor{keywordtype}{double} cputime( \textcolor{keywordtype}{void} ) \{
+00140   getrusage( RUSAGE\_SELF, &ruse );
+00141         \textcolor{keywordflow}{return} ( ruse.ru\_utime.tv\_sec + ruse.ru\_stime.tv\_sec + 1e-6 * (ruse.ru\_ut
+      ime.tv\_usec + ruse.ru\_stime.tv\_usec ) );
+00142 \}
+00149 \textcolor{keyword}{inline} \textcolor{keywordtype}{double} transactions_per_second( \textcolor{keywordtype}{double} run\_time, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} transaction
+      s ) \{
+00150         \textcolor{keywordflow}{return} (\textcolor{keywordtype}{double})transactions / run\_time;
+00151 \}
+00158 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} print_cputime( \textcolor{keyword}{const} \textcolor{keywordtype}{char}* msg, \textcolor{keywordtype}{double} run\_time, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} transa
+      ctions = 0 ) \{
+00159         printf(\textcolor{stringliteral}{"  -> %s:  %7.3f seconds CPU time"}, msg, run\_time );
+00160         \textcolor{keywordflow}{if}( transactions != 0 )
+00161                 printf( \textcolor{stringliteral}{"  (%7.3f transactions/second)"}, transactions_per_second(
+       run\_time, transactions ) );
+00162         printf( \textcolor{stringliteral}{"\(\backslash\)n"} );
+00163 \}
+00164 
+00166 \textcolor{keyword}{typedef} bool(*test_func)(void);
+00168 \textcolor{keyword}{typedef} std::vector< test\_func > test\_vector;
+00169 
+00174 \textcolor{preprocessor}{#define UNIT\_TEST\_DEFINES \(\backslash\)}
+00175 \textcolor{preprocessor}{  test\_vector * add\_test( test\_func x ) \{ \(\backslash\)}
+00176 \textcolor{preprocessor}{    static test\_vector unit\_tests; \(\backslash\)}
+00177 \textcolor{preprocessor}{    if( x != NULL ) unit\_tests.push\_back( x ); \(\backslash\)}
+00178 \textcolor{preprocessor}{    return &unit\_tests; \(\backslash\)}
+00179 \textcolor{preprocessor}{  \}}
+00180 \textcolor{preprocessor}{}
+00184 \textcolor{preprocessor}{#define DEFINE\_TEST(test\_name) bool unit\_test\_##test\_name (void)}
+00185 \textcolor{preprocessor}{}
+00191 \textcolor{preprocessor}{#define ADD\_TEST(test\_name) add\_test( &unit\_test\_##test\_name );}
+00192 \textcolor{preprocessor}{}
+00197 \textcolor{preprocessor}{#define UNIT\_TEST\_RUN( suite ) \(\backslash\)}
+00198 \textcolor{preprocessor}{int main(void) \{ \(\backslash\)}
+00199 \textcolor{preprocessor}{  bool result = true; \(\backslash\)}
+00200 \textcolor{preprocessor}{  std::cout << "---[ " << suite << " ]--- " << std::endl;}
+00201 \textcolor{preprocessor}{}
+00205 \textcolor{preprocessor}{#define unit\_assert( msg, cond ) \(\backslash\)}
+00206 \textcolor{preprocessor}{  std::cout << "  " << msg << ": " << std::flush; \(\backslash\)}
+00207 \textcolor{preprocessor}{  if( !cond ) \{ std::cout << "FAILED" << std::endl; return false; \} \(\backslash\)}
+00208 \textcolor{preprocessor}{  std::cout << "PASSED" << std::endl;}
+00209 \textcolor{preprocessor}{}
+00213 \textcolor{preprocessor}{#define unit\_pass() return true;}
+00214 \textcolor{preprocessor}{}
+00218 \textcolor{preprocessor}{#define unit\_fail() return false;}
+00219 \textcolor{preprocessor}{}
+00222 \textcolor{preprocessor}{#define UNIT\_TEST\_END \(\backslash\)}
+00223 \textcolor{preprocessor}{  test\_vector *T = add\_test( NULL ); \(\backslash\)}
+00224 \textcolor{preprocessor}{  for( unsigned short i = 0; i < T->size(); i++ ) \{ \(\backslash\)}
+00225 \textcolor{preprocessor}{     bool testresult = (*(*T)[i])(); \(\backslash\)}
+00226 \textcolor{preprocessor}{     if( result == true && testresult == false ) \{ result = false; \} \(\backslash\)}
+00227 \textcolor{preprocessor}{  \} \(\backslash\)}
+00228 \textcolor{preprocessor}{  return !result; \(\backslash\)}
+00229 \textcolor{preprocessor}{\}}
+00230 \textcolor{preprocessor}{}
+00231 \textcolor{preprocessor}{#endif // UNITTEST}
+00232 \textcolor{preprocessor}{}
+00233 \textcolor{preprocessor}{#endif // \_UNIT\_TEST\_H}
+\end{DoxyCode}

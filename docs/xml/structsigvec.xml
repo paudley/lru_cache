@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="structsigvec" kind="struct" prot="public">
+    <compoundname>sigvec</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structsigvec_1a2791c53e38ca0ecff958a7259dc083a4" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* sigvec::sv_handler)(int)</definition>
+        <argsstring>)(int)</argsstring>
+        <name>sv_handler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1100" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structsigvec_1a12ee8a3a46d8209367a5c0bbae2a5c87" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int sigvec::sv_mask</definition>
+        <argsstring></argsstring>
+        <name>sv_mask</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1101" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structsigvec_1a8db62fb99937db45ef5d8d3c0cff93e2" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int sigvec::sv_flags</definition>
+        <argsstring></argsstring>
+        <name>sv_flags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1102" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1102" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="1099" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="1099" bodyend="1103"/>
+    <listofallmembers>
+      <member refid="structsigvec_1a8db62fb99937db45ef5d8d3c0cff93e2" prot="public" virt="non-virtual"><scope>sigvec</scope><name>sv_flags</name></member>
+      <member refid="structsigvec_1a2791c53e38ca0ecff958a7259dc083a4" prot="public" virt="non-virtual"><scope>sigvec</scope><name>sv_handler</name></member>
+      <member refid="structsigvec_1a12ee8a3a46d8209367a5c0bbae2a5c87" prot="public" virt="non-virtual"><scope>sigvec</scope><name>sv_mask</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

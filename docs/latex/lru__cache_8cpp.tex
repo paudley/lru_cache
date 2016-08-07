@@ -1,0 +1,306 @@
+\section{lru\_\-cache.cpp File Reference}
+\label{lru__cache_8cpp}\index{lru\_\-cache.cpp@{lru\_\-cache.cpp}}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef {\bf LRUCache}$<$ std::string, std::string $>$ {\bf unit\_\-lru\_\-type}\label{lru__cache_8cpp_a4b7750098474ad59a0443520f69a77c9}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{LRUCache}{p.}{classLRUCache} type for use in the unit tests. \item\end{DoxyCompactList}\item 
+typedef {\bf LRUCache}$<$ int, int $>$ {\bf unit\_\-lru\_\-type2}\label{lru__cache_8cpp_ac6438824538d155d5a47bd7b2e7228ea}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{LRUCache}{p.}{classLRUCache} POD type for use in the unit tests. \item\end{DoxyCompactList}\item 
+typedef {\bf LRUCache}$<$ int, test\_\-big\_\-data $>$ {\bf unit\_\-lru\_\-type3}\label{lru__cache_8cpp_a3d24a3719faded87a48b68c87a6064a7}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{LRUCache}{p.}{classLRUCache} with large data for use in the unit tests. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std::string {\bf dump} ({\bf unit\_\-lru\_\-type} $\ast$L)\label{lru__cache_8cpp_a5cc6945fc2f7ed6a7c8481972f4e172c}
+
+\begin{DoxyCompactList}\small\item\em Dumps the cache for debugging. \item\end{DoxyCompactList}\item 
+UNIT\_\-TEST\_\-DEFINES {\bf DEFINE\_\-TEST} (lru\_\-cache\_\-1cycle)
+\item 
+{\bf DEFINE\_\-TEST} (lru\_\-cache\_\-stress)
+\item 
+{\bf DEFINE\_\-TEST} (lru\_\-cache\_\-scope\_\-check)
+\item 
+{\bf DEFINE\_\-TEST} (lru\_\-cache\_\-threads)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+{\bf unit\_\-lru\_\-type3} $\ast$ {\bf L3}\label{lru__cache_8cpp_a438505aa6f516b0b948a59d1578a9b1c}
+
+\begin{DoxyCompactList}\small\item\em Scoping test object. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Template cache with an LRU removal policy (unit tests) \begin{DoxyAuthor}{Author}
+Patrick Audley 
+\end{DoxyAuthor}
+
+
+Definition in file {\bf lru\_\-cache.cpp}.
+
+
+
+\subsection{Function Documentation}
+\index{lru\_\-cache.cpp@{lru\_\-cache.cpp}!DEFINE\_\-TEST@{DEFINE\_\-TEST}}
+\index{DEFINE\_\-TEST@{DEFINE\_\-TEST}!lru_cache.cpp@{lru\_\-cache.cpp}}
+\subsubsection[{DEFINE\_\-TEST}]{\setlength{\rightskip}{0pt plus 5cm}UNIT\_\-TEST\_\-DEFINES DEFINE\_\-TEST (
+\begin{DoxyParamCaption}
+\item[{lru\_\-cache\_\-1cycle}]{}
+\end{DoxyParamCaption}
+)}\label{lru__cache_8cpp_a744e96854fa4e01ab945ea9ad43b39ca}
+\begin{Desc}
+\item[{\bf Test}]Basic creation and desctruction test \end{Desc}
+
+
+Definition at line {\bf 50} of file {\bf lru\_\-cache.cpp}.
+
+
+
+References {\bf dump()}, {\bf LRUCache$<$ Key, Data, Sizefn $>$::exists()}, {\bf LRUCache$<$ Key, Data, Sizefn $>$::fetch()}, {\bf LRUCache$<$ Key, Data, Sizefn $>$::insert()}, {\bf LRUCache$<$ Key, Data, Sizefn $>$::max\_\-size()}, {\bf LRUCache$<$ Key, Data, Sizefn $>$::remove()}, {\bf LRUCache$<$ Key, Data, Sizefn $>$::size()}, {\bf LRUCache$<$ Key, Data, Sizefn $>$::touch()}, {\bf unit\_\-assert}, and {\bf unit\_\-pass}.
+
+
+
+
+\begin{DoxyCode}
+                                \{
+        \textcolor{keyword}{const} std::string unit\_data\_1cycle\_a(\textcolor{stringliteral}{"foo:4\(\backslash\)n"});
+        \textcolor{keyword}{const} std::string unit\_data\_1cycle\_b(\textcolor{stringliteral}{"bar:flower\(\backslash\)nfoo:4\(\backslash\)n"});
+        \textcolor{keyword}{const} std::string unit\_data\_1cycle\_c(\textcolor{stringliteral}{"foo:4\(\backslash\)nbar:flower\(\backslash\)n"});
+        \textcolor{keyword}{const} std::string unit\_data\_1cycle\_d(\textcolor{stringliteral}{"foo:moose\(\backslash\)nbaz:Stalin\(\backslash\)nbar:flower\(\backslash\)n
+      "});
+        \textcolor{keyword}{const} std::string unit\_data\_1cycle\_e(\textcolor{stringliteral}{"foo:moose\(\backslash\)nbar:flower\(\backslash\)n"});
+        \textcolor{keyword}{const} std::string unit\_data\_1cycle\_f(\textcolor{stringliteral}{"quz:xyzzy\(\backslash\)nbaz:monkey\(\backslash\)nfoo:moose\(\backslash\)n"
+      });
+        \textcolor{keyword}{const} std::string unit\_data\_1cycle\_g(\textcolor{stringliteral}{"coat:mouse\(\backslash\)npants:cat\(\backslash\)nsocks:bear\(\backslash\)n
+      "});
+
+        unit_lru_type *L = \textcolor{keyword}{new} unit_lru_type(3);
+        unit_assert( \textcolor{stringliteral}{"size==0"}, (L->size() == 0) );
+        unit_assert( \textcolor{stringliteral}{"maxsize==3"}, (L->max_size() == 3) );
+
+        \textcolor{comment}{// Checking a bogus key shouldn't alter the cache.}
+        L->exists( \textcolor{stringliteral}{"foo"} );
+        unit_assert( \textcolor{stringliteral}{"exists() doesn't increase size"}, (L->size() == 0) );
+
+        \textcolor{comment}{// Check insert() and exists()}
+        L->insert( \textcolor{stringliteral}{"foo"}, \textcolor{stringliteral}{"4"} );
+        unit_assert( \textcolor{stringliteral}{"size==1 after insert(foo,4)"}, (L->size() == 1) );
+        unit_assert( \textcolor{stringliteral}{"check exists(foo)"}, L->exists( \textcolor{stringliteral}{"foo"} ) );
+        unit_assert( \textcolor{stringliteral}{"contents check a)"}, unit\_data\_1cycle\_a.compare( dump( L ) )
+       == 0 );
+
+        \textcolor{comment}{// Check second insert and ordering}
+        L->insert( \textcolor{stringliteral}{"bar"}, \textcolor{stringliteral}{"flower"} );
+        unit_assert( \textcolor{stringliteral}{"size==2 after insert(bar,flower)"}, (L->size() == 2) );
+        unit_assert( \textcolor{stringliteral}{"contents check b)"}, unit\_data\_1cycle\_b.compare( dump( L ) )
+       == 0 );
+
+        \textcolor{comment}{// Check touching}
+        L->touch( \textcolor{stringliteral}{"foo"} );
+        unit_assert( \textcolor{stringliteral}{"contents check c)"}, unit\_data\_1cycle\_c.compare( dump( L ) )
+       == 0 );
+
+        \textcolor{comment}{// Insert of an existing element should result in only a touch}
+        L->insert( \textcolor{stringliteral}{"bar"}, \textcolor{stringliteral}{"flower"} );
+        unit_assert( \textcolor{stringliteral}{"verify insert touches"}, unit\_data\_1cycle\_b.compare( dump( L
+       ) ) == 0 );
+
+        \textcolor{comment}{// Verify that fetch works}
+        unit_assert( \textcolor{stringliteral}{"verify fetch(bar)"}, ( std::string(\textcolor{stringliteral}{"flower"}).compare( L->
+      fetch(\textcolor{stringliteral}{"bar"}) ) == 0 ) );
+
+        \textcolor{comment}{// Insert of an existing element with new data should replace and touch}
+        L->insert( \textcolor{stringliteral}{"baz"}, \textcolor{stringliteral}{"Stalin"} );
+        L->insert( \textcolor{stringliteral}{"foo"}, \textcolor{stringliteral}{"moose"} );
+        unit_assert( \textcolor{stringliteral}{"verify insert replaces"}, unit\_data\_1cycle\_d.compare( dump( 
+      L ) ) == 0 );
+
+        \textcolor{comment}{// Test removal of an existing member.}
+        L->remove( \textcolor{stringliteral}{"baz"} );
+        unit_assert( \textcolor{stringliteral}{"verify remove works"}, unit\_data\_1cycle\_e.compare( dump( L )
+       ) == 0 );
+
+        \textcolor{comment}{// Test LRU removal as we add more members than max\_size()}
+        L->insert( \textcolor{stringliteral}{"baz"}, \textcolor{stringliteral}{"monkey"} );
+        L->insert( \textcolor{stringliteral}{"quz"}, \textcolor{stringliteral}{"xyzzy"} );
+        unit_assert( \textcolor{stringliteral}{"verify LRU semantics"}, unit\_data\_1cycle\_f.compare( dump( L 
+      ) ) == 0 );
+
+        \textcolor{comment}{// Stress test the implementation a little..}
+        \textcolor{keyword}{const} \textcolor{keywordtype}{char} *names[10] = \{ \textcolor{stringliteral}{"moose"}, \textcolor{stringliteral}{"dog"}, \textcolor{stringliteral}{"bear"}, \textcolor{stringliteral}{"cat"}, \textcolor{stringliteral}{"mouse"}, \textcolor{stringliteral}{"hat"}, 
+      \textcolor{stringliteral}{"mittens"}, \textcolor{stringliteral}{"socks"}, \textcolor{stringliteral}{"pants"}, \textcolor{stringliteral}{"coat"} \};
+        \textcolor{keywordflow}{for}( \textcolor{keywordtype}{int} i = 0; i < 50; i++ ) \{
+                L->insert( names[ i % 10 ], names[ i % 9 ] );
+        \}
+        unit_assert( \textcolor{stringliteral}{"stress test a little"}, unit\_data\_1cycle\_g.compare( dump( L 
+      ) ) == 0 );
+
+        \textcolor{comment}{// Setup a little for the third test which verifies that scoped reference
+      s inserted into the cache don't disappear.}
+        L3 = \textcolor{keyword}{new} unit_lru_type3(2);
+        \textcolor{keywordflow}{for}( \textcolor{keywordtype}{int} i = 0; i < 10; i++ ) \{
+                test\_big\_data B;
+                snprintf( B.buffer, 1000, \textcolor{stringliteral}{"%d\(\backslash\)n"}, i );
+                L3->insert( i, B );
+        \}
+
+        unit_pass();
+\}
+\end{DoxyCode}
+
+
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{lru__cache_8cpp_a744e96854fa4e01ab945ea9ad43b39ca_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{lru\_\-cache.cpp@{lru\_\-cache.cpp}!DEFINE\_\-TEST@{DEFINE\_\-TEST}}
+\index{DEFINE\_\-TEST@{DEFINE\_\-TEST}!lru_cache.cpp@{lru\_\-cache.cpp}}
+\subsubsection[{DEFINE\_\-TEST}]{\setlength{\rightskip}{0pt plus 5cm}DEFINE\_\-TEST (
+\begin{DoxyParamCaption}
+\item[{lru\_\-cache\_\-stress}]{}
+\end{DoxyParamCaption}
+)}\label{lru__cache_8cpp_a92b18aa64a57a02c1adc3d1b98924bb5}
+\begin{Desc}
+\item[{\bf Test}]Insert lots of objects and benchmark the rate. \end{Desc}
+
+
+Definition at line {\bf 123} of file {\bf lru\_\-cache.cpp}.
+
+
+
+References {\bf cputime()}, {\bf LRUCache$<$ Key, Data, Sizefn $>$::insert()}, {\bf print\_\-cputime()}, and {\bf unit\_\-pass}.
+
+
+
+
+\begin{DoxyCode}
+                                \{
+        \textcolor{comment}{// Stress test the implementation a little more using no objects}
+        unit_lru_type2 *L2 = \textcolor{keyword}{new} unit_lru_type2(5);
+        \textcolor{keywordtype}{double} t0 = cputime();
+        \textcolor{keywordflow}{for}( \textcolor{keywordtype}{int} i = 0; i < TRANSACTIONS; i++ ) \{
+                L2->insert( i, i-1 );
+        \}
+        \textcolor{keywordtype}{double} t1 = cputime();
+        \textcolor{keyword}{delete} L2;
+        print_cputime( \textcolor{stringliteral}{"(int,int) inserts"}, t1-t0, TRANSACTIONS );
+        unit_pass();
+\}
+\end{DoxyCode}
+
+
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{lru__cache_8cpp_a92b18aa64a57a02c1adc3d1b98924bb5_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{lru\_\-cache.cpp@{lru\_\-cache.cpp}!DEFINE\_\-TEST@{DEFINE\_\-TEST}}
+\index{DEFINE\_\-TEST@{DEFINE\_\-TEST}!lru_cache.cpp@{lru\_\-cache.cpp}}
+\subsubsection[{DEFINE\_\-TEST}]{\setlength{\rightskip}{0pt plus 5cm}DEFINE\_\-TEST (
+\begin{DoxyParamCaption}
+\item[{lru\_\-cache\_\-scope\_\-check}]{}
+\end{DoxyParamCaption}
+)}\label{lru__cache_8cpp_a6288e1898f19682582c52a5005e10ada}
+\begin{Desc}
+\item[{\bf Test}]Check that objects inserted in a different scope are still there. \end{Desc}
+
+
+Definition at line {\bf 137} of file {\bf lru\_\-cache.cpp}.
+
+
+
+References {\bf LRUCache$<$ Key, Data, Sizefn $>$::fetch\_\-ptr()}, {\bf unit\_\-assert}, and {\bf unit\_\-pass}.
+
+
+
+
+\begin{DoxyCode}
+                                     \{
+        test\_big\_data* B = L3->fetch_ptr( 9 );
+        unit_assert( \textcolor{stringliteral}{"scope check element L3[1]"}, ( strncmp( B->buffer, \textcolor{stringliteral}{"9\(\backslash\)n"}, 10
+      00 ) == 0 ) );
+        B = L3->fetch_ptr( 8 );
+        unit_assert( \textcolor{stringliteral}{"scope check element L3[2]"}, ( strncmp( B->buffer, \textcolor{stringliteral}{"8\(\backslash\)n"}, 10
+      00 ) == 0 ) );
+        \textcolor{keyword}{delete} L3;
+        unit_pass();
+\}
+\end{DoxyCode}
+
+
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{lru__cache_8cpp_a6288e1898f19682582c52a5005e10ada_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{lru\_\-cache.cpp@{lru\_\-cache.cpp}!DEFINE\_\-TEST@{DEFINE\_\-TEST}}
+\index{DEFINE\_\-TEST@{DEFINE\_\-TEST}!lru_cache.cpp@{lru\_\-cache.cpp}}
+\subsubsection[{DEFINE\_\-TEST}]{\setlength{\rightskip}{0pt plus 5cm}DEFINE\_\-TEST (
+\begin{DoxyParamCaption}
+\item[{lru\_\-cache\_\-threads}]{}
+\end{DoxyParamCaption}
+)}\label{lru__cache_8cpp_a7403186cac9b12671fdda33ea88bceb0}
+\begin{Desc}
+\item[{\bf Test}]Check for badness with multithreaded access, this is more of a stress test than an empirical test. \end{Desc}
+
+
+Definition at line {\bf 164} of file {\bf lru\_\-cache.cpp}.
+
+
+
+References {\bf cputime()}, {\bf print\_\-cputime()}, and {\bf unit\_\-pass}.
+
+
+
+
+\begin{DoxyCode}
+                                 \{
+        L4 = \textcolor{keyword}{new} unit_lru_type2( 20 );
+        boost::thread\_group thrds;
+        \textcolor{keywordtype}{double} t0 = cputime();
+        \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=0; i < THREAD\_COUNT; ++i)
+                thrds.create\_thread(&insert\_junk);
+        thrds.join\_all();
+        \textcolor{keywordtype}{double} t1 = cputime();
+        print_cputime( \textcolor{stringliteral}{"(int,int) multithreaded inserts"}, t1-t0, THREAD\_TRANS*THR
+      EAD\_COUNT*4 );
+        \textcolor{keyword}{delete} L4;
+        unit_pass();
+\}
+\end{DoxyCode}
+
+
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{lru__cache_8cpp_a7403186cac9b12671fdda33ea88bceb0_cgraph}
+\end{center}
+\end{figure}
+
+

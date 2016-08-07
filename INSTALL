@@ -1,0 +1,17 @@
+In the steps below, compilation is not required.  You can simply use
+the src/lru_cache.h file in your project directly; there are no object
+files needed.  In order to run the unit tests and see it in action, do
+the following:
+
+_____________________
+Installation from SVN
+
+ $ make -f Makefile.cvs
+ $ ./configure
+ $ make
+
+_________________________
+Installation from tarball
+
+ $ ./configure
+ $ make

@@ -1,0 +1,418 @@
+.TH "LRUCache" 3 "Sun May 15 2011" "Version 1.3" "C++ LRU Cache Template" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LRUCache \- 
+.PP
+Template cache with an LRU removal policy.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <lru_cache.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef std::list< std::pair< Key, Data > > \fBList\fP"
+.br
+.RI "\fIMain cache storage typedef. \fP"
+.ti -1c
+.RI "typedef List::iterator \fBList_Iter\fP"
+.br
+.RI "\fIMain cache iterator. \fP"
+.ti -1c
+.RI "typedef List::const_iterator \fBList_cIter\fP"
+.br
+.RI "\fIMain cache iterator (const). \fP"
+.ti -1c
+.RI "typedef std::vector< Key > \fBKey_List\fP"
+.br
+.RI "\fIList of keys. \fP"
+.ti -1c
+.RI "typedef Key_List::iterator \fBKey_List_Iter\fP"
+.br
+.RI "\fIMain cache iterator. \fP"
+.ti -1c
+.RI "typedef Key_List::const_iterator \fBKey_List_cIter\fP"
+.br
+.RI "\fIMain cache iterator (const). \fP"
+.ti -1c
+.RI "typedef std::map< Key, \fBList_Iter\fP > \fBMap\fP"
+.br
+.RI "\fIIndex typedef. \fP"
+.ti -1c
+.RI "typedef std::pair< Key, \fBList_Iter\fP > \fBPair\fP"
+.br
+.RI "\fIPair of Map elements. \fP"
+.ti -1c
+.RI "typedef Map::iterator \fBMap_Iter\fP"
+.br
+.RI "\fIIndex iterator. \fP"
+.ti -1c
+.RI "typedef Map::const_iterator \fBMap_cIter\fP"
+.br
+.RI "\fIIndex iterator (const). \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLRUCache\fP (const unsigned long Size)"
+.br
+.RI "\fICreates a cache that holds at most Size worth of elements. \fP"
+.ti -1c
+.RI "\fB~LRUCache\fP ()"
+.br
+.RI "\fIDestructor - cleans up both index and storage. \fP"
+.ti -1c
+.RI "const unsigned long \fBsize\fP (void) const "
+.br
+.RI "\fIGets the current abstract size of the cache. \fP"
+.ti -1c
+.RI "const unsigned long \fBmax_size\fP (void) const "
+.br
+.RI "\fIGets the maximum sbstract size of the cache. \fP"
+.ti -1c
+.RI "void \fBclear\fP (void)"
+.br
+.RI "\fIClears all storage and indices. \fP"
+.ti -1c
+.RI "bool \fBexists\fP (const Key &key)"
+.br
+.RI "\fIChecks for the existance of a key in the cache. \fP"
+.ti -1c
+.RI "void \fBremove\fP (const Key &key)"
+.br
+.RI "\fIRemoves a key-data pair from the cache. \fP"
+.ti -1c
+.RI "void \fBtouch\fP (const Key &key)"
+.br
+.RI "\fITouches a key in the Cache and makes it the most recently used. \fP"
+.ti -1c
+.RI "Data * \fBfetch_ptr\fP (const Key &key, bool touch=true)"
+.br
+.RI "\fIFetches a pointer to cache data. \fP"
+.ti -1c
+.RI "Data \fBfetch\fP (const Key &key, bool touch_data=true)"
+.br
+.RI "\fIFetches a copy of cached data. \fP"
+.ti -1c
+.RI "bool \fBfetch\fP (const Key &key, Data &data, bool touch_data=true)"
+.br
+.RI "\fIFetches a pointer to cache data. \fP"
+.ti -1c
+.RI "void \fBinsert\fP (const Key &key, const Data &data)"
+.br
+.RI "\fIInserts a key-data pair into the cache and removes entries if neccessary. \fP"
+.ti -1c
+.RI "const \fBKey_List\fP \fBget_all_keys\fP (void)"
+.br
+.RI "\fIGet a list of keys. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class Key, class Data, class Sizefn = Countfn< Data >> class LRUCache< Key, Data, Sizefn >"
+Template cache with an LRU removal policy. 
+
+\fB\fP
+.RS 4
+This template creats a simple collection of key-value pairs that grows until the size specified at construction is reached and then begins discard the Least Recently Used element on each insertion. 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+.PP
+\fBlru_example.cpp\fP.
+.PP
+Definition at line 73 of file lru_cache.h.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class Key , class Data , class Sizefn  = Countfn< Data >> \fBLRUCache\fP< Key, Data, Sizefn >::\fBLRUCache\fP (const unsigned long Size)\fC [inline]\fP"
+.PP
+Creates a cache that holds at most Size worth of elements. \fBParameters:\fP
+.RS 4
+\fISize\fP maximum size of cache 
+.RE
+.PP
+
+.PP
+Definition at line 101 of file lru_cache.h.
+.PP
+.nf
+                                                     :
+                                _max_size( Size ),
+                                _curr_size( 0 )
+                                {}
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class Key , class Data , class Sizefn  = Countfn< Data >> const unsigned long \fBLRUCache\fP< Key, Data, Sizefn >::size (void) const\fC [inline]\fP"
+.PP
+Gets the current abstract size of the cache. \fBReturns:\fP
+.RS 4
+current size 
+.RE
+.PP
+
+.PP
+Definition at line 112 of file lru_cache.h.
+.PP
+Referenced by DEFINE_TEST().
+.PP
+.nf
+{ return _curr_size; }
+.fi
+.SS "template<class Key , class Data , class Sizefn  = Countfn< Data >> const unsigned long \fBLRUCache\fP< Key, Data, Sizefn >::max_size (void) const\fC [inline]\fP"
+.PP
+Gets the maximum sbstract size of the cache. \fBReturns:\fP
+.RS 4
+maximum size 
+.RE
+.PP
+
+.PP
+Definition at line 117 of file lru_cache.h.
+.PP
+Referenced by DEFINE_TEST().
+.PP
+.nf
+{ return _max_size; }
+.fi
+.SS "template<class Key , class Data , class Sizefn  = Countfn< Data >> bool \fBLRUCache\fP< Key, Data, Sizefn >::exists (const Key & key)\fC [inline]\fP"
+.PP
+Checks for the existance of a key in the cache. \fBParameters:\fP
+.RS 4
+\fIkey\fP to check for 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool indicating whether or not the key was found. 
+.RE
+.PP
+
+.PP
+Definition at line 131 of file lru_cache.h.
+.PP
+Referenced by DEFINE_TEST().
+.PP
+.nf
+                                                     {
+                        SCOPED_MUTEX;
+#else
+                inline bool exists( const Key &key ) const {
+#endif
+                        return _index.find( key ) != _index.end();
+                }
+.fi
+.SS "template<class Key , class Data , class Sizefn  = Countfn< Data >> void \fBLRUCache\fP< Key, Data, Sizefn >::remove (const Key & key)\fC [inline]\fP"
+.PP
+Removes a key-data pair from the cache. \fBParameters:\fP
+.RS 4
+\fIkey\fP to be removed 
+.RE
+.PP
+
+.PP
+Definition at line 142 of file lru_cache.h.
+.PP
+Referenced by DEFINE_TEST().
+.PP
+.nf
+                                                     {
+#ifdef _REENTRANT
+                        SCOPED_MUTEX;
+#endif
+                        Map_Iter miter = _index.find( key );
+                        if( miter == _index.end() ) return;
+                        _remove( miter );
+                }
+.fi
+.SS "template<class Key , class Data , class Sizefn  = Countfn< Data >> void \fBLRUCache\fP< Key, Data, Sizefn >::touch (const Key & key)\fC [inline]\fP"
+.PP
+Touches a key in the Cache and makes it the most recently used. \fBParameters:\fP
+.RS 4
+\fIkey\fP to be touched 
+.RE
+.PP
+
+.PP
+Definition at line 154 of file lru_cache.h.
+.PP
+Referenced by DEFINE_TEST().
+.PP
+.nf
+                                                    {
+                        SCOPED_MUTEX;
+                        _touch( key );
+                }
+.fi
+.SS "template<class Key , class Data , class Sizefn  = Countfn< Data >> Data* \fBLRUCache\fP< Key, Data, Sizefn >::fetch_ptr (const Key & key, bool touch = \fCtrue\fP)\fC [inline]\fP"
+.PP
+Fetches a pointer to cache data. \fBParameters:\fP
+.RS 4
+\fIkey\fP to fetch data for 
+.br
+\fItouch\fP whether or not to touch the data 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+pointer to data or NULL on error 
+.RE
+.PP
+
+.PP
+Definition at line 164 of file lru_cache.h.
+.PP
+Referenced by DEFINE_TEST().
+.PP
+.nf
+                                                                            {
+                        SCOPED_MUTEX;
+                        Map_Iter miter = _index.find( key );
+                        if( miter == _index.end() ) return NULL;
+                        _touch( key );
+                        return &(miter->second->second);
+                }
+.fi
+.SS "template<class Key , class Data , class Sizefn  = Countfn< Data >> Data \fBLRUCache\fP< Key, Data, Sizefn >::fetch (const Key & key, bool touch_data = \fCtrue\fP)\fC [inline]\fP"
+.PP
+Fetches a copy of cached data. \fBParameters:\fP
+.RS 4
+\fIkey\fP to fetch data for 
+.br
+\fItouch_data\fP whether or not to touch the data 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+copy of the data or an empty Data object if not found 
+.RE
+.PP
+
+.PP
+Definition at line 177 of file lru_cache.h.
+.PP
+Referenced by DEFINE_TEST(), and dump().
+.PP
+.nf
+                                                                            {
+                        SCOPED_MUTEX;
+                        Map_Iter miter = _index.find( key );
+                        if( miter == _index.end() )
+                                return Data();
+                        Data tmp = miter->second->second;
+                        if( touch_data )
+                                _touch( key );
+                        return tmp;
+                }
+.fi
+.SS "template<class Key , class Data , class Sizefn  = Countfn< Data >> bool \fBLRUCache\fP< Key, Data, Sizefn >::fetch (const Key & key, Data & data, bool touch_data = \fCtrue\fP)\fC [inline]\fP"
+.PP
+Fetches a pointer to cache data. \fBParameters:\fP
+.RS 4
+\fIkey\fP to fetch data for 
+.br
+\fIdata\fP to fetch data into 
+.br
+\fItouch_data\fP whether or not to touch the data 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+whether or not data was filled in 
+.RE
+.PP
+
+.PP
+Definition at line 194 of file lru_cache.h.
+.PP
+.nf
+                                                                                        {
+                        SCOPED_MUTEX;
+                        Map_Iter miter = _index.find( key );
+                        if( miter == _index.end() ) return false;
+                        if( touch_data )
+                          _touch( key );
+                        data = miter->second->second;
+                        return true;
+                }
+.fi
+.SS "template<class Key , class Data , class Sizefn  = Countfn< Data >> void \fBLRUCache\fP< Key, Data, Sizefn >::insert (const Key & key, const Data & data)\fC [inline]\fP"
+.PP
+Inserts a key-data pair into the cache and removes entries if neccessary. \fBParameters:\fP
+.RS 4
+\fIkey\fP object key for insertion 
+.br
+\fIdata\fP object data for insertion 
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+This function checks key existance and touches the key if it already exists. 
+.RE
+.PP
+
+.PP
+Definition at line 209 of file lru_cache.h.
+.PP
+Referenced by DEFINE_TEST().
+.PP
+.nf
+                                                                       {
+                        SCOPED_MUTEX;
+                        // Touch the key, if it exists, then replace the content.
+                        Map_Iter miter = _touch( key );
+                        if( miter != _index.end() )
+                                _remove( miter );
+
+                        // Ok, do the actual insert at the head of the list
+                        _list.push_front( std::make_pair( key, data ) );
+                        List_Iter liter = _list.begin();
+
+                        // Store the index
+                        _index.insert( std::make_pair( key, liter ) );
+                        _curr_size += Sizefn()( data );
+
+                        // Check to see if we need to remove an element due to exceeding max_size
+                        while( _curr_size > _max_size ) {
+                                // Remove the last element.
+                                liter = _list.end();
+                                --liter;
+                                _remove( liter->first );
+                        }
+                }
+.fi
+.SS "template<class Key , class Data , class Sizefn  = Countfn< Data >> const \fBKey_List\fP \fBLRUCache\fP< Key, Data, Sizefn >::get_all_keys (void)\fC [inline]\fP"
+.PP
+Get a list of keys. \fBReturns:\fP
+.RS 4
+list of the current keys. 
+.RE
+.PP
+
+.PP
+Definition at line 236 of file lru_cache.h.
+.PP
+Referenced by dump().
+.PP
+.nf
+                                                           {
+                        SCOPED_MUTEX;
+                        Key_List ret;
+                        for( List_cIter liter = _list.begin(); liter != _list.end(); liter++ )
+                                ret.push_back( liter->first );
+                        return ret;
+                }
+.fi
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for C++ LRU Cache Template from the source code.

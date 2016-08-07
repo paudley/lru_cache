@@ -1,0 +1,12 @@
+AC_INIT(configure.ac)
+
+AM_CONFIG_HEADER(config.h)
+AM_INIT_AUTOMAKE(lru_cache, 0.5)
+
+AC_LANG_CPLUSPLUS
+AC_PROG_CXX
+AM_PROG_LIBTOOL
+
+AX_BOOST_THREAD
+
+AC_OUTPUT(Makefile src/Makefile)

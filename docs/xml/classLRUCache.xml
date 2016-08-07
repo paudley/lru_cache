@@ -1,0 +1,928 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="classLRUCache" kind="class" prot="public">
+    <compoundname>LRUCache</compoundname>
+    <includes refid="lru__cache_8h" local="no">lru_cache.h</includes>
+    <templateparamlist>
+      <param>
+        <type>class Key</type>
+      </param>
+      <param>
+        <type>class Data</type>
+      </param>
+      <param>
+        <type>class Sizefn</type>
+        <defval>Countfn&lt; Data &gt;</defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classLRUCache_1ad0c8ac49227b80937fa8f6a2edd8d67f" prot="public" static="no">
+        <type>std::list&lt; std::pair&lt; Key, Data &gt; &gt;</type>
+        <definition>typedef std::list&lt; std::pair&lt; Key, Data &gt; &gt; LRUCache&lt; Key, Data, Sizefn &gt;::List</definition>
+        <argsstring></argsstring>
+        <name>List</name>
+        <briefdescription>
+<para>Main cache storage typedef. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="75" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classLRUCache_1a3c656ba5944009b260049c8a67e42037" prot="public" static="no">
+        <type>List::iterator</type>
+        <definition>typedef List::iterator LRUCache&lt; Key, Data, Sizefn &gt;::List_Iter</definition>
+        <argsstring></argsstring>
+        <name>List_Iter</name>
+        <briefdescription>
+<para>Main cache iterator. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="76" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classLRUCache_1a7a9d5fc54bec471ff96c5aefab17acf9" prot="public" static="no">
+        <type>List::const_iterator</type>
+        <definition>typedef List::const_iterator LRUCache&lt; Key, Data, Sizefn &gt;::List_cIter</definition>
+        <argsstring></argsstring>
+        <name>List_cIter</name>
+        <briefdescription>
+<para>Main cache iterator (const). </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="77" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classLRUCache_1aaa32d864b92c5bb8df559b363a69cf21" prot="public" static="no">
+        <type>std::vector&lt; Key &gt;</type>
+        <definition>typedef std::vector&lt; Key &gt; LRUCache&lt; Key, Data, Sizefn &gt;::Key_List</definition>
+        <argsstring></argsstring>
+        <name>Key_List</name>
+        <briefdescription>
+<para>List of keys. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="78" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classLRUCache_1a2504cf65d69d046d4010a4102e2c17c8" prot="public" static="no">
+        <type>Key_List::iterator</type>
+        <definition>typedef Key_List::iterator LRUCache&lt; Key, Data, Sizefn &gt;::Key_List_Iter</definition>
+        <argsstring></argsstring>
+        <name>Key_List_Iter</name>
+        <briefdescription>
+<para>Main cache iterator. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="79" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classLRUCache_1a5bfc5b2fb49045d46214f92e8019307f" prot="public" static="no">
+        <type>Key_List::const_iterator</type>
+        <definition>typedef Key_List::const_iterator LRUCache&lt; Key, Data, Sizefn &gt;::Key_List_cIter</definition>
+        <argsstring></argsstring>
+        <name>Key_List_cIter</name>
+        <briefdescription>
+<para>Main cache iterator (const). </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="80" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classLRUCache_1acf7b527935fba37e33b8f2e6de92bfb0" prot="public" static="no">
+        <type>std::map&lt; Key, <ref refid="classLRUCache_1a3c656ba5944009b260049c8a67e42037" kindref="member">List_Iter</ref> &gt;</type>
+        <definition>typedef std::map&lt; Key, List_Iter &gt; LRUCache&lt; Key, Data, Sizefn &gt;::Map</definition>
+        <argsstring></argsstring>
+        <name>Map</name>
+        <briefdescription>
+<para>Index typedef. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="81" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classLRUCache_1aa10db4fd28c9946c2ef845e2f56c48bf" prot="public" static="no">
+        <type>std::pair&lt; Key, <ref refid="classLRUCache_1a3c656ba5944009b260049c8a67e42037" kindref="member">List_Iter</ref> &gt;</type>
+        <definition>typedef std::pair&lt; Key, List_Iter &gt; LRUCache&lt; Key, Data, Sizefn &gt;::Pair</definition>
+        <argsstring></argsstring>
+        <name>Pair</name>
+        <briefdescription>
+<para>Pair of Map elements. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="82" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classLRUCache_1aa95c01d582d31a9295b84caf12d42ef4" prot="public" static="no">
+        <type>Map::iterator</type>
+        <definition>typedef Map::iterator LRUCache&lt; Key, Data, Sizefn &gt;::Map_Iter</definition>
+        <argsstring></argsstring>
+        <name>Map_Iter</name>
+        <briefdescription>
+<para>Index iterator. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="83" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classLRUCache_1a77cae4f619439bdf7cb7098ed87c3583" prot="public" static="no">
+        <type>Map::const_iterator</type>
+        <definition>typedef Map::const_iterator LRUCache&lt; Key, Data, Sizefn &gt;::Map_cIter</definition>
+        <argsstring></argsstring>
+        <name>Map_cIter</name>
+        <briefdescription>
+<para>Index iterator (const). </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="84" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classLRUCache_1ad0c8ac49227b80937fa8f6a2edd8d67f" prot="public" static="no">
+        <type>std::list&lt; std::pair&lt; Key, Data &gt; &gt;</type>
+        <definition>typedef std::list&lt; std::pair&lt; Key, Data &gt; &gt; LRUCache&lt; Key, Data, Sizefn &gt;::List</definition>
+        <argsstring></argsstring>
+        <name>List</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12199" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12199" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classLRUCache_1a3c656ba5944009b260049c8a67e42037" prot="public" static="no">
+        <type>List::iterator</type>
+        <definition>typedef List::iterator LRUCache&lt; Key, Data, Sizefn &gt;::List_Iter</definition>
+        <argsstring></argsstring>
+        <name>List_Iter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12200" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12200" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classLRUCache_1a7a9d5fc54bec471ff96c5aefab17acf9" prot="public" static="no">
+        <type>List::const_iterator</type>
+        <definition>typedef List::const_iterator LRUCache&lt; Key, Data, Sizefn &gt;::List_cIter</definition>
+        <argsstring></argsstring>
+        <name>List_cIter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12201" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12201" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classLRUCache_1aaa32d864b92c5bb8df559b363a69cf21" prot="public" static="no">
+        <type>std::vector&lt; Key &gt;</type>
+        <definition>typedef std::vector&lt; Key &gt; LRUCache&lt; Key, Data, Sizefn &gt;::Key_List</definition>
+        <argsstring></argsstring>
+        <name>Key_List</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12202" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12202" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classLRUCache_1a2504cf65d69d046d4010a4102e2c17c8" prot="public" static="no">
+        <type>Key_List::iterator</type>
+        <definition>typedef Key_List::iterator LRUCache&lt; Key, Data, Sizefn &gt;::Key_List_Iter</definition>
+        <argsstring></argsstring>
+        <name>Key_List_Iter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12203" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12203" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classLRUCache_1a5bfc5b2fb49045d46214f92e8019307f" prot="public" static="no">
+        <type>Key_List::const_iterator</type>
+        <definition>typedef Key_List::const_iterator LRUCache&lt; Key, Data, Sizefn &gt;::Key_List_cIter</definition>
+        <argsstring></argsstring>
+        <name>Key_List_cIter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12204" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12204" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classLRUCache_1acf7b527935fba37e33b8f2e6de92bfb0" prot="public" static="no">
+        <type>std::map&lt; Key, <ref refid="classLRUCache_1a3c656ba5944009b260049c8a67e42037" kindref="member">List_Iter</ref> &gt;</type>
+        <definition>typedef std::map&lt; Key, List_Iter &gt; LRUCache&lt; Key, Data, Sizefn &gt;::Map</definition>
+        <argsstring></argsstring>
+        <name>Map</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12205" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12205" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classLRUCache_1aa10db4fd28c9946c2ef845e2f56c48bf" prot="public" static="no">
+        <type>std::pair&lt; Key, <ref refid="classLRUCache_1a3c656ba5944009b260049c8a67e42037" kindref="member">List_Iter</ref> &gt;</type>
+        <definition>typedef std::pair&lt; Key, List_Iter &gt; LRUCache&lt; Key, Data, Sizefn &gt;::Pair</definition>
+        <argsstring></argsstring>
+        <name>Pair</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12206" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12206" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classLRUCache_1aa95c01d582d31a9295b84caf12d42ef4" prot="public" static="no">
+        <type>Map::iterator</type>
+        <definition>typedef Map::iterator LRUCache&lt; Key, Data, Sizefn &gt;::Map_Iter</definition>
+        <argsstring></argsstring>
+        <name>Map_Iter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12207" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12207" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classLRUCache_1a77cae4f619439bdf7cb7098ed87c3583" prot="public" static="no">
+        <type>Map::const_iterator</type>
+        <definition>typedef Map::const_iterator LRUCache&lt; Key, Data, Sizefn &gt;::Map_cIter</definition>
+        <argsstring></argsstring>
+        <name>Map_cIter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12208" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12208" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classLRUCache_1a814a6e3b186cc44a7787bade5f3a752b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>LRUCache&lt; Key, Data, Sizefn &gt;::LRUCache</definition>
+        <argsstring>(const unsigned long Size)</argsstring>
+        <name>LRUCache</name>
+        <param>
+          <type>const unsigned long</type>
+          <declname>Size</declname>
+        </param>
+        <briefdescription>
+<para>Creates a cache that holds at most Size worth of elements. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>Size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>maximum size of cache </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="104" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="101" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a64ae7e7d3ea41f536abcd7c40033d2a5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>LRUCache&lt; Key, Data, Sizefn &gt;::~LRUCache</definition>
+        <argsstring>()</argsstring>
+        <name>~LRUCache</name>
+        <briefdescription>
+<para>Destructor - cleans up both index and storage. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="107" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="107" bodyend="107"/>
+        <references refid="classLRUCache_1ad59b44b509fcef46b3666695c5e4a1aa" compoundref="lru__cache_8h" startline="120" endline="124">LRUCache&lt; Key, Data, Sizefn &gt;::clear</references>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a3a521aa7646757957a53850db90ad289" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const unsigned long</type>
+        <definition>const unsigned long LRUCache&lt; Key, Data, Sizefn &gt;::size</definition>
+        <argsstring>(void) const </argsstring>
+        <name>size</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the current abstract size of the cache. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>current size </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="112" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="112" bodyend="112"/>
+        <referencedby refid="lru__cache_8cpp_1a744e96854fa4e01ab945ea9ad43b39ca" compoundref="lru__cache_8cpp" startline="50" endline="119">DEFINE_TEST</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a3b625a8778e0dc1e5e69da3c331b9751" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const unsigned long</type>
+        <definition>const unsigned long LRUCache&lt; Key, Data, Sizefn &gt;::max_size</definition>
+        <argsstring>(void) const </argsstring>
+        <name>max_size</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the maximum sbstract size of the cache. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>maximum size </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="117" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="117" bodyend="117"/>
+        <referencedby refid="lru__cache_8cpp_1a744e96854fa4e01ab945ea9ad43b39ca" compoundref="lru__cache_8cpp" startline="50" endline="119">DEFINE_TEST</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1ad59b44b509fcef46b3666695c5e4a1aa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void LRUCache&lt; Key, Data, Sizefn &gt;::clear</definition>
+        <argsstring>(void)</argsstring>
+        <name>clear</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Clears all storage and indices. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="120" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="120" bodyend="124"/>
+        <referencedby refid="classLRUCache_1a64ae7e7d3ea41f536abcd7c40033d2a5" compoundref="lru__cache_8h" startline="107" endline="107">LRUCache&lt; Key, Data, Sizefn &gt;::~LRUCache</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1aa095f7527b11c4fb1bfad28bc06c91a6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool LRUCache&lt; Key, Data, Sizefn &gt;::exists</definition>
+        <argsstring>(const Key &amp;key)</argsstring>
+        <name>exists</name>
+        <param>
+          <type>const Key &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Checks for the existance of a key in the cache. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to check for </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool indicating whether or not the key was found. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="131" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="131" bodyend="137"/>
+        <referencedby refid="lru__cache_8cpp_1a744e96854fa4e01ab945ea9ad43b39ca" compoundref="lru__cache_8cpp" startline="50" endline="119">DEFINE_TEST</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a34e974cf87c08620131a9b006443e93b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void LRUCache&lt; Key, Data, Sizefn &gt;::remove</definition>
+        <argsstring>(const Key &amp;key)</argsstring>
+        <name>remove</name>
+        <param>
+          <type>const Key &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Removes a key-data pair from the cache. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to be removed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="142" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="142" bodyend="149"/>
+        <referencedby refid="lru__cache_8cpp_1a744e96854fa4e01ab945ea9ad43b39ca" compoundref="lru__cache_8cpp" startline="50" endline="119">DEFINE_TEST</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a844206e9e2fde04aaf11c638725f2c29" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void LRUCache&lt; Key, Data, Sizefn &gt;::touch</definition>
+        <argsstring>(const Key &amp;key)</argsstring>
+        <name>touch</name>
+        <param>
+          <type>const Key &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Touches a key in the Cache and makes it the most recently used. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to be touched </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="154" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="154" bodyend="157"/>
+        <referencedby refid="lru__cache_8cpp_1a744e96854fa4e01ab945ea9ad43b39ca" compoundref="lru__cache_8cpp" startline="50" endline="119">DEFINE_TEST</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a8531c23ed890dac39debfb9f878cab9d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Data *</type>
+        <definition>Data* LRUCache&lt; Key, Data, Sizefn &gt;::fetch_ptr</definition>
+        <argsstring>(const Key &amp;key, bool touch=true)</argsstring>
+        <name>fetch_ptr</name>
+        <param>
+          <type>const Key &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>touch</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Fetches a pointer to cache data. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to fetch data for </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>touch</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>whether or not to touch the data </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>pointer to data or NULL on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="164" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="164" bodyend="170"/>
+        <referencedby refid="lru__cache_8cpp_1a6288e1898f19682582c52a5005e10ada" compoundref="lru__cache_8cpp" startline="137" endline="144">DEFINE_TEST</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a5896c9481fb649f5570fb8677c33b49c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Data</type>
+        <definition>Data LRUCache&lt; Key, Data, Sizefn &gt;::fetch</definition>
+        <argsstring>(const Key &amp;key, bool touch_data=true)</argsstring>
+        <name>fetch</name>
+        <param>
+          <type>const Key &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>touch_data</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Fetches a copy of cached data. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to fetch data for </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>touch_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>whether or not to touch the data </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>copy of the data or an empty Data object if not found </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="177" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="177" bodyend="186"/>
+        <referencedby refid="lru__cache_8cpp_1a744e96854fa4e01ab945ea9ad43b39ca" compoundref="lru__cache_8cpp" startline="50" endline="119">DEFINE_TEST</referencedby>
+        <referencedby refid="lru__cache_8cpp_1a5cc6945fc2f7ed6a7c8481972f4e172c" compoundref="lru__cache_8cpp" startline="31" endline="42">dump</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a85c5cb904b7c8ed7f85a6a7162740aa5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool LRUCache&lt; Key, Data, Sizefn &gt;::fetch</definition>
+        <argsstring>(const Key &amp;key, Data &amp;data, bool touch_data=true)</argsstring>
+        <name>fetch</name>
+        <param>
+          <type>const Key &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>Data &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>touch_data</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Fetches a pointer to cache data. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to fetch data for </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to fetch data into </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>touch_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>whether or not to touch the data </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>whether or not data was filled in </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="194" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="194" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a47523c87a56e9bd718566b2659366fd1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void LRUCache&lt; Key, Data, Sizefn &gt;::insert</definition>
+        <argsstring>(const Key &amp;key, const Data &amp;data)</argsstring>
+        <name>insert</name>
+        <param>
+          <type>const Key &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const Data &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Inserts a key-data pair into the cache and removes entries if neccessary. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>object key for insertion </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>object data for insertion </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>This function checks key existance and touches the key if it already exists. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="209" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="209" bodyend="231"/>
+        <referencedby refid="lru__cache_8cpp_1a744e96854fa4e01ab945ea9ad43b39ca" compoundref="lru__cache_8cpp" startline="50" endline="119">DEFINE_TEST</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a3ca261ee9025168c081883b6dacc4131" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classLRUCache_1aaa32d864b92c5bb8df559b363a69cf21" kindref="member">Key_List</ref></type>
+        <definition>const Key_List LRUCache&lt; Key, Data, Sizefn &gt;::get_all_keys</definition>
+        <argsstring>(void)</argsstring>
+        <name>get_all_keys</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Get a list of keys. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>list of the current keys. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="236" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="236" bodyend="242"/>
+        <referencedby refid="lru__cache_8cpp_1a5cc6945fc2f7ed6a7c8481972f4e172c" compoundref="lru__cache_8cpp" startline="31" endline="42">dump</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a814a6e3b186cc44a7787bade5f3a752b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>LRUCache&lt; Key, Data, Sizefn &gt;::LRUCache</definition>
+        <argsstring>(const unsigned long Size)</argsstring>
+        <name>LRUCache</name>
+        <param>
+          <type>const unsigned long</type>
+          <declname>Size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12228" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12225" bodyend="12228"/>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a64ae7e7d3ea41f536abcd7c40033d2a5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>LRUCache&lt; Key, Data, Sizefn &gt;::~LRUCache</definition>
+        <argsstring>()</argsstring>
+        <name>~LRUCache</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12231" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12231" bodyend="12231"/>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a3a521aa7646757957a53850db90ad289" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const unsigned long</type>
+        <definition>const unsigned long LRUCache&lt; Key, Data, Sizefn &gt;::size</definition>
+        <argsstring>(void) const </argsstring>
+        <name>size</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12236" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12236" bodyend="12236"/>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a3b625a8778e0dc1e5e69da3c331b9751" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const unsigned long</type>
+        <definition>const unsigned long LRUCache&lt; Key, Data, Sizefn &gt;::max_size</definition>
+        <argsstring>(void) const </argsstring>
+        <name>max_size</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12241" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12241" bodyend="12241"/>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1ad59b44b509fcef46b3666695c5e4a1aa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void LRUCache&lt; Key, Data, Sizefn &gt;::clear</definition>
+        <argsstring>(void)</argsstring>
+        <name>clear</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12244" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12244" bodyend="12248"/>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a43936b4a4887885d753c1f9495973235" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool LRUCache&lt; Key, Data, Sizefn &gt;::exists</definition>
+        <argsstring>(const Key &amp;key) const </argsstring>
+        <name>exists</name>
+        <param>
+          <type>const Key &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12250" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12250" bodyend="12253"/>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a34e974cf87c08620131a9b006443e93b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void LRUCache&lt; Key, Data, Sizefn &gt;::remove</definition>
+        <argsstring>(const Key &amp;key)</argsstring>
+        <name>remove</name>
+        <param>
+          <type>const Key &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12258" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12258" bodyend="12265"/>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a844206e9e2fde04aaf11c638725f2c29" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void LRUCache&lt; Key, Data, Sizefn &gt;::touch</definition>
+        <argsstring>(const Key &amp;key)</argsstring>
+        <name>touch</name>
+        <param>
+          <type>const Key &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12270" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12270" bodyend="12273"/>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a8531c23ed890dac39debfb9f878cab9d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Data *</type>
+        <definition>Data* LRUCache&lt; Key, Data, Sizefn &gt;::fetch_ptr</definition>
+        <argsstring>(const Key &amp;key, bool touch=true)</argsstring>
+        <name>fetch_ptr</name>
+        <param>
+          <type>const Key &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>touch</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12280" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12280" bodyend="12286"/>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a5896c9481fb649f5570fb8677c33b49c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Data</type>
+        <definition>Data LRUCache&lt; Key, Data, Sizefn &gt;::fetch</definition>
+        <argsstring>(const Key &amp;key, bool touch_data=true)</argsstring>
+        <name>fetch</name>
+        <param>
+          <type>const Key &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>touch_data</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12293" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12293" bodyend="12302"/>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a85c5cb904b7c8ed7f85a6a7162740aa5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool LRUCache&lt; Key, Data, Sizefn &gt;::fetch</definition>
+        <argsstring>(const Key &amp;key, Data &amp;data, bool touch_data=true)</argsstring>
+        <name>fetch</name>
+        <param>
+          <type>const Key &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>Data &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>touch_data</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12310" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12310" bodyend="12318"/>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a47523c87a56e9bd718566b2659366fd1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void LRUCache&lt; Key, Data, Sizefn &gt;::insert</definition>
+        <argsstring>(const Key &amp;key, const Data &amp;data)</argsstring>
+        <name>insert</name>
+        <param>
+          <type>const Key &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const Data &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12325" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12325" bodyend="12347"/>
+      </memberdef>
+      <memberdef kind="function" id="classLRUCache_1a3ca261ee9025168c081883b6dacc4131" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classLRUCache_1aaa32d864b92c5bb8df559b363a69cf21" kindref="member">Key_List</ref></type>
+        <definition>const Key_List LRUCache&lt; Key, Data, Sizefn &gt;::get_all_keys</definition>
+        <argsstring>(void)</argsstring>
+        <name>get_all_keys</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" line="12352" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache_unit.cpp" bodystart="12352" bodyend="12358"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Template cache with an LRU removal policy. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="par"><title></title><para>This template creats a simple collection of key-value pairs that grows until the size specified at construction is reached and then begins discard the Least Recently Used element on each insertion. </para></simplesect>
+</para>    </detaileddescription>
+    <location file="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" line="73" bodyfile="/mnt/hgfs/Sites/dist/lru_cache/src/lru_cache.h" bodystart="73" bodyend="274"/>
+    <listofallmembers>
+      <member refid="classLRUCache_1ad59b44b509fcef46b3666695c5e4a1aa" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>clear</name></member>
+      <member refid="classLRUCache_1ad59b44b509fcef46b3666695c5e4a1aa" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>clear</name></member>
+      <member refid="classLRUCache_1aa095f7527b11c4fb1bfad28bc06c91a6" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>exists</name></member>
+      <member refid="classLRUCache_1a43936b4a4887885d753c1f9495973235" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>exists</name></member>
+      <member refid="classLRUCache_1a5896c9481fb649f5570fb8677c33b49c" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>fetch</name></member>
+      <member refid="classLRUCache_1a85c5cb904b7c8ed7f85a6a7162740aa5" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>fetch</name></member>
+      <member refid="classLRUCache_1a5896c9481fb649f5570fb8677c33b49c" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>fetch</name></member>
+      <member refid="classLRUCache_1a85c5cb904b7c8ed7f85a6a7162740aa5" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>fetch</name></member>
+      <member refid="classLRUCache_1a8531c23ed890dac39debfb9f878cab9d" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>fetch_ptr</name></member>
+      <member refid="classLRUCache_1a8531c23ed890dac39debfb9f878cab9d" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>fetch_ptr</name></member>
+      <member refid="classLRUCache_1a3ca261ee9025168c081883b6dacc4131" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>get_all_keys</name></member>
+      <member refid="classLRUCache_1a3ca261ee9025168c081883b6dacc4131" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>get_all_keys</name></member>
+      <member refid="classLRUCache_1a47523c87a56e9bd718566b2659366fd1" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>insert</name></member>
+      <member refid="classLRUCache_1a47523c87a56e9bd718566b2659366fd1" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>insert</name></member>
+      <member refid="classLRUCache_1aaa32d864b92c5bb8df559b363a69cf21" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>Key_List</name></member>
+      <member refid="classLRUCache_1aaa32d864b92c5bb8df559b363a69cf21" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>Key_List</name></member>
+      <member refid="classLRUCache_1a5bfc5b2fb49045d46214f92e8019307f" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>Key_List_cIter</name></member>
+      <member refid="classLRUCache_1a5bfc5b2fb49045d46214f92e8019307f" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>Key_List_cIter</name></member>
+      <member refid="classLRUCache_1a2504cf65d69d046d4010a4102e2c17c8" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>Key_List_Iter</name></member>
+      <member refid="classLRUCache_1a2504cf65d69d046d4010a4102e2c17c8" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>Key_List_Iter</name></member>
+      <member refid="classLRUCache_1ad0c8ac49227b80937fa8f6a2edd8d67f" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>List</name></member>
+      <member refid="classLRUCache_1ad0c8ac49227b80937fa8f6a2edd8d67f" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>List</name></member>
+      <member refid="classLRUCache_1a7a9d5fc54bec471ff96c5aefab17acf9" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>List_cIter</name></member>
+      <member refid="classLRUCache_1a7a9d5fc54bec471ff96c5aefab17acf9" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>List_cIter</name></member>
+      <member refid="classLRUCache_1a3c656ba5944009b260049c8a67e42037" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>List_Iter</name></member>
+      <member refid="classLRUCache_1a3c656ba5944009b260049c8a67e42037" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>List_Iter</name></member>
+      <member refid="classLRUCache_1a814a6e3b186cc44a7787bade5f3a752b" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>LRUCache</name></member>
+      <member refid="classLRUCache_1a814a6e3b186cc44a7787bade5f3a752b" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>LRUCache</name></member>
+      <member refid="classLRUCache_1acf7b527935fba37e33b8f2e6de92bfb0" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>Map</name></member>
+      <member refid="classLRUCache_1acf7b527935fba37e33b8f2e6de92bfb0" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>Map</name></member>
+      <member refid="classLRUCache_1a77cae4f619439bdf7cb7098ed87c3583" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>Map_cIter</name></member>
+      <member refid="classLRUCache_1a77cae4f619439bdf7cb7098ed87c3583" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>Map_cIter</name></member>
+      <member refid="classLRUCache_1aa95c01d582d31a9295b84caf12d42ef4" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>Map_Iter</name></member>
+      <member refid="classLRUCache_1aa95c01d582d31a9295b84caf12d42ef4" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>Map_Iter</name></member>
+      <member refid="classLRUCache_1a3b625a8778e0dc1e5e69da3c331b9751" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>max_size</name></member>
+      <member refid="classLRUCache_1a3b625a8778e0dc1e5e69da3c331b9751" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>max_size</name></member>
+      <member refid="classLRUCache_1aa10db4fd28c9946c2ef845e2f56c48bf" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>Pair</name></member>
+      <member refid="classLRUCache_1aa10db4fd28c9946c2ef845e2f56c48bf" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>Pair</name></member>
+      <member refid="classLRUCache_1a34e974cf87c08620131a9b006443e93b" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>remove</name></member>
+      <member refid="classLRUCache_1a34e974cf87c08620131a9b006443e93b" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>remove</name></member>
+      <member refid="classLRUCache_1a3a521aa7646757957a53850db90ad289" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>size</name></member>
+      <member refid="classLRUCache_1a3a521aa7646757957a53850db90ad289" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>size</name></member>
+      <member refid="classLRUCache_1a844206e9e2fde04aaf11c638725f2c29" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>touch</name></member>
+      <member refid="classLRUCache_1a844206e9e2fde04aaf11c638725f2c29" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>touch</name></member>
+      <member refid="classLRUCache_1a64ae7e7d3ea41f536abcd7c40033d2a5" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>~LRUCache</name></member>
+      <member refid="classLRUCache_1a64ae7e7d3ea41f536abcd7c40033d2a5" prot="public" virt="non-virtual"><scope>LRUCache</scope><name>~LRUCache</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
