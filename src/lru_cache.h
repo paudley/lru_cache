@@ -19,7 +19,13 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-Additional licenses are available, see the COPYING file in the parent directory.
+This program is, at your option, available under the following
+additional licenses:
+
+   - Affero GNU Public License v3 (see ../LICENSE-AGPL.txt for details)
+   - Creative Commons by-sa 2.5 Canada License (see ../LICENSE-CCbysa.html for details)
+      human readable url:  http://creativecommons.org/licenses/by-sa/2.5/ca/
+
 */
 /**
  * @file lru_cache.h Template cache with an LRU removal policy
